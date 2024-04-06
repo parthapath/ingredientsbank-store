@@ -162,7 +162,7 @@ const products = async () => {
                   beverages, supplements, and pharmaceuticals. Though flavor and
                   aroma may slightly diminish, this is often compensated for
                   with natural flavorings. Convenient and lightweight, they
-                  don't require refrigeration, simplifying storage and
+                  don&#39;t require refrigeration, simplifying storage and
                   transportation. They offer a practical, nutritious option for
                   food manufacturers and consumers seeking longer-lasting,
                   easy-to-use ingredients with the benefits of fresh produce.
