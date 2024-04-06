@@ -10,7 +10,7 @@ import {
 } from "react-icons/md";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
-import OutsideClick from "@/utils/OutsideClick.util";
+import useOutsideClick from "@/utils/OutsideClick.util";
 
 import styles from "./Header.module.css";
 
@@ -49,7 +49,7 @@ const Header = () => {
     setShowRegionSelector(false);
   };
 
-  OutsideClick(refRegionMenu, hideRegionSelector);
+  useOutsideClick(refRegionMenu, hideRegionSelector);
 
   const regions = [
     {
@@ -89,7 +89,7 @@ const Header = () => {
     setShowShopMenu(false);
   };
 
-  OutsideClick(refShopMenu, hideShopMenu);
+  useOutsideClick(refShopMenu, hideShopMenu);
 
   /* Account Dropdown */
   const styleAccountMenu = {
@@ -106,7 +106,7 @@ const Header = () => {
     setShowAccountMenu(false);
   };
 
-  OutsideClick(refAccountMenu, hideAccountMenu);
+  useOutsideClick(refAccountMenu, hideAccountMenu);
 
   return (
     <header>
