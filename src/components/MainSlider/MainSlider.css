@@ -1,0 +1,57 @@
+.SwiperSlider {
+  height: 440px;
+}
+
+.SwiperSlider .swiper-button-prev,
+.SwiperSlider .swiper-button-next {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f2f3f4;
+  color: #999;
+  transition: all 0.2s ease-out;
+}
+
+.SwiperSlider .swiper-button-prev,
+.SwiperSlider .swiper-button-next {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+
+.SwiperSlider:hover .swiper-button-prev,
+.SwiperSlider:hover .swiper-button-next {
+  visibility: visible;
+  opacity: 1;
+}
+
+.SwiperSlider .swiper-button-prev.swiper-button-disabled,
+.SwiperSlider .swiper-button-next.swiper-button-disabled {
+  opacity: 0.35;
+}
+
+.SwiperSlider .swiper-button-prev::after,
+.SwiperSlider .swiper-button-next::after {
+  font-size: 20px;
+}
+
+.SwiperSlider .swiper-button-prev:hover,
+.SwiperSlider .swiper-button-next:hover {
+  background-color: #3bb77e;
+  color: #fff;
+  border-color: #3bb77e;
+}
+
+.SwiperSlider .swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+}
+
+.SwiperSlider .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #3bb77e;
+  border-color: #3bb77e;
+}
+
+.SwiperSlider .swiper-pagination-horizontal {
+  bottom: 20px !important;
+}

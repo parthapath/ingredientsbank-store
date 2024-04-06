@@ -1,0 +1,6 @@
+.ErrorMsg {
+    width: 100% !important;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #f00;
+}

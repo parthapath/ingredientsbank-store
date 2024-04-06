@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
+@import url(vendors/normalize.css);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #222;
+}
+
+.container {
+  width: 1460px;
+  margin: 0 auto;
+}
+
+.page-wrapper {
+  padding: 150px 0 70px;
+}
+
+p {
+  margin: 0 0 12px;
+  line-height: 24px;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+a:hover {
+  color: #03956e;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.page-content {
+  padding-top: 85px;
+}
+
+/* Form */
+.form-container {
+  margin: 0 -12px;
+}
+
+.form-container .form-body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.form-container .form-group {
+  width: 50%;
+  min-height: 110px;
+  padding: 10px 12px;
+  position: relative;
+}
+
+.form-container .form-actions {
+  width: 50%;
+  padding: 0 12px;
+  display: flex;
+}
+
+.form-container .form-actions button + button {
+  margin-left: 8px;
+}
+
+.form-container.modal-form .form-group {
+  width: 100%;
+}
+
+.form-container.modal-form {
+  padding: 10px 0;
+}
+
+.form-container.modal-form .form-actions {
+  width: 100%;
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox .control-label {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkbox input {
+  margin-right: 10px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border-radius: 2px;
+  border: 1px solid #5dc900;
+  background-color: transparent;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #5dc900;
+}
+
+.checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox .checkmark:after {
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.form-control {
+  width: 100%;
+  height: 40px;
+  padding-left: 20px;
+  border-radius: 4px;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.form-control:focus,
+.form-control:active,
+.form-control:hover {
+  outline: none;
+}

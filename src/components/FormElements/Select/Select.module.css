@@ -1,0 +1,9 @@
+.Horizonal {
+    display: flex;
+    align-items: center;
+}
+
+.Horizonal .FormControl {
+    margin: 0 0 0 10px;
+    flex-grow: 1;
+}

@@ -1,0 +1,44 @@
+.Modal {
+  margin: 200px auto 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  color: #333;
+  transition: all 0.3s ease-out;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.ModalHeader {
+  height: 60px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ModalHeader .Title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ModalBody {
+  height: auto;
+  padding: 0 32px 24px 32px;
+  position: relative;
+}
+
+.CloseBtn svg {
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer;
+}
+
+@media (max-width: 1366px) {
+  .Modal {
+    width: calc(100% - 40px);
+  }
+}

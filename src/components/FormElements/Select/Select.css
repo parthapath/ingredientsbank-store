@@ -1,0 +1,6 @@
+.ReactSelect__control {
+    width: 200px;
+    height: 42px;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+}

@@ -1,0 +1,62 @@
+.Footer {
+  height: 300px;
+  padding: 60px 0;
+  background-color: #fff7ea;
+}
+
+.Footer .ContentWrapper {
+  margin: 0 -40px;
+  display: flex;
+}
+
+.Footer .ContentWrapper > div {
+  padding: 0 40px;
+  flex-grow: 1;
+}
+
+.About .Logo {
+  margin: 20px 0 85px;
+}
+
+.About .Logo img {
+  width: 175px;
+}
+
+.About p {
+  color: #666;
+}
+
+.About .Terms {
+  margin-bottom: 8px;
+}
+
+.About .Terms ul {
+  margin: 0 -20px;
+  display: flex;
+}
+
+.About .Terms ul li {
+  padding: 0 20px;
+}
+
+.Footer .Terms ul li + li {
+  border-left: 1px solid #222;
+}
+
+.Footer .Menu ul li + li {
+  margin-top: 10px;
+}
+
+.Footer .Menu ul li a {
+  font-size: 14px;
+}
+
+.Contact div + div {
+  margin-top: 10px;
+}
+
+.Contact div span {
+    width: 100px;
+    display: inline-block;
+    font-weight: 600;
+}

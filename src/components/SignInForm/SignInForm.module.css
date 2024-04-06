@@ -1,0 +1,24 @@
+.SignInForm .Content {
+  display: flex;
+}
+
+.SignInForm .SignIn {
+  width: 60%;
+  padding-right: 45px;
+}
+
+.SignInForm .SignUp {
+  padding: 40px 0 0 45px;
+  border-left: 1px solid #f1f1f1;
+}
+
+.SignInForm .SignUp h4 {
+    margin: 0 0 15px;
+}
+
+.SignInForm .ForgotPassword {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
