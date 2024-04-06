@@ -10,7 +10,7 @@ import {
 } from "react-icons/md";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
-import outsideClick from "@/utils/OutsideClick.util";
+import OutsideClick from "@/utils/OutsideClick.util";
 
 import styles from "./Header.module.css";
 
@@ -49,7 +49,7 @@ const Header = () => {
     setShowRegionSelector(false);
   };
 
-  outsideClick(refRegionMenu, hideRegionSelector);
+  OutsideClick(refRegionMenu, hideRegionSelector);
 
   const regions = [
     {
@@ -89,7 +89,7 @@ const Header = () => {
     setShowShopMenu(false);
   };
 
-  outsideClick(refShopMenu, hideShopMenu);
+  OutsideClick(refShopMenu, hideShopMenu);
 
   /* Account Dropdown */
   const styleAccountMenu = {
@@ -106,7 +106,7 @@ const Header = () => {
     setShowAccountMenu(false);
   };
 
-  outsideClick(refAccountMenu, hideAccountMenu);
+  OutsideClick(refAccountMenu, hideAccountMenu);
 
   return (
     <header>
@@ -211,7 +211,7 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className={[styles.HeaderAction, styles.SignInUp].join(" ")}>
+              <div className={[styles.HeaderAction, styles.SignInUp].join(" ")}>
                 <Button
                   type="button"
                   btnType="Secondary"
@@ -227,8 +227,8 @@ const Header = () => {
                 >
                   Sign Up
                 </Button>
-              </div> */}
-              <div
+              </div>
+              {/* <div
                 className={[styles.HeaderAction, styles.MyAccount].join(" ")}
                 onClick={() => handleAccountMenu()}
                 ref={refAccountMenu}
@@ -263,7 +263,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

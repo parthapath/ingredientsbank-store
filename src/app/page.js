@@ -162,9 +162,9 @@ const Home = async () => {
             our cutting-edge technology and a fearless focus on innovation. As
             we help build a new kind of supply chain, we firmly believe that our
             continued ability to lead depends on the growth of the businesses
-            who buy and sell on Ingredients Online. That’s why our main priority
+            who buy and sell on Ingredients Online. That&#39;s why our main priority
             at all times is to create maximum value for them. It is our
-            conviction that when all of us are at our best, today’s challenges
+            conviction that when all of us are at our best, today&#39;s challenges
             in ingredient sourcing can serve as powerful launch pads toward a
             brighter future.
           </p>

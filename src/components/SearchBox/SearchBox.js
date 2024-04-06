@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { FiSearch } from "react-icons/fi";
 
-import outsideClick from "@/utils/OutsideClick.util";
+import OutsideClick from "@/utils/OutsideClick.util";
 
 import styles from "./SearchBox.module.css";
 
@@ -24,7 +24,7 @@ const SearchBox = () => {
     setShowResults(false);
   };
 
-  outsideClick(ref, hideSearchResults);
+  OutsideClick(ref, hideSearchResults);
 
   useEffect(() => {
     if (keyword.length > 2) {

@@ -100,7 +100,7 @@ const SignInForm = () => {
             </div>
           </div>
           <div className={styles.SignUp}>
-            <h4>Don't have an account?</h4>
+            <h4>Don&#39;t have an account?</h4>
             <p>Register your account to see pricing and place orders</p>
             <Button
               btnType="Primary"
