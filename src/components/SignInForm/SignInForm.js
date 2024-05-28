@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
+import { api_server } from "@/config";
 
 import styles from "./SignInForm.module.css";
 
@@ -14,6 +16,9 @@ import FormikControl from "../FormikControl/FormikControl";
 import Button from "../Button/Button";
 
 const SignInForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const router = useRouter();
   const showSignInModal = useSelector((state) => state.signIn.showSignInModal);
   const dispatch = useDispatch();
@@ -21,7 +26,6 @@ const SignInForm = () => {
   const initialValues = {
     email: "",
     password: "",
-    rememberMe: false,
   };
 
   const validationSchema = Yup.object({
@@ -35,7 +39,30 @@ const SignInForm = () => {
   });
 
   const onSubmit = (values) => {
-    console.log("values", values);
+    setIsLoading(true);
+    axios
+      .post(`${api_server}/users/login`, values)
+      .then((response) => {
+        localStorage.setItem("name", response.data.name);
+        const token = {
+          token: response.data.access_token,
+        };
+        axios
+          .post("/api/auth/sign-in", token)
+          .then(() => {
+            dispatch(openSignInModal(false));
+            window.location.reload();
+          })
+          .catch((error) => {
+            setError(error.response.data);
+          });
+      })
+      .catch((error) => {
+        setError(error.response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const closeModal = () => {

@@ -1,0 +1,11 @@
+.Body {
+    margin-top: 10px;
+}
+
+.Footer {
+    margin-top: 30px;
+}
+
+.Footer button + button {
+    margin-left: 10px
+}

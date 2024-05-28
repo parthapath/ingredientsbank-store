@@ -1,11 +1,29 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 import { IoCloseOutline } from "react-icons/io5";
 
+import { api_server } from "@/config";
+
 import styles from "./ShopMenu.module.css";
 
 const ShopMenu = (props) => {
+  const [categories, setCategories] = useState([]);
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch(`${api_server}/categories`);
+      const data = await response.json();
+      setCategories(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   const style = {
     opacity: props.show ? "1" : "0",
     visibility: props.show ? "visible" : "hidden",
@@ -17,7 +35,7 @@ const ShopMenu = (props) => {
       <div className={styles.ShopMenu} style={style}>
         <div className={styles.Head}>
           <div className={styles.Title}>
-            <Link href="/">All Categories</Link>
+            <Link href="/products?categories=">All Categories</Link>
           </div>
           <div
             className={styles.CloseBtn}
@@ -28,52 +46,18 @@ const ShopMenu = (props) => {
         </div>
         <div className={styles.Categories}>
           <ul>
-            <li>
-              <Link href="/products">Standardized Herbal Extracts</Link>
-            </li>
-            <li>
-              <Link href="/products">Curcuma (Curcumin) Range</Link>
-            </li>
-            <li>
-              <Link href="/products">
-                CO2 Extracts (Super Critical Fluid Extracts)
-              </Link>
-            </li>
-            <li>
-              <Link href="/products">Organic Herbs</Link>
-            </li>
-            <li>
-              <Link href="/products">
-                Vegetable / Fruits Spray Dried Powder
-              </Link>
-            </li>
-            <li>
-              <Link href="/products">Essential Oils</Link>
-            </li>
-            <li>
-              <Link href="/products">Cold Pressed Oils</Link>
-            </li>
-            <li>
-              <Link href="/products">Nutritional Fine Chemicals</Link>
-            </li>
-            <li>
-              <Link href="/products">Dietary Fibre</Link>
-            </li>
-            <li>
-              <Link href="/products">Oleoresin</Link>
-            </li>
-            <li>
-              <Link href="/products">Food Enzyme</Link>
-            </li>
-            <li>
-              <Link href="/products">Coconut Products</Link>
-            </li>
-            <li>
-              <Link href="/products">Herbs Powders</Link>
-            </li>
-            <li>
-              <Link href="/products">Specialised Nutraceuticals</Link>
-            </li>
+            {categories.map((item, i) => {
+              return (
+                <li key={i}>
+                  <Link
+                    href={`/products?categories=${item.name}`}
+                    key={item.id}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

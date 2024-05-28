@@ -1,0 +1,66 @@
+.minHeightAuto {
+  min-height: auto !important;
+}
+
+.Checkbox {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Checkbox .ControlLabel {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.Checkbox input {
+  margin-right: 10px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.Checkbox .Checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border-radius: 2px;
+  border: 1px solid #5dc900;
+  background-color: transparent;
+}
+
+.Checkbox input:checked ~ .Checkmark {
+  background-color: #5dc900;
+}
+
+.Checkbox .Checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.Checkbox input:checked ~ .Checkmark:after {
+  display: block;
+}
+
+.Checkbox .Checkmark:after {
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

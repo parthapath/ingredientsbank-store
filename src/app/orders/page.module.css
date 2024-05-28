@@ -1,0 +1,102 @@
+.OrdersWrapper {
+  background-color: #f1f3f6;
+}
+
+.Container {
+  display: flex;
+}
+
+.Content {
+  width: 100%;
+  padding: 20px;
+  margin-left: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.PageHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.Orders .Order + .Order {
+  margin-top: 30px;
+}
+
+.Order {
+  border-radius: 3px;
+  border: 1px solid #f0f0f0;
+}
+
+.Overview {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+}
+
+.Overview > div > div {
+  padding: 5px 0;
+}
+
+.Overview span {
+  width: 130px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.OrderDetails {
+  display: flex;
+  padding: 10px;
+}
+
+.Description {
+  width: 100%;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.OrderDetails img {
+  width: 110px;
+  border-radius: 3px;
+}
+
+.OrderDetails h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.OrderDetails h3 {
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Details > div {
+  margin: 4px 0;
+}
+
+.Details span {
+  width: 140px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.ShippingAddress {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ShippingAddress div:first-child {
+  margin-bottom: 10px;
+  font-weight: 600;
+}

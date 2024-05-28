@@ -92,7 +92,6 @@
 }
 
 .AccountName {
-  width: 100px;
   display: flex;
   align-items: center;
 }
@@ -132,104 +131,6 @@
 
 .AccountMenu a:hover {
   color: #03956e;
-}
-
-.RegionSelector {
-  position: relative;
-  font-size: 14px;
-}
-
-.RegionSelector .Selector {
-  width: 280px;
-  height: 40px;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  background-color: #f7f7f7;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 2px;
-  color: #222;
-  transition: all ease 0.3s;
-}
-
-.RegionSelector .Selector:hover,
-.RegionSelector .Selector.Active {
-  background-color: #e9e9e9;
-}
-
-.RegionSelector .Selector > div + div {
-  margin-left: 10px;
-}
-
-.RegionSelector .Selector .RegionName {
-  width: 135px;
-}
-
-.RegionSelector .Selector .Indicator {
-  padding-top: 5px;
-  right: 12px;
-  position: absolute;
-}
-
-.RegionSelector .Selector .Indicator svg {
-  width: 18px;
-  height: 18px;
-}
-
-.RegionSelector .Flag {
-  height: 20px;
-}
-
-.RegionSelector .Flag img {
-  width: 22px;
-}
-
-.RegionSelector .RegionName {
-  line-height: 20px;
-}
-
-.RegionSelector .Currency {
-  display: flex;
-}
-
-.RegionSelector .Currency .CurrencyName {
-  margin-left: 10px;
-}
-
-.RegionSelector .Regions {
-  width: 280px;
-  margin-top: 56px;
-  background-color: #fff;
-  position: absolute;
-  right: 0;
-  z-index: 99;
-  box-shadow: 0px 3px 6px #0000000f;
-  border: 1px solid #ececec;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.RegionSelector .Regions .Region {
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all ease 0.3s;
-}
-
-.RegionSelector .Regions .Region:hover {
-  background-color: #e9e9e9;
-}
-
-.RegionSelector .Regions .Region .RegionName {
-  display: flex;
-}
-
-.RegionSelector .Regions .Region .RegionName .Name {
-  margin-left: 10px;
 }
 
 .Overlay {

@@ -55,3 +55,7 @@
 .SwiperSlider .swiper-pagination-horizontal {
   bottom: 20px !important;
 }
+
+.SwiperSlider img {
+  width: 100%;
+}

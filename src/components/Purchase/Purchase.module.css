@@ -1,0 +1,67 @@
+.Sizes {
+    padding-top: 30px;
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+}
+
+.Sizes .Size {
+    padding: 10px;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    font-weight: 600;
+}
+
+.Sizes .Size.Active {
+    border: 2px solid #03956e;
+    background-color: #fff7ea;
+}
+
+.Sizes .Size:hover {
+    background-color: #fff7ea;
+    border: 2px solid #03956e;
+}
+
+.Sizes .Size + .Size {
+    margin-left: 10px;
+}
+
+.QuantityPrice {
+    margin: 20px 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.Quantity {
+    width: 60px;
+}
+
+.Quantity input {
+    text-align: center;
+}
+
+.Price {
+    margin: 22px 0 0 30px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.Price span {
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+}
+
+.PricingList {
+    padding: 30px 0 0 30px;
+    cursor: pointer;
+    color: #03956e;
+    text-decoration: underline;
+}
+
+.BuyNow {
+    margin-top: 30px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid #f0f0f0;
+}

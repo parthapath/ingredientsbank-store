@@ -10,7 +10,7 @@ const Input = (props) => {
   };
 
   const inputLabel = label ? (
-    <label htmlFor={name} className="ControlLabel">
+    <label htmlFor={name} className={styles.ControlLabel}>
       {label}
     </label>
   ) : null;

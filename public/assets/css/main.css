@@ -166,3 +166,53 @@ ul li {
 .form-control:hover {
   outline: none;
 }
+
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 5px;
+  text-align: left;
+}
+
+table th {
+  padding: 15px 5px;
+  text-transform: uppercase;
+  color: #222;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+table th span {
+  width: 20px;
+  display: inline-block;
+}
+
+table thead,
+table tbody tr + tr {
+  border-bottom: 1px solid #f7f7f7;
+}
+
+table tbody {
+  color: #444;
+}
+
+table tbody tr {
+  height: 43px;
+  transition: background-color ease 0.3s;
+}
+
+table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+table tbody tr button {
+  margin-right: 10px;
+  height: 30px !important;
+  font-size: 12px !important;
+}

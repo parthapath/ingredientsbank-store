@@ -1,20 +1,117 @@
 "use client";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import Cookies from "js-cookie";
+
+import { api_server } from "@/config";
 
 import styles from "./page.module.css";
 
-import Checkbox from "@/components/FormElements/Checkbox/Checkbox";
 import ProductsList from "@/components/ProductsList/ProductsList";
+import Applications from "../../components/Applications/Applications";
 
-import { server } from "@/config";
+const products = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
 
-const products = async () => {
-  const handleApplicationFilter = (val) => {
-    console.log("val", val);
+  const queryCategories = searchParams.get("categories");
+
+  const queryApplications = searchParams.get("applications");
+  let searchApplications = [];
+  if (queryApplications) {
+    searchApplications = queryApplications.split(",");
+  }
+
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState(false);
+  const [selectedApplications, setSelectedApplications] =
+    useState(searchApplications);
+  const [page, setPage] = useState(1);
+  const [totalPageCount, setTotalPageCount] = useState(null);
+  const [totalRecordCount, setTotalRecordCount] = useState(null);
+
+  const updateSearchParam = ({ key, value }) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set(key, value);
+    return `${pathname}?${params.toString()}`;
   };
 
-  const request = await fetch(`${server}/static/products.json`);
-  const products = await request.json();
+  const handleCategoryFilter = (val) => {
+    setSelectedCategories(val);
+  };
+
+  const clearSelectedCategories = () => {
+    setSelectedCategories("");
+  };
+
+  const handleApplicationFilter = (val) => {
+    if (selectedApplications.includes(val)) {
+      setSelectedApplications(
+        selectedApplications.filter((value) => value !== val)
+      );
+    } else {
+      setSelectedApplications([...selectedApplications, val]);
+    }
+  };
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+  };
+
+  useEffect(() => {
+    setSelectedCategories(queryCategories);
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${api_server}/categories`);
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    router.push(
+      updateSearchParam({ key: "categories", value: selectedCategories })
+    );
+  }, [selectedCategories]);
+
+  useEffect(() => {
+    router.push(
+      updateSearchParam({ key: "applications", value: selectedApplications })
+    );
+  }, [selectedApplications]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      //const regionObj = localStorage.getItem("region");
+      const regionObj = Cookies.get("region")
+      const region = JSON.parse(regionObj);
+      try {
+        const response = await fetch(
+          `${api_server}/products?page=${page}&per-page=10&region=${region.id}&keywords=&categories=${selectedCategories}&applications=${selectedApplications}`
+        );
+        const data = await response.json();
+        setProducts(data);
+        setTotalPageCount(response.headers.get("x-pagination-page-count"));
+        setTotalRecordCount(response.headers.get("x-pagination-total-count"));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    if (selectedCategories !== false) {
+      fetchProducts();
+    }
+  }, [selectedCategories, selectedApplications, page]);
 
   return (
     <div className={["page-wrapper", styles.ProductsPage].join(" ")}>
@@ -24,134 +121,37 @@ const products = async () => {
             <div className={styles.Filter}>
               <h4>Categories</h4>
               <ul>
-                <li>
-                  <Link href="/products">Standardized Herbal Extracts</Link>
+                <li
+                  className={selectedCategories === "" ? styles.Active : null}
+                  onClick={() => clearSelectedCategories()}
+                >
+                  All
                 </li>
-                <li>
-                  <Link href="/products" className={styles.Active}>
-                    Curcuma (Curcumin) Range
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products">
-                    CO2 Extracts (Super Critical Fluid Extracts)
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products">Organic Herbs</Link>
-                </li>
-                <li>
-                  <Link href="/products">
-                    Vegetable / Fruits Spray Dried Powder
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products">Essential Oils</Link>
-                </li>
-                <li>
-                  <Link href="/products">Cold Pressed Oils</Link>
-                </li>
-                <li>
-                  <Link href="/products">Nutritional Fine Chemicals</Link>
-                </li>
-                <li>
-                  <Link href="/products">Dietary Fibre</Link>
-                </li>
-                <li>
-                  <Link href="/products">Oleoresin</Link>
-                </li>
-                <li>
-                  <Link href="/products">Food Enzyme</Link>
-                </li>
-                <li>
-                  <Link href="/products">Coconut Products</Link>
-                </li>
-                <li>
-                  <Link href="/products">Herbs Powders</Link>
-                </li>
-                <li>
-                  <Link href="/products">Specialised Nutraceuticals</Link>
-                </li>
+                {categories.map((item, i) => {
+                  return (
+                    <li
+                      className={
+                        selectedCategories === item.name ? styles.Active : null
+                      }
+                      onClick={() => handleCategoryFilter(item.name)}
+                      key={i}
+                    >
+                      {item.name}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className={styles.Filter}>
               <h4>Applications</h4>
-              <ul>
-                <li>
-                  <Checkbox
-                    name="1"
-                    change={handleApplicationFilter}
-                    label="Animal Nutrition"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="2"
-                    change={handleApplicationFilter}
-                    label="Cognitive Support"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="3"
-                    change={handleApplicationFilter}
-                    lable=" Digestive Support"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="4"
-                    change={handleApplicationFilter}
-                    label="Food and Beverage"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="5"
-                    change={handleApplicationFilter}
-                    label="Hair, Skin, and Nails"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="6"
-                    change={handleApplicationFilter}
-                    label="Immune Support"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="7"
-                    change={handleApplicationFilter}
-                    label="Joint Support"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="8"
-                    change={handleApplicationFilter}
-                    label="Nootropics"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="9"
-                    change={handleApplicationFilter}
-                    label="Sports Nutrition"
-                  />
-                </li>
-                <li>
-                  <Checkbox
-                    name="10"
-                    change={handleApplicationFilter}
-                    label="Weight Management"
-                  />
-                </li>
-              </ul>
+              <Applications
+                handleApplicationFilter={handleApplicationFilter}
+                selectedApplications={selectedApplications}
+              />
             </div>
           </div>
           <div className={styles.ProductsWrapper}>
-            <div className={styles.Overview}>
+            {/* <div className={styles.Overview}>
               <h1>Vegetable / Fruits Spray Dried Powder</h1>
               <div className={styles.CategoryDesc}>
                 <p>
@@ -168,13 +168,21 @@ const products = async () => {
                   easy-to-use ingredients with the benefits of fresh produce.
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className={styles.Products}>
-              <div className={styles.NoOfProducts}>
+              {/* <div className={styles.NoOfProducts}>
                 Showing 30 of 654 products
-              </div>
+              </div> */}
               <div className={styles.ProductsList}>
                 <ProductsList products={products} />
+                {totalPageCount > 0 && totalPageCount != page ? (
+                  <div
+                    className={styles.LoadMore}
+                    onClick={() => handleLoadMore()}
+                  >
+                    Load More
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

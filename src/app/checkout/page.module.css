@@ -1,0 +1,148 @@
+.Details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ContentLeft {
+  width: 75%;
+  margin-right: 20px;
+  border: 1px solid #f0f0f0;
+}
+
+.ContentRight {
+  width: 25%;
+  padding: 20px;
+  background-color: #fff7ea;
+}
+
+.Product {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.Product h1 {
+  margin: 0 0 5px;
+  font-size: 20px;
+}
+
+.Product h2 {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.Product > div {
+  margin-bottom: 5px;
+}
+
+.Product > div span {
+  width: 70px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.ShippingAddress {
+  padding: 15px;
+}
+
+.ShippingAddress h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.ShippingAddress .Name div {
+  font-weight: 600;
+}
+
+.ShippingAddress .DefaultAddress > div {
+  margin: 5px 0;
+}
+
+.ShippingAddress .DefaultAddress .Address {
+  color: #666;
+}
+
+.ShippingAddress .ChangeAddress {
+  margin-top: 20px;
+  cursor: pointer;
+  color: #03956e;
+}
+
+.AddNewAddress {
+  margin-top: 20px;
+}
+
+.AddNewBtn {
+  color: #03956e;
+  cursor: pointer;
+}
+
+.ContentRight h3 {
+  margin: 0 0 30px;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.TotalAmount {
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tax {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.PlaceOrderBtn {
+  margin-top: 20px;
+}
+
+.SavedAddresses {
+  height: 450px;
+  overflow-y: auto;
+}
+
+.SavedAddresses .AddressWrapper {
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  position: relative;
+  border: 1px solid #f0f0f0;
+}
+
+.SavedAddresses .AddressWrapper.Active {
+  background-color: #fff7ea;
+}
+
+.SavedAddresses .AddressWrapper .RadioBtn {
+  position: absolute;
+  top: 22px;
+}
+
+.SavedAddresses .AddressWrapper > div:last-child {
+  padding-left: 30px;
+}
+
+.SavedAddresses .AddressWrapper .Name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.SavedAddresses .AddressWrapper .Name div:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.SavedAddresses .AddressWrapper .Name div:nth-child(2) {
+  color: #999;
+}
+
+.SavedAddresses .AddressWrapper .Address {
+  line-height: 20px;
+}

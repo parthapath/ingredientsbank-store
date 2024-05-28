@@ -1,0 +1,49 @@
+.SideMenu {
+  width: 300px;
+  border-radius: 3px;
+}
+
+.UserName {
+  padding: 15px;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+}
+
+.UserName > div:last-child {
+  margin-left: 10px;
+}
+
+.UserName > div:last-child div:first-child {
+  font-size: 12px;
+}
+
+.UserName > div:last-child div:last-child {
+  margin-top: 3px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.UserName svg {
+  width: 40px;
+  height: 40px;
+}
+
+.Menu {
+  height: 520px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.Menu a {
+  padding: 15px;
+  display: block;
+  transition: all ease 0.2s;
+  font-weight: 600;
+}
+
+.Menu a:hover,
+.Menu a.Active {
+  background-color: #FFF7EA;
+  color: #03956e;
+}

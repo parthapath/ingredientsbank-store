@@ -1,9 +1,13 @@
+.SignUp {
+  min-height: 600px;
+}
+
 .SignUp h1 {
   font-size: 25px;
 }
 
 .Notes {
-  width: 950px;
+  width: 780px;
   padding: 20px;
   margin-top: 30px;
   background-color: #fff7ea;

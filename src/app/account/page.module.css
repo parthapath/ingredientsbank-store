@@ -1,0 +1,38 @@
+.Account {
+  background-color: #f1f3f6;
+}
+
+.Account .Container {
+  display: flex;
+}
+
+.Content {
+  width: 100%;
+  padding: 20px;
+  margin-left: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.Content h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.Details {
+  padding: 25px 0;
+}
+
+.Details + .Details {
+  border-top: 1px solid #f0f0f0;
+}
+
+.Details .Detail + .Detail {
+  margin-top: 25px;
+}
+
+.Label {
+  margin-bottom: 5px;
+  color: #777;
+}

@@ -1,18 +1,27 @@
+"use client";
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { FiSearch } from "react-icons/fi";
 
 import useOutsideClick from "@/utils/OutsideClick.util";
 
+import { api_server } from "@/config";
+
 import styles from "./SearchBox.module.css";
 
 import Input from "../FormElements/Input/Input";
-import Link from "next/link";
 
-const SearchBox = () => {
+const SearchBox = (props) => {
   const [keyword, setKeyword] = useState("");
-  const [showResults, setShowResults] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultClicked, setSearchResultClicked] = useState(false);
   const ref = useRef(null);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search");
 
   const style = {
     opacity: showResults ? "1" : "0",
@@ -27,8 +36,20 @@ const SearchBox = () => {
   useOutsideClick(ref, hideSearchResults);
 
   useEffect(() => {
-    if (keyword.length > 2) {
-      setShowResults(true);
+    if (keyword.length > 2 && !searchResultClicked) {
+      const search = async () => {
+        try {
+          const response = await fetch(
+            `${api_server}/products/search?region=${props.regionId}&keyword=${keyword}`
+          );
+          const data = await response.json();
+          setSearchResults(data);
+          setShowResults(true);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      search();
     } else {
       setShowResults(false);
     }
@@ -40,6 +61,24 @@ const SearchBox = () => {
     }
   };
 
+  const handleSearchInput = (val) => {
+    setKeyword(val);
+    setSearchResultClicked(false);
+  };
+
+  const handleSearchResultClick = (val) => {
+    setShowResults(false);
+    setKeyword(val.name);
+    setSearchResultClicked(true);
+    router.push(`/products/${val.id}?region=${props.regionId}&search=true`);
+  };
+
+  useEffect(() => {
+    if (!search) {
+      setKeyword("");
+    }
+  }, [search]);
+
   return (
     <>
       <div className={styles.SearchBox} ref={ref}>
@@ -49,7 +88,7 @@ const SearchBox = () => {
               type="text"
               name="keyword"
               value={keyword}
-              handleInput={setKeyword}
+              handleInput={handleSearchInput}
               placeholder="Search for products..."
               onClick={() => handleInputClick()}
             />
@@ -63,27 +102,23 @@ const SearchBox = () => {
         </div>
         <div className={styles.SearchResults} style={style}>
           <div className={styles.Results}>
-            <ul>
-              <li>
-                <Link href="/">Andrographis Paniculata Extract</Link>
-              </li>
-              <li>
-                <Link href="/">Adhatoda Vasica Extract</Link>
-              </li>
-              <li>
-                <Link href="/">Ashwagandha Extract</Link>
-              </li>
-              <li>
-                <Link href="/">Aloevera Extract 200:1</Link>
-              </li>
-              <li>
-                <Link href="/">Amla Extract</Link>
-              </li>
-            </ul>
+            {searchResults.length ? (
+              <ul>
+                {searchResults.map((item, i) => {
+                  return (
+                    <li onClick={() => handleSearchResultClick(item)} key={i}>
+                      {item.name}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
           </div>
         </div>
       </div>
-      {showResults ? <div className={styles.Overlay}></div> : null}
+      {showResults && searchResults.length ? (
+        <div className={styles.Overlay}></div>
+      ) : null}
     </>
   );
 };

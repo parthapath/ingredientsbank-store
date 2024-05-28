@@ -8,7 +8,7 @@ import Backdrop from "../Backdrop/Backdrop";
 
 const Modal = (props) => {
   const style = {
-    transform: props.show ? "translateY(0)" : "translateY(-150%)",
+    transform: props.show ? "translateY(0)" : "translateY(-230%)",
     opacity: props.show ? "1" : "0",
     width: props.width ? props.width : "475px",
   };

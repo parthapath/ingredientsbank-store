@@ -62,13 +62,14 @@
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.SearchResults .Results li a {
+.SearchResults .Results li {
   padding: 10px 20px;
   transition: all ease 0.3s;
   display: block;
+  cursor: pointer;
 }
 
-.SearchResults .Results li a:hover {
+.SearchResults .Results li:hover {
   background-color: #e9e9e9;
 }
 

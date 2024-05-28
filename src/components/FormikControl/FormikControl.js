@@ -6,6 +6,7 @@ import Password from "./Password/Password";
 import PasswordStrength from "./PasswordStrength/PasswordStrength";
 import Select from "./Select/Select";
 import SelectAsync from "./SelectAsync/SelectAsync";
+import Checkbox from "./Checkbox/Checkbox";
 
 const FormikControl = (props) => {
   const { control, ...rest } = props;
@@ -23,6 +24,8 @@ const FormikControl = (props) => {
       return <Select {...rest} />;
     case "selectAsync":
       return <SelectAsync {...rest} />;
+    case "checkout":
+      return <Checkbox {...rest} />;
     default:
       return null;
   }

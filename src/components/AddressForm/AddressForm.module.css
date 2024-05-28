@@ -1,0 +1,17 @@
+.NewAddressForm {
+  width: 900px;
+}
+
+.NewAddressForm .FormBody {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.NewAddressForm .FormBody div:last-child {
+    padding-left: 15px;
+}
+
+.NewAddressForm .FormActions {
+    margin-top: 30px;
+}
