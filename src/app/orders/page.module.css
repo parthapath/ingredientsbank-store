@@ -25,8 +25,18 @@
   font-size: 22px;
 }
 
-.Orders .Order + .Order {
+.Orders a {
+  display: block;
+  transition: all ease 0.3s;
+}
+
+.Orders a + a {
   margin-top: 30px;
+}
+
+.Orders a:hover {
+  color: #222;
+  box-shadow: 0px 4px 6px #00000012;
 }
 
 .Order {
@@ -34,11 +44,20 @@
   border: 1px solid #f0f0f0;
 }
 
+.Orders a:hover .Order {
+  border: 1px solid #fff7ea;
+}
+
 .Overview {
   padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   background-color: #f0f0f0;
+  transition: all ease 0.3s;
+}
+
+.Orders a:hover .Overview {
+  background-color: #fff7ea;
 }
 
 .Overview > div > div {
@@ -96,7 +115,20 @@
   justify-content: center;
 }
 
-.ShippingAddress div:first-child {
+.ShippingAddress > div:first-child {
   margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.Address {
+  margin-bottom: 10px;
+}
+
+.shippingNo {
+  display: flex;
+}
+
+.shippingNo div:first-child {
+  width: 150px;
   font-weight: 600;
 }

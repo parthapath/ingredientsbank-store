@@ -3,6 +3,7 @@
   font-size: 14px;
 }
 
+.RegionSelectorWrapper,
 .RegionSelector .Selector {
   width: 280px;
   height: 40px;

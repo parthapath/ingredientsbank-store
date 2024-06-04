@@ -5,28 +5,32 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
-import { checkAuth } from "@/utils/checkAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 import styles from "./Product.module.css";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
-  const isAuthenticated = checkAuth();
+  const isAuthenticated = useAuth();
 
   const regionObj = Cookies.get("region");
-  const region = JSON.parse(regionObj);
+  let regionId = 5;
+  if (regionObj) {
+    const region = JSON.parse(regionObj);
+    regionId = region.id;
+  }
 
   return (
     <div className={styles.Product} key={product.id}>
       <div className={styles.Image}>
-        <Link href={`/products/${product.id}?region=${region.id}`}>
+        <Link href={`/products/${product.id}?region=${regionId}`}>
           <img src={product.images[0].url} alt={product.name} />
         </Link>
       </div>
       <div className={styles.Desc}>
         <div className={styles.Name}>
           <h3>
-            <Link href={`/products/${product.id}?region=${region.id}`}>
+            <Link href={`/products/${product.id}?region=${regionId}`}>
               {product.name}
             </Link>
           </h3>

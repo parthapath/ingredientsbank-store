@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "../../axios";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 import { api_server } from "@/config";
 
@@ -16,6 +17,9 @@ const signUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState(null);
+  const [verificationEmailSuccess, setVerificationEmailSuccess] =
+    useState(false);
 
   const initialValues = {
     first_name: "",
@@ -70,6 +74,7 @@ const signUp = () => {
       .post(`${api_server}/users`, values)
       .then(() => {
         setSuccess(true);
+        setEmail(values.email);
         setError(null);
       })
       .catch((error) => {
@@ -77,6 +82,20 @@ const signUp = () => {
       })
       .finally(() => {
         setIsLoading(false);
+      });
+  };
+
+  const handleResend = () => {
+    const values = {
+      email: email,
+    };
+    axios
+      .post("/users/resend-verify-email", values)
+      .then(() => {
+        setVerificationEmailSuccess(true);
+      })
+      .catch((error) => {
+        setError(error.response.data);
       });
   };
 
@@ -96,8 +115,17 @@ const signUp = () => {
               </p>
               <p>
                 If you have not received the email yet.{" "}
-                <a href="#">Click here</a> to send again
+                <a href="#" onClick={() => handleResend()}>
+                  Click here
+                </a>{" "}
+                to resend.
               </p>
+              {verificationEmailSuccess ? (
+                <p className={styles.ResendSuccess}>
+                  <IoIosCheckmarkCircle /> Verification email has been
+                  successfully sent.
+                </p>
+              ) : null}
             </>
           )}
         </div>

@@ -16,8 +16,11 @@ import FormikControl from "../FormikControl/FormikControl";
 import Button from "../Button/Button";
 
 const SignInForm = () => {
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetSuccess, setResetSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [formId, setFormId] = useState(1);
 
   const router = useRouter();
   const showSignInModal = useSelector((state) => state.signIn.showSignInModal);
@@ -66,12 +69,50 @@ const SignInForm = () => {
   };
 
   const closeModal = () => {
+    setFormId(formId + 1);
+    setShowForgotPassword(false);
+    setResetSuccess(false);
     dispatch(openSignInModal(false));
   };
 
   const handleSignUpBtn = () => {
     dispatch(openSignInModal(false));
     router.push("/sign-up");
+  };
+
+  const showResetForm = (val) => {
+    setFormId(formId + 1);
+    setShowForgotPassword(val);
+  };
+
+  const initialValuesReset = {
+    email: "",
+  };
+
+  const validationSchemaReset = Yup.object({
+    email: Yup.string()
+      .required("Email is required")
+      .test("regex", "Invalid Email ID", (val) => {
+        const regExpEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i);
+        return regExpEmail.test(val);
+      }),
+  });
+
+  const onSubmitReset = (values) => {
+    console.log("values", values);
+    setIsLoading(true);
+    axios
+      .post(`${api_server}/users/forgot-password`, values)
+      .then(() => {
+        setResetSuccess(true);
+        setFormId(formId + 1);
+      })
+      .catch((error) => {
+        setError(error.response.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -90,40 +131,109 @@ const SignInForm = () => {
                 styles.FormContainer,
               ].join(" ")}
             >
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-              >
-                {() => (
-                  <Form>
-                    <div className={["form-body", styles.FormBody].join(" ")}>
-                      <FormikControl
-                        control="input"
-                        type="text"
-                        label="Email"
-                        name="email"
-                      />
+              {!showForgotPassword ? (
+                <Formik
+                  key={formId}
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={onSubmit}
+                >
+                  {() => (
+                    <Form>
+                      <div className={["form-body", styles.FormBody].join(" ")}>
+                        <FormikControl
+                          control="input"
+                          type="text"
+                          label="Email"
+                          name="email"
+                        />
 
-                      <FormikControl
-                        control="password"
-                        type="password"
-                        label="Password"
-                        name="password"
-                      />
-                    </div>
+                        <FormikControl
+                          control="password"
+                          type="password"
+                          label="Password"
+                          name="password"
+                        />
+                      </div>
 
-                    <div className="form-actions">
-                      <Button btnType="Primary" type="submit">
-                        Sign In
-                      </Button>
-                      <div className={styles.ForgotPassword}>
-                        Forgot Password?
+                      <div className="form-actions">
+                        <Button
+                          btnType="Primary"
+                          type="submit"
+                          isLoading={isLoading}
+                        >
+                          Sign In
+                        </Button>
+                        <div
+                          className={styles.ForgotPassword}
+                          onClick={() => showResetForm(true)}
+                        >
+                          Forgot Password?
+                        </div>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
+              ) : (
+                <>
+                  {resetSuccess ? (
+                    <div className={styles.ResetSuccess}>
+                      <p>
+                        Password reset instructions has been sent to your email
+                        address.
+                      </p>
+                      <div className={styles.ContinueBtn}>
+                        <Button
+                          btnType="Primary"
+                          type="button"
+                          clicked={closeModal}
+                        >
+                          Continue
+                        </Button>
                       </div>
                     </div>
-                  </Form>
-                )}
-              </Formik>
+                  ) : (
+                    <Formik
+                      key={formId}
+                      initialValues={initialValuesReset}
+                      validationSchema={validationSchemaReset}
+                      onSubmit={onSubmitReset}
+                    >
+                      {() => (
+                        <Form>
+                          <div
+                            className={["form-body", styles.FormBody].join(" ")}
+                          >
+                            <FormikControl
+                              control="input"
+                              type="text"
+                              label="Email"
+                              name="email"
+                            />
+                          </div>
+
+                          <div className="form-actions">
+                            <Button
+                              btnType="Primary"
+                              type="submit"
+                              isLoading={isLoading}
+                            >
+                              Submit
+                            </Button>
+                            <Button
+                              btnType="Secondary"
+                              type="button"
+                              clicked={() => showResetForm(false)}
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                  )}
+                </>
+              )}
             </div>
           </div>
           <div className={styles.SignUp}>

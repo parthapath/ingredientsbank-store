@@ -27,13 +27,14 @@ const RegionSelector = () => {
       .get("/regions")
       .then((response) => {
         setRegions(response.data);
-        const region = Cookies.get("region");
-        if (region) {
-          setSelectedRegion(JSON.parse(region));
-        } else {
-          setSelectedRegion(data[0]);
-          Cookies.set("region", ...data[0]);
+        let defaultRegion = response.data.find(
+          (region) => region.selected_region
+        );
+        if (!defaultRegion) {
+          defaultRegion = response.data[0];
         }
+        setSelectedRegion(defaultRegion);
+        Cookies.set("region", JSON.stringify(defaultRegion));
       })
       .catch((error) => {
         setError(error.response.data);
@@ -64,7 +65,6 @@ const RegionSelector = () => {
     setSelectedRegion(val);
     setShowRegionSelector(false);
     Cookies.set("region", JSON.stringify(val));
-    //localStorage.setItem("region", JSON.stringify(val));
 
     if (isAuthenticated) {
       const values = {
@@ -86,7 +86,7 @@ const RegionSelector = () => {
   };
 
   return (
-    <div>
+    <div className={styles.RegionSelectorWrapper}>
       {selectedRegion ? (
         <div className={styles.RegionSelector} ref={refRegionMenu}>
           <div

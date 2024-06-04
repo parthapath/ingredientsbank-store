@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Cookies from "js-cookie";
@@ -66,7 +65,7 @@ const Header = () => {
   const regionObj = Cookies.get("region");
   let regionId = 5;
   if (regionObj) {
-    const region = JSON.parse(regionObj.value);
+    const region = JSON.parse(regionObj);
     regionId = region.id;
   }
 
@@ -149,10 +148,13 @@ const Header = () => {
                   <div className={styles.AccountMenu} style={styleAccountMenu}>
                     <ul>
                       <li>
-                        <Link href="/account">My Account</Link>
+                        <Link href="/account">My Profile</Link>
                       </li>
                       <li>
                         <Link href="/orders">My Orders</Link>
+                      </li>
+                      <li>
+                        <Link href="/addressess">My Addressess</Link>
                       </li>
                       <li>
                         <Link href="#" onClick={() => handleLogout()}>

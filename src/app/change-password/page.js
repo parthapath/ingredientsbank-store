@@ -44,7 +44,6 @@ const changePassword = () => {
   });
 
   const onSubmit = (values) => {
-    console.log("values", values);
     setIsLoading(true);
 
     const formData = {

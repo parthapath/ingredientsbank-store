@@ -1,0 +1,121 @@
+.OrdersWrapper {
+  background-color: #f1f3f6;
+}
+
+.Container {
+  display: flex;
+}
+
+.Content {
+  width: 100%;
+  padding: 20px;
+  margin-left: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.PageHeader {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.OrderDetails {
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+}
+
+.OrderDetails h1 {
+  margin-top: 0;
+  color: #03956e;
+}
+
+.OrderDetails h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.Details div + div {
+  margin-top: 5px;
+}
+
+.Overview div + div {
+  margin-top: 5px;
+}
+
+.Overview span {
+  width: 170px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.Product {
+  width: 100%;
+  padding: 15px 0;
+  margin-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+}
+
+.Product h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+}
+
+.Product h3 {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.Product > div:last-child {
+  margin-left: 18px;
+}
+
+.Product > div span {
+  width: 170px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.Product img {
+  width: 150px;
+}
+
+.Product .ProductDetails div + div {
+  margin-top: 10px;
+}
+
+.ShippingAddress {
+  padding: 15px 0;
+}
+
+.ContactName {
+  font-weight: 600;
+}
+
+.ShipmentDetails div + div {
+  margin-top: 5px;
+}
+
+.ShipmentDetails span {
+  width: 170px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.CancelBtn {
+  margin-top: 20px;
+  display: flex;
+}
+
+.Notes {
+  width: 100%;
+  padding: 20px;
+  margin: 30px 0 20px;
+  background-color: #fff7ea;
+  border-top: 5px solid #03956e;
+  font-size: 16px;
+}

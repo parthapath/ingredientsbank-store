@@ -60,14 +60,10 @@
   margin-top: 30px;
 } */
 
-.ProductsList {
-  margin-top: 15px;
+.NoOfProducts {
+  font-weight: 600;
 }
 
-.LoadMore {
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 100px;
-  text-align: center;
-  cursor: pointer;
+.ProductsList {
+  margin-top: 15px;
 }

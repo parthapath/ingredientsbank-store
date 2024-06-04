@@ -1,0 +1,21 @@
+.Breadcrumb {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.Breadcrumb ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.Breadcrumb li + li::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: #999;
+  content: "/";
+}
+
+.Breadcrumb li a {
+  color: #777;
+}

@@ -6,9 +6,7 @@ import styles from "./page.module.css";
 import ContinueShoppingBtn from "@/components/ContinueShoppingBtn/ContinueShoppingBtn";
 
 const orderConfirmation = async ({ searchParams }) => {
-  const reqOrder = await fetch(
-    `${api_server}/orders/confirmation?ref_id=${searchParams.ref_id}`
-  );
+  const reqOrder = await fetch(`${api_server}/orders/${searchParams.ref_id}`);
   const order = await reqOrder.json();
 
   return (
@@ -35,10 +33,10 @@ const orderConfirmation = async ({ searchParams }) => {
               <span>Qty:</span> {order.quantity}
             </div>
             <div className={styles.Price}>
-              <span>Price:</span> USD {order.price} / kg
+              <span>Price:</span> {order.currency} {order.price} / kg
             </div>
             <div className={styles.Price}>
-              <span>Total Amount:</span> USD {order.total_amount}
+              <span>Total Amount:</span> {order.currency} {order.total_amount}
             </div>
           </div>
           <div className={styles.ShippingAddress}>

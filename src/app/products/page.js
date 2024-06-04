@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
+import ReactPaginate from "react-paginate";
+import axios from "../../axios";
 
 import { api_server } from "@/config";
 
@@ -15,6 +17,7 @@ const products = () => {
   const pathname = usePathname();
   const router = useRouter();
 
+  const selectedPage = searchParams.get("page");
   const queryCategories = searchParams.get("categories");
 
   const queryApplications = searchParams.get("applications");
@@ -28,9 +31,11 @@ const products = () => {
   const [selectedCategories, setSelectedCategories] = useState(false);
   const [selectedApplications, setSelectedApplications] =
     useState(searchApplications);
-  const [page, setPage] = useState(1);
-  const [totalPageCount, setTotalPageCount] = useState(null);
-  const [totalRecordCount, setTotalRecordCount] = useState(null);
+  const [page, setPage] = useState(selectedPage ? parseInt(selectedPage) : 1);
+  const [pageCount, setPageCount] = useState(0);
+  const [recordCount, setRecordCount] = useState(0);
+  const [startRecord, setStartRecord] = useState(0);
+  const [endRecord, setEndRecord] = useState(0);
 
   const updateSearchParam = ({ key, value }) => {
     const params = new URLSearchParams(searchParams);
@@ -57,13 +62,11 @@ const products = () => {
     }
   };
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
-  };
-
   useEffect(() => {
     setSelectedCategories(queryCategories);
   }, []);
+
+  console.log("page", page);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -93,25 +96,40 @@ const products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      //const regionObj = localStorage.getItem("region");
-      const regionObj = Cookies.get("region")
-      const region = JSON.parse(regionObj);
-      try {
-        const response = await fetch(
-          `${api_server}/products?page=${page}&per-page=10&region=${region.id}&keywords=&categories=${selectedCategories}&applications=${selectedApplications}`
-        );
-        const data = await response.json();
-        setProducts(data);
-        setTotalPageCount(response.headers.get("x-pagination-page-count"));
-        setTotalRecordCount(response.headers.get("x-pagination-total-count"));
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      const regionObj = Cookies.get("region");
+      let regionId = 5;
+      if (regionObj) {
+        const region = JSON.parse(regionObj);
+        regionId = region.id;
       }
+      axios
+        .get(
+          `/products?page=${page}&per-page=2&region=${regionId}&keywords=&categories=${selectedCategories}&applications=${selectedApplications}`
+        )
+        .then((response) => {
+          setProducts(response.data);
+          setPageCount(parseInt(response.headers["x-pagination-page-count"]));
+          setRecordCount(
+            parseInt(response.headers["x-pagination-total-count"])
+          );
+          setStartRecord(
+            parseInt(response.headers["x-pagination-start-record"])
+          );
+          setEndRecord(parseInt(response.headers["x-pagination-end-record"]));
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     };
     if (selectedCategories !== false) {
       fetchProducts();
     }
   }, [selectedCategories, selectedApplications, page]);
+
+  const handlePageClick = (e) => {
+    setPage(e.selected + 1);
+    router.push(updateSearchParam({ key: "page", value: e.selected + 1 }));
+  };
 
   return (
     <div className={["page-wrapper", styles.ProductsPage].join(" ")}>
@@ -170,20 +188,44 @@ const products = () => {
               </div>
             </div> */}
             <div className={styles.Products}>
-              {/* <div className={styles.NoOfProducts}>
-                Showing 30 of 654 products
-              </div> */}
+              <div className={styles.NoOfProducts}>
+                {recordCount > 0 ? (
+                  <span>
+                    Showing {startRecord} - {endRecord} of {recordCount}
+                  </span>
+                ) : (
+                  <span>No Products found</span>
+                )}
+              </div>
+
               <div className={styles.ProductsList}>
                 <ProductsList products={products} />
-                {totalPageCount > 0 && totalPageCount != page ? (
-                  <div
-                    className={styles.LoadMore}
-                    onClick={() => handleLoadMore()}
-                  >
-                    Load More
-                  </div>
-                ) : null}
               </div>
+              {recordCount > 0 ? (
+                <div className={styles.Pagination}>
+                  <ReactPaginate
+                    nextLabel="NEXT"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    forcePage={page - 1}
+                    pageCount={pageCount}
+                    previousLabel="PREVIOUS"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={null}
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

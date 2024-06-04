@@ -22,14 +22,17 @@ const Purchase = (props) => {
 
   const router = useRouter();
 
-  //const regionObj = localStorage.getItem("region");
   const regionObj = Cookies.get("region");
-  const region = JSON.parse(regionObj);
+  let regionId = 5;
+  if (regionObj) {
+    const region = JSON.parse(regionObj);
+    regionId = region.id;
+  }
 
   const fetchPricings = useCallback(async (id) => {
     try {
       const response = await fetch(
-        `${api_server}/products/${props.id}/prices?size=${id}&region=${region.id}`
+        `${api_server}/products/${props.id}/prices?size=${id}&region=${regionId}`
       );
       const data = await response.json();
       setPricings(data);
@@ -44,7 +47,7 @@ const Purchase = (props) => {
     const fetchSizes = async () => {
       try {
         const response = await fetch(
-          `${api_server}/products/${props.id}/sizes?region=${region.id}`
+          `${api_server}/products/${props.id}/sizes?region=${regionId}`
         );
         const data = await response.json();
         setSizes(data);

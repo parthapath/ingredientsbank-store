@@ -30,7 +30,7 @@
 }
 
 .Menu {
-  height: 520px;
+  height: calc(100% - 92.55px);
   margin-top: 20px;
   background-color: #fff;
 }
@@ -44,6 +44,6 @@
 
 .Menu a:hover,
 .Menu a.Active {
-  background-color: #FFF7EA;
+  background-color: #fff7ea;
   color: #03956e;
 }

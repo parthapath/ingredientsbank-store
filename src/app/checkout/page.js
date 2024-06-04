@@ -31,13 +31,18 @@ const checkout = () => {
   const handlePlaceOrder = async () => {
     setIsLoading(true);
 
-    //const regionObj = localStorage.getItem("region");
     const regionObj = Cookies.get("region");
-    const region = JSON.parse(regionObj);
+    let regionId = 5;
+    let regionCurency = "USD";
+    if (regionObj) {
+      const region = JSON.parse(regionObj);
+      regionId = region.id;
+      regionCurency = region.currency;
+    }
 
     const values = {
-      region_id: region.id,
-      currency: region.currency,
+      region_id: regionId,
+      currency: regionCurency,
       product_id: cart.product_id,
       size_id: cart.size_id,
       quantity: cart.quantity,

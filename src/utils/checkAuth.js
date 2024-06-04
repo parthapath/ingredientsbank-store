@@ -1,7 +1,7 @@
-import Cookies from "js-cookie";
+import { cookies } from "next/headers";
 
 export function checkAuth() {
-  const token = Cookies.get("token");
+  const token = cookies().get("token");
   if (!token) {
     return false;
   } else {

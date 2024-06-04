@@ -10,8 +10,7 @@ import customFetch from "@/utils/fetch.util";
 import styles from "./page.module.css";
 
 const Home = async () => {
-  const reqNewArrivals = await customFetch(`/products/new-arrivals?region=5`);
-  console.log("reqNewArrivals", reqNewArrivals);
+  const reqNewArrivals = await customFetch("/products/new-arrivals");
   const newArrivals = await reqNewArrivals.json();
 
   const reqCategories = await customFetch("/categories/featured");

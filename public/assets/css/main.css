@@ -66,6 +66,10 @@ ul li {
   position: relative;
 }
 
+.form-container.w100 .form-group {
+  width: 100%;
+}
+
 .form-container .form-actions {
   width: 50%;
   padding: 0 12px;
@@ -167,7 +171,6 @@ ul li {
   outline: none;
 }
 
-
 /* Table */
 table {
   width: 100%;
@@ -215,4 +218,44 @@ table tbody tr button {
   margin-right: 10px;
   height: 30px !important;
   font-size: 12px !important;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 30px;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #03956e;
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  cursor: default;
+}
+
+.pagination .page-item:not(:disabled):not(.disabled) .page-link {
+  cursor: pointer;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #03956e;
+  color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+  opacity: 0.4;
+}
+
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+  font-weight: 600;
 }

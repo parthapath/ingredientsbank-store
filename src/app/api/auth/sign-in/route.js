@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { jwtDecode } from "jwt-decode";
 
 export async function POST(request) {
   const { token } = await request.json();
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const jwtToken = jwtDecode(token);
+  const expiresAt = new Date(jwtToken.exp * 1000);
 
   cookies().set("token", token, {
     httpOnly: false,

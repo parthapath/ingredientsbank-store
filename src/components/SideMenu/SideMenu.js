@@ -26,7 +26,7 @@ const SideMenu = () => {
             href="/account"
             className={path.startsWith("/account") ? styles.Active : null}
           >
-            Profile
+            My Profile
           </Link>
         </li>
         <li>
@@ -42,7 +42,7 @@ const SideMenu = () => {
             href="/addressess"
             className={path.startsWith("/addressess") ? styles.Active : null}
           >
-            Addressess
+            My Addressess
           </Link>
         </li>
         <li>
