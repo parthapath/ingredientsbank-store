@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import axios from "../../axios";
 import moment from "moment";
@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 
 import SideMenu from "@/components/SideMenu/SideMenu";
 
-const addresses = () => {
+const Orders = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -23,8 +23,6 @@ const addresses = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [pageCount, setPageCount] = useState(0);
   const [recordCount, setRecordCount] = useState(0);
-
-  console.log("page", page);
 
   const updateSearchParam = ({ key, value }) => {
     const params = new URLSearchParams(searchParams);
@@ -189,4 +187,12 @@ const addresses = () => {
   );
 };
 
-export default addresses;
+const OrdersWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Orders />
+    </Suspense>
+  );
+};
+
+export default OrdersWithSuspense;

@@ -58,12 +58,13 @@ const SignInForm = () => {
           })
           .catch((error) => {
             setError(error.response.data);
+          })
+          .finally(() => {
+            setIsLoading(false);
           });
       })
       .catch((error) => {
         setError(error.response.data);
-      })
-      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -99,7 +100,6 @@ const SignInForm = () => {
   });
 
   const onSubmitReset = (values) => {
-    console.log("values", values);
     setIsLoading(true);
     axios
       .post(`${api_server}/users/forgot-password`, values)
@@ -161,6 +161,7 @@ const SignInForm = () => {
                           btnType="Primary"
                           type="submit"
                           isLoading={isLoading}
+                          style={{ width: "100px" }}
                         >
                           Sign In
                         </Button>

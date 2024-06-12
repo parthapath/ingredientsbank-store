@@ -1,10 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
-import { MdOutlineAccountCircle } from "react-icons/md";
 
 import styles from "./page.module.css";
 
@@ -12,7 +10,7 @@ import FormikControl from "../../components/FormikControl/FormikControl";
 import Button from "../../components/Button/Button";
 import SideMenu from "@/components/SideMenu/SideMenu";
 
-const changePassword = () => {
+const ChangePassword = () => {
   const [formId, setFormId] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -130,4 +128,4 @@ const changePassword = () => {
   );
 };
 
-export default changePassword;
+export default ChangePassword;

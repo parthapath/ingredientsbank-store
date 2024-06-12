@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 
 import ContinueShoppingBtn from "@/components/ContinueShoppingBtn/ContinueShoppingBtn";
 
-const orderConfirmation = async ({ searchParams }) => {
+const OrderConfirmation = async ({ searchParams }) => {
   const reqOrder = await fetch(`${api_server}/orders/${searchParams.ref_id}`);
   const order = await reqOrder.json();
 
@@ -66,4 +66,4 @@ const orderConfirmation = async ({ searchParams }) => {
   );
 };
 
-export default orderConfirmation;
+export default OrderConfirmation;

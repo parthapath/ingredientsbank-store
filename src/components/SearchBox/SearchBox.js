@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { FiSearch } from "react-icons/fi";
@@ -40,7 +40,7 @@ const SearchBox = (props) => {
       const search = async () => {
         try {
           const response = await fetch(
-            `${api_server}/products/search?region=${props.regionId}&keyword=${keyword}`
+            `${api_server}/products/search?region=${props.region}&keyword=${keyword}`
           );
           const data = await response.json();
           setSearchResults(data);
@@ -53,7 +53,7 @@ const SearchBox = (props) => {
     } else {
       setShowResults(false);
     }
-  }, [keyword]);
+  }, [keyword, props.region, searchResultClicked]);
 
   const handleInputClick = () => {
     if (keyword.length > 2) {
@@ -70,7 +70,7 @@ const SearchBox = (props) => {
     setShowResults(false);
     setKeyword(val.name);
     setSearchResultClicked(true);
-    router.push(`/products/${val.id}?region=${props.regionId}&search=true`);
+    router.push(`/products/${val.id}?region=${props.region}&search=true`);
   };
 
   useEffect(() => {
@@ -123,4 +123,12 @@ const SearchBox = (props) => {
   );
 };
 
-export default SearchBox;
+const SearchBoxWithSuspense = () => {
+  return (
+    <Suspense fallback={<div className={styles.Fallback}>Loading...</div>}>
+      <SearchBox />
+    </Suspense>
+  );
+};
+
+export default SearchBoxWithSuspense;

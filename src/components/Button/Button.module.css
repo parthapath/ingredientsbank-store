@@ -73,8 +73,8 @@
 
 .LdsRing {
   display: inline-block;
-  width: 23px;
-  height: 23px;
+  width: 16px;
+  height: 16px;
   z-index: 9999;
   left: 0;
   right: 0;
@@ -84,8 +84,8 @@
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin: 1px;
   border: 2px solid #fff;
   border-radius: 50%;

@@ -13,7 +13,7 @@ import FormikControl from "@/components/FormikControl/FormikControl";
 import Button from "@/components/Button/Button";
 import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
-const signUp = () => {
+const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -260,4 +260,4 @@ const signUp = () => {
   );
 };
 
-export default signUp;
+export default SignUp;

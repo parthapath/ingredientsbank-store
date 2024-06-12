@@ -8,7 +8,6 @@ const ContinueShoppingBtn = () => {
 
   const handleContinueShopping = () => {
     localStorage.removeItem("cart");
-
     router.push("/");
   };
 

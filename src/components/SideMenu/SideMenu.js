@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdOutlineAccountCircle } from "react-icons/md";
@@ -8,6 +8,14 @@ import styles from "./SideMenu.module.css";
 
 const SideMenu = () => {
   const path = usePathname();
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedName = localStorage.getItem("name");
+      setName(storedName || "");
+    }
+  }, []);
 
   return (
     <div className={styles.SideMenu}>
@@ -17,7 +25,7 @@ const SideMenu = () => {
         </div>
         <div>
           <div>Hello,</div>
-          <div>{localStorage.getItem("name")}</div>
+          <div>{name}</div>
         </div>
       </div>
       <ul className={styles.Menu}>

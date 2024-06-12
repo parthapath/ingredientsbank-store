@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 import MainSlider from "@/components/MainSlider/MainSlider";
@@ -10,11 +9,14 @@ import customFetch from "@/utils/fetch.util";
 import styles from "./page.module.css";
 
 const Home = async () => {
-  const reqNewArrivals = await customFetch("/products/new-arrivals");
-  const newArrivals = await reqNewArrivals.json();
-
   const reqCategories = await customFetch("/categories/featured");
   const categories = await reqCategories.json();
+
+  const reqBestSelling = await customFetch("/products/best-selling");
+  const bestSelling = await reqBestSelling.json();
+
+  const reqNewArrivals = await customFetch("/products/new-arrivals");
+  const newArrivals = await reqNewArrivals.json();
 
   return (
     <div className={["page-content", styles.Home].join(" ")}>
@@ -51,7 +53,7 @@ const Home = async () => {
       <div className={styles.BestSellers}>
         <div className="container">
           <h2>Best Selling Products</h2>
-          <ProductsList products={newArrivals} />
+          <ProductsList products={bestSelling} />
         </div>
       </div>
       <div className={styles.NewProducts}>

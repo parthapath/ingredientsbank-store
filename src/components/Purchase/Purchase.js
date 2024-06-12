@@ -13,12 +13,14 @@ import Button from "../Button/Button";
 const Purchase = (props) => {
   const [sizes, setSizes] = useState([]);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [selectedSizeName, setSelectedSizeName] = useState(null);
+  const [lowStock, setLowStock] = useState(false);
+  const [noQty, setNoQty] = useState(false);
   const [pricings, setPricings] = useState([]);
   const [showPricings, setShowPricings] = useState(false);
   const [price, setPrice] = useState(null);
   const [currency, setCurrency] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
 
@@ -50,10 +52,13 @@ const Purchase = (props) => {
           `${api_server}/products/${props.id}/sizes?region=${regionId}`
         );
         const data = await response.json();
-        setSizes(data);
-        setSelectedSize(data[0].id);
-        setSelectedSizeName(data[0].name);
-        fetchPricings(data[0].id);
+        if (data.length) {
+          setSizes(data);
+          setSelectedSize(data[0]);
+          fetchPricings(data[0].id);
+        } else {
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -63,22 +68,21 @@ const Purchase = (props) => {
   }, []);
 
   const handleSizeSelect = (size) => {
-    setSelectedSize(size.id);
-    setSelectedSizeName(size.name);
+    setSelectedSize(size);
     fetchPricings(size.id);
   };
 
   const findPricingTier = (selectedQuantity) => {
-    const quantity = parseFloat(selectedQuantity);
+    const quantity = parseInt(selectedQuantity);
 
     // If the selectedQuantity is less than the first tier's quantity, return the first tier
-    if (quantity < parseFloat(pricings[0].quantity)) {
+    if (quantity < parseInt(pricings[0].quantity)) {
       return pricings[0];
     }
 
     // Iterate through the pricings array
     for (let i = 0; i < pricings.length; i++) {
-      if (quantity <= parseFloat(pricings[i].quantity)) {
+      if (quantity <= parseInt(pricings[i].quantity)) {
         return pricings[i];
       }
     }
@@ -88,9 +92,17 @@ const Purchase = (props) => {
   };
 
   const handleQuantitySelect = (val) => {
-    const newPrice = findPricingTier(val);
-    setQuantity(parseInt(val));
-    setPrice(parseFloat(newPrice.price));
+    if (val > selectedSize.stock) {
+      setLowStock(true);
+    } else {
+      const newPrice = findPricingTier(val);
+      setQuantity(val);
+      setPrice(parseFloat(newPrice.price));
+      setLowStock(false);
+      if (val > 0) {
+        setNoQty(false);
+      }
+    }
   };
 
   const handlePricingModal = () => {
@@ -132,64 +144,91 @@ const Purchase = (props) => {
   );
 
   const handleCheckout = () => {
-    const cart = {
-      product_id: props.id,
-      product_name: props.name,
-      product_alternate_name: props.alternateName,
-      quantity: quantity,
-      size_id: selectedSize,
-      size_name: selectedSizeName,
-      price: price,
-    };
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (quantity > 0) {
+      const cart = {
+        product_id: props.id,
+        product_name: props.name,
+        product_alternate_name: props.alternateName,
+        quantity: quantity,
+        size_id: selectedSize.id,
+        size_name: selectedSize.name,
+        weight: selectedSize.weight,
+        price: price,
+      };
+      localStorage.setItem("cart", JSON.stringify(cart));
 
-    router.push("/checkout");
+      router.push("/checkout");
+    } else {
+      setNoQty(true);
+    }
   };
 
   return (
     <div className={styles.Purchase}>
-      <div className={styles.Sizes}>
-        {sizes.map((item, i) => {
-          return (
-            <div
-              className={[
-                styles.Size,
-                styles[selectedSize === item.id ? "Active" : null],
-              ].join(" ")}
-              key={i}
-              onClick={() => handleSizeSelect(item)}
-            >
-              {item.name}
+      {sizes.length ? (
+        <>
+          <div className={styles.Sizes}>
+            {sizes.map((item, i) => {
+              return (
+                <div
+                  className={[
+                    styles.Size,
+                    styles[selectedSize.id === item.id ? "Active" : null],
+                  ].join(" ")}
+                  key={i}
+                  onClick={() => handleSizeSelect(item)}
+                >
+                  {item.name}
+                </div>
+              );
+            })}
+          </div>
+          <div className={styles.QuantityPrice}>
+            <div className={styles.Quantity}>
+              <Input
+                type="text"
+                label="Qty"
+                name="quantity"
+                value={quantity}
+                handleInput={handleQuantitySelect}
+              />
             </div>
-          );
-        })}
-      </div>
-      <div className={styles.QuantityPrice}>
-        <div className={styles.Quantity}>
-          <Input
-            type="text"
-            label="Qty"
-            name="quantity"
-            value={quantity}
-            handleInput={handleQuantitySelect}
-          />
-        </div>
-        <div className={styles.Price}>
-          {currency} {price} <span>/ kg</span>
-        </div>
-        <div
-          className={styles.PricingList}
-          onClick={() => handlePricingModal()}
-        >
-          See Pricing List
-        </div>
-      </div>
-      <div className={styles.BuyNow}>
-        <Button btnType="Primary" type="button" clicked={handleCheckout}>
-          Buy Now
-        </Button>
-      </div>
-      {pricingsModal}
+            <div className={styles.Price}>
+              {currency} {price} <span>/ kg</span>
+            </div>
+            <div
+              className={styles.PricingList}
+              onClick={() => handlePricingModal()}
+            >
+              See Pricing List
+            </div>
+          </div>
+          {lowStock ? (
+            <div className={styles.LowStock}>
+              Not enough stock. Max quantity can be added is{" "}
+              {selectedSize.stock}!
+            </div>
+          ) : null}
+          {noQty ? (
+            <div className={styles.NoQty}>Please select a quantity!</div>
+          ) : null}
+          {selectedSize.stock < 10 ? (
+            <div className={styles.StockWarning}>
+              Only {selectedSize.stock} available!
+            </div>
+          ) : null}
+          <div className={styles.BuyNow}>
+            <Button btnType="Primary" type="button" clicked={handleCheckout}>
+              Buy Now
+            </Button>
+          </div>
+          {pricingsModal}
+        </>
+      ) : null}
+
+      {!isLoading && sizes.length === 0 ? (
+        <div className={styles.NoStock}>No stock available</div>
+      ) : null}
     </div>
   );
 };

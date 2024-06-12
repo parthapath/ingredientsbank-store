@@ -44,7 +44,7 @@ const Product = ({ product }) => {
             </span>
           </div>
         ) : (
-          <div>{product.price}</div>
+          <div>{product.price} / kg</div>
         )}
       </div>
     </div>

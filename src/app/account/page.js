@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import customFetch from "@/utils/fetch.util";
 import SideMenu from "@/components/SideMenu/SideMenu";
 
-const account = async () => {
+const Account = async () => {
   const reqData = await customFetch("/users");
   const data = await reqData.json();
 
@@ -66,4 +66,4 @@ const account = async () => {
   );
 };
 
-export default account;
+export default Account;

@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 import SideMenu from "@/components/SideMenu/SideMenu";
 import CancelOrderBtn from "@/components/CancelOrderBtn/CancelOrderBtn";
 
-const orderDetails = () => {
+const OrderDetails = () => {
   const params = useParams();
 
   const [order, setOrder] = useState(null);
@@ -26,11 +26,11 @@ const orderDetails = () => {
         setOrder(response.data);
       })
       .catch(() => {});
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     fetchOrder();
-  }, []);
+  }, [fetchOrder]);
 
   return (
     <div className={["page-wrapper", styles.OrdersWrapper].join(" ")}>
@@ -133,4 +133,4 @@ const orderDetails = () => {
   );
 };
 
-export default orderDetails;
+export default OrderDetails;

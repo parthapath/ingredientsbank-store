@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Cookies from "js-cookie";
@@ -22,6 +22,7 @@ import axios from "axios";
 const Header = () => {
   const [showShopMenu, setShowShopMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [name, setName] = useState("");
 
   const dispatch = useDispatch();
   const isAuthenticated = useAuth();
@@ -68,6 +69,13 @@ const Header = () => {
     const region = JSON.parse(regionObj);
     regionId = region.id;
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedName = localStorage.getItem("name");
+      setName(storedName || "");
+    }
+  }, []);
 
   return (
     <header>
@@ -142,8 +150,7 @@ const Header = () => {
                       showAccountMenu ? styles["Active"] : "",
                     ].join(" ")}
                   >
-                    <MdOutlineAccountCircle />{" "}
-                    <span>{localStorage.getItem("name")}</span>
+                    <MdOutlineAccountCircle /> <span>{name}</span>
                   </div>
                   <div className={styles.AccountMenu} style={styleAccountMenu}>
                     <ul>

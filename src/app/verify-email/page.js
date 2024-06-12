@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "../../axios";
 
@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 
 import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
-const resetPassword = () => {
+const VerifyEmail = () => {
   const router = useRouter();
   const isAuthenticated = useAuth();
 
@@ -34,7 +34,7 @@ const resetPassword = () => {
       .catch((error) => {
         setError(error.response.data);
       });
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className={["page-wrapper", styles.Account].join(" ")}>
@@ -58,4 +58,12 @@ const resetPassword = () => {
   );
 };
 
-export default resetPassword;
+const VerifyEmailWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyEmail />
+    </Suspense>
+  );
+};
+
+export default VerifyEmailWithSuspense;

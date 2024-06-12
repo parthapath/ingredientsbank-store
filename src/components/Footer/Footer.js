@@ -42,21 +42,33 @@ const Footer = () => {
                 <Link href="/">Shipping & Returns</Link>
               </li>
               <li>
-                <Link href="/">Contact Us</Link>
+                <Link href="/contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
           <div className={styles.Contact}>
             <h4>Contact</h4>
             <div>
-              <span>Headquarter:</span> 9E/17, Peenya Industrial Area, 2nd
-              Phase, Chokkasandra, Bengaluru - 560058, Karnataka, India
+              <span>India</span> #9E/17, Peenya Industrial Area, 2nd Phase,
+              Chokkasandra, Bengaluru - 560058
             </div>
             <div>
-              <span>Phone:</span> +91-9876543210
+              <span>United Kingdom</span> 5 Churchill Court, Ground Floor, 58
+              Station Road, North Harrow, Middlesex, HA2 7SA
             </div>
             <div>
-              <span>Email:</span> support@novelingredients.com
+              <span>United States of America</span> #15910, Euclid Ave, Chino,
+              CA 91708
+            </div>
+            <div>
+              <span>United Arab Emirates</span> Warehouse CB-02, Street 418 Near
+              Roundabout 8, Jafza Dubai United Arab Emirates.
+            </div>
+            <div>
+              <span>Phone</span> +91-9876543210
+            </div>
+            <div>
+              <span>Email</span> support@novelingredients.com
             </div>
           </div>
         </div>

@@ -9,12 +9,12 @@ const Input = (props) => {
   let { name, ...rest } = props;
 
   const label = props.label ? (
-    <label htmlFor={name} className="ControlLabel">
+    <label htmlFor={name} className="control-label">
       {props.label}
     </label>
   ) : null;
   return (
-    <div className="FormGroup">
+    <div className="form-group">
       {label}
       <Field
         className={styles.FormControl}

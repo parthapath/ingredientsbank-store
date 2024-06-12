@@ -10,7 +10,7 @@ import Modal from "@/components/Modal/Modal";
 import AddressForm from "@/components/AddressForm/AddressForm";
 import DialogBox from "@/components/DialogBox/DialogBox";
 
-const addressessPage = () => {
+const AddressessPage = () => {
   const [addressess, setAddressess] = useState([]);
   const [activeAddress, setActiveAddress] = useState(null);
   const [error, setError] = useState(null);
@@ -36,7 +36,7 @@ const addressessPage = () => {
 
   useEffect(() => {
     fetchAddressess();
-  }, [addressessPage]);
+  }, [fetchAddressess]);
 
   const handleAddressForm = () => {
     setActiveAddress(null);
@@ -165,4 +165,4 @@ const addressessPage = () => {
   );
 };
 
-export default addressessPage;
+export default AddressessPage;

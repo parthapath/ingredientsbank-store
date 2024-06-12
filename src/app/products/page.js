@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import ReactPaginate from "react-paginate";
@@ -12,7 +12,7 @@ import styles from "./page.module.css";
 import ProductsList from "@/components/ProductsList/ProductsList";
 import Applications from "../../components/Applications/Applications";
 
-const products = () => {
+const Products = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -64,9 +64,7 @@ const products = () => {
 
   useEffect(() => {
     setSelectedCategories(queryCategories);
-  }, []);
-
-  console.log("page", page);
+  }, [queryCategories]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -86,13 +84,13 @@ const products = () => {
     router.push(
       updateSearchParam({ key: "categories", value: selectedCategories })
     );
-  }, [selectedCategories]);
+  }, [selectedCategories, updateSearchParam]);
 
   useEffect(() => {
     router.push(
       updateSearchParam({ key: "applications", value: selectedApplications })
     );
-  }, [selectedApplications]);
+  }, [selectedApplications, updateSearchParam]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -104,7 +102,7 @@ const products = () => {
       }
       axios
         .get(
-          `/products?page=${page}&per-page=2&region=${regionId}&keywords=&categories=${selectedCategories}&applications=${selectedApplications}`
+          `/products?page=${page}&per-page=20&region=${regionId}&categories=${selectedCategories}&applications=${selectedApplications}`
         )
         .then((response) => {
           setProducts(response.data);
@@ -201,7 +199,7 @@ const products = () => {
               <div className={styles.ProductsList}>
                 <ProductsList products={products} />
               </div>
-              {recordCount > 0 ? (
+              {recordCount > 20 ? (
                 <div className={styles.Pagination}>
                   <ReactPaginate
                     nextLabel="NEXT"
@@ -234,4 +232,12 @@ const products = () => {
   );
 };
 
-export default products;
+const ProductsWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Products />
+    </Suspense>
+  );
+};
+
+export default ProductsWithSuspense;

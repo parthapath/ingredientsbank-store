@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 import { api_server } from "@/config";
@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 import ProductsList from "@/components/ProductsList/ProductsList";
 import Applications from "../../components/Applications/Applications";
 
-const products = () => {
+const Products = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -93,7 +93,6 @@ const products = () => {
   }, [selectedApplications]);
 
   useEffect(() => {
-    console.log("loadProucts");
     const fetchProducts = async () => {
       try {
         const response = await fetch(
@@ -181,4 +180,12 @@ const products = () => {
   );
 };
 
-export default products;
+const ProductsWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Products />
+    </Suspense>
+  );
+};
+
+export default ProductsWithSuspense;

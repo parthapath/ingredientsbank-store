@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -13,7 +13,7 @@ import FormikControl from "../../components/FormikControl/FormikControl";
 import Button from "../../components/Button/Button";
 import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
-const resetPassword = () => {
+const ResetPassword = () => {
   const router = useRouter();
   const isAuthenticated = useAuth();
 
@@ -142,4 +142,12 @@ const resetPassword = () => {
   );
 };
 
-export default resetPassword;
+const ResetPasswordWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPassword />
+    </Suspense>
+  );
+};
+
+export default ResetPasswordWithSuspense;

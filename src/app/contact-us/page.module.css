@@ -1,0 +1,41 @@
+.Content {
+    display: flex;
+}
+
+.ContentLeft {
+    width: 60%;
+}
+
+.ContentRight {
+    width: 40%;
+}
+
+.ContentRight h2 {
+    margin-top: 0;
+}
+
+.ContactUs h1 {
+    margin-bottom: 50px;
+}
+
+.Contact + .Contact {
+    margin-top: 70px;
+}
+
+.Contact img {
+    width: 50px;
+}
+
+.Contact h3 {
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.Contact h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.Contact p {
+    margin-bottom: 5px;
+}

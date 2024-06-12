@@ -12,9 +12,10 @@ import Modal from "@/components/Modal/Modal";
 import Radio from "@/components/FormElements/Radio/Radio";
 import AddressForm from "@/components/AddressForm/AddressForm";
 
-const checkout = () => {
+const Checkout = () => {
   //const cart = useSelector((state) => state.checkout.cart);
 
+  const [cart, setCart] = useState(null);
   const [addressess, setAddressess] = useState([]);
   const [showAddress, setShowAddress] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -24,9 +25,6 @@ const checkout = () => {
   const [error, setError] = useState(null);
 
   const router = useRouter();
-
-  const cartObj = localStorage.getItem("cart");
-  const cart = JSON.parse(cartObj);
 
   const handlePlaceOrder = async () => {
     setIsLoading(true);
@@ -46,6 +44,7 @@ const checkout = () => {
       product_id: cart.product_id,
       size_id: cart.size_id,
       quantity: cart.quantity,
+      weight: cart.weight,
       shipping_address_id: selectedAddress.id,
     };
 
@@ -89,7 +88,12 @@ const checkout = () => {
 
   useEffect(() => {
     fetchAddressess();
-  }, []);
+
+    if (typeof window !== "undefined") {
+      const cartObj = localStorage.getItem("cart");
+      setCart(JSON.parse(cartObj));
+    }
+  }, [fetchAddressess]);
 
   const addressModal = (
     <Modal
@@ -170,19 +174,21 @@ const checkout = () => {
       <div className="container">
         <div className={styles.Details}>
           <div className={styles.ContentLeft}>
-            <div className={styles.Product}>
-              <h1>{cart.product_name}</h1>
-              <h2>{cart.product_alternate_name}</h2>
-              <div className={styles.Size}>
-                <span>Size:</span> {cart.size_name}
+            {cart ? (
+              <div className={styles.Product}>
+                <h1>{cart.product_name}</h1>
+                <h2>{cart.product_alternate_name}</h2>
+                <div className={styles.Size}>
+                  <span>Size:</span> {cart.size_name}
+                </div>
+                <div className={styles.Qty}>
+                  <span>Qty:</span> {cart.quantity}
+                </div>
+                <div className={styles.Price}>
+                  <span>Price:</span> USD {cart.price} / kg
+                </div>
               </div>
-              <div className={styles.Qty}>
-                <span>Qty:</span> {cart.quantity}
-              </div>
-              <div className={styles.Price}>
-                <span>Price:</span> USD {cart.price} / kg
-              </div>
-            </div>
+            ) : null}
             <div className={styles.ShippingAddress}>
               <h2>Shipping Address:</h2>
               {selectedAddress ? (
@@ -213,23 +219,32 @@ const checkout = () => {
               </div>
             </div>
           </div>
-          <div className={styles.ContentRight}>
-            <h3>Price Details</h3>
-            <div className={styles.TotalAmount}>
-              <span>Total Amount:</span>{" "}
-              <span>
-                USD {parseFloat(cart.price) * parseInt(cart.quantity)}
-              </span>
+          {cart ? (
+            <div className={styles.ContentRight}>
+              <h3>Price Details</h3>
+              <div className={styles.TotalAmount}>
+                <span>Total Amount:</span>{" "}
+                <span>
+                  USD{" "}
+                  {parseFloat(cart.price) *
+                    parseInt(cart.quantity) *
+                    parseInt(cart.weight)}
+                </span>
+              </div>
+              <div className={styles.Tax}>
+                Excluding Taxes and Shipping Charge
+              </div>
+              <div className={styles.PlaceOrderBtn}>
+                <Button
+                  btnType="Primary"
+                  width="W100"
+                  clicked={handlePlaceOrder}
+                >
+                  Place Order
+                </Button>
+              </div>
             </div>
-            <div className={styles.Tax}>
-              Excluding Taxes and Shipping Charge
-            </div>
-            <div className={styles.PlaceOrderBtn}>
-              <Button btnType="Primary" width="W100" clicked={handlePlaceOrder}>
-                Place Order
-              </Button>
-            </div>
-          </div>
+          ) : null}
         </div>
         {error ? <ErrorMessages error={error} /> : null}
       </div>
@@ -238,4 +253,4 @@ const checkout = () => {
   );
 };
 
-export default checkout;
+export default Checkout;
