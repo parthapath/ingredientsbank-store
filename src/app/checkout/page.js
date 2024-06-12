@@ -13,8 +13,6 @@ import Radio from "@/components/FormElements/Radio/Radio";
 import AddressForm from "@/components/AddressForm/AddressForm";
 
 const Checkout = () => {
-  //const cart = useSelector((state) => state.checkout.cart);
-
   const [cart, setCart] = useState(null);
   const [addressess, setAddressess] = useState([]);
   const [showAddress, setShowAddress] = useState(false);
