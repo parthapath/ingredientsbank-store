@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
+import { checkAuth } from "@/utils/checkAuth";
+
 import MainSlider from "@/components/MainSlider/MainSlider";
 import ProductsList from "@/components/ProductsList/ProductsList";
 
@@ -9,6 +11,8 @@ import customFetch from "@/utils/fetch.util";
 import styles from "./page.module.css";
 
 const Home = async () => {
+  const isAuthenticated = checkAuth();
+
   const reqCategories = await customFetch("/categories/featured");
   const categories = await reqCategories.json();
 
@@ -53,13 +57,19 @@ const Home = async () => {
       <div className={styles.BestSellers}>
         <div className="container">
           <h2>Best Selling Products</h2>
-          <ProductsList products={bestSelling} />
+          <ProductsList
+            products={bestSelling}
+            isAuthenticated={isAuthenticated}
+          />
         </div>
       </div>
       <div className={styles.NewProducts}>
         <div className="container">
           <h2>New Arrivals</h2>
-          <ProductsList products={newArrivals} />
+          <ProductsList
+            products={newArrivals}
+            isAuthenticated={isAuthenticated}
+          />
         </div>
       </div>
       <div className={styles.WhyUs}>

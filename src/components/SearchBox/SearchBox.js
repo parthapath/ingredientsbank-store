@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Cookies from "js-cookie";
 
 import { FiSearch } from "react-icons/fi";
 
@@ -14,6 +15,7 @@ import Input from "../FormElements/Input/Input";
 
 const SearchBox = (props) => {
   const [keyword, setKeyword] = useState("");
+  const [region, setRegion] = useState(5);
   const [showResults, setShowResults] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [searchResultClicked, setSearchResultClicked] = useState(false);
@@ -40,7 +42,7 @@ const SearchBox = (props) => {
       const search = async () => {
         try {
           const response = await fetch(
-            `${api_server}/products/search?region=${props.region}&keyword=${keyword}`
+            `${api_server}/products/search?region=${region}&keyword=${keyword}`
           );
           const data = await response.json();
           setSearchResults(data);
@@ -70,12 +72,18 @@ const SearchBox = (props) => {
     setShowResults(false);
     setKeyword(val.name);
     setSearchResultClicked(true);
-    router.push(`/products/${val.id}?region=${props.region}&search=true`);
+    router.push(`/products/${val.id}?region=${region}&search=true`);
   };
 
   useEffect(() => {
     if (!search) {
       setKeyword("");
+    }
+
+    const regionObj = Cookies.get("region");
+    if (regionObj) {
+      const region = JSON.parse(regionObj);
+      setRegion(region.id);
     }
   }, [search]);
 

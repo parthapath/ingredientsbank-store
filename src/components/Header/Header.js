@@ -2,7 +2,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
-import Cookies from "js-cookie";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
@@ -63,13 +62,6 @@ const Header = () => {
     window.location.reload();
   };
 
-  const regionObj = Cookies.get("region");
-  let regionId = 5;
-  if (regionObj) {
-    const region = JSON.parse(regionObj);
-    regionId = region.id;
-  }
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedName = localStorage.getItem("name");
@@ -87,7 +79,7 @@ const Header = () => {
                 <img src="/assets/imgs/logo.png" />
               </Link>
             </div>
-            <SearchBox region={regionId} />
+            <SearchBox />
           </div>
           <div className={styles.HeaderRight}>
             <div className={styles.MainNav}>

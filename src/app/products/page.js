@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import ReactPaginate from "react-paginate";
 import axios from "../../axios";
 
+import { useAuth } from "@/hooks/useAuth";
+
 import { api_server } from "@/config";
 
 import styles from "./page.module.css";
@@ -16,6 +18,7 @@ const Products = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const isAuthenticated = useAuth();
 
   const selectedPage = searchParams.get("page");
   const queryCategories = searchParams.get("categories");
@@ -197,7 +200,7 @@ const Products = () => {
               </div>
 
               <div className={styles.ProductsList}>
-                <ProductsList products={products} />
+                <ProductsList products={products} isAuthenticated={isAuthenticated} />
               </div>
               {recordCount > 20 ? (
                 <div className={styles.Pagination}>

@@ -5,13 +5,11 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
-import { useAuth } from "@/hooks/useAuth";
 
 import styles from "./Product.module.css";
 
-const Product = ({ product }) => {
+const Product = ({ product, isAuthenticated }) => {
   const dispatch = useDispatch();
-  const isAuthenticated = useAuth();
 
   const regionObj = Cookies.get("region");
   let regionId = 5;
