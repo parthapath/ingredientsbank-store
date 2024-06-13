@@ -7,8 +7,8 @@ import SignInForm from "@/components/SignInForm/SignInForm";
 import "../../public/assets/css/main.css";
 
 export const metadata = {
-  title: "Novel Ingredients Store",
-  description: "Novel Ingredients Store",
+  title: "Ingredients Bank",
+  description: "Ingredients Bank",
 };
 
 export default function RootLayout({ children }) {

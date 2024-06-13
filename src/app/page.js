@@ -64,15 +64,15 @@ const Home = async () => {
       </div>
       <div className={styles.WhyUs}>
         <div className={["container", styles.Container].join(" ")}>
-          <h2>Why Novel Ingredients?</h2>
+          <h2>Why Ingredients Bank?</h2>
           <p>
-            Ingredients Online is the premier e-commerce marketplace for bulk
-            and wholesale ingredients. With B2B transactions increasingly moving
+            Ingredients Bank is the premier e-commerce marketplace for bulk and
+            wholesale ingredients. With B2B transactions increasingly moving
             online, we are at the forefront of the digital revolution thanks to
             our cutting-edge technology and a fearless focus on innovation. As
             we help build a new kind of supply chain, we firmly believe that our
             continued ability to lead depends on the growth of the businesses
-            who buy and sell on Ingredients Online. That&#39;s why our main
+            who buy and sell on Ingredients Bank. That&#39;s why our main
             priority at all times is to create maximum value for them. It is our
             conviction that when all of us are at our best, today&#39;s
             challenges in ingredient sourcing can serve as powerful launch pads

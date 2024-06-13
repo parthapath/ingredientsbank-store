@@ -102,10 +102,10 @@ const SignUp = () => {
   return (
     <div className={["page-wrapper", styles.SignUp].join(" ")}>
       <div className="container">
-        <h1>Welcome to Novel Ingredients</h1>
+        <h1>Welcome to Ingredients Bank</h1>
         <div className={styles.Notes}>
           {!success ? (
-            <p>Fill in a few details to get started with Novel Ingredients!</p>
+            <p>Fill in a few details to get started with Ingredients Bank!</p>
           ) : (
             <>
               <p>
