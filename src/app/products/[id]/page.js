@@ -7,6 +7,38 @@ import HtmlContent from "../../../components/HtmlContent/HtmlContent";
 import LoginBtn from "@/components/LoginBtn/LoginBtn";
 import Purchase from "@/components/Purchase/Purchase";
 
+// Metadata function to dynamically set the title
+export async function generateMetadata({ params, searchParams }) {
+  const reqProduct = await customFetch(
+    `/products/${params.id}?region=${searchParams.region}`
+  );
+  const product = await reqProduct.json();
+
+  return {
+    title: product.name,
+    description: `Detailed view of ${product.name}`,
+    keywords: product.keywords,
+    openGraph: {
+      title: product.name,
+      description: `Detailed view of ${product.name}`,
+      images: [
+        {
+          url: product.images[0].url,
+          width: 800,
+          height: 600,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description: `Detailed view of ${product.name}`,
+      image: product.images[0].url,
+    },
+  };
+}
+
 const ProductDetails = async ({ params, searchParams }) => {
   const isAuthenticated = checkAuth();
   const reqProduct = await customFetch(
