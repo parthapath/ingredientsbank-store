@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
-import reCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import styles from "./page.module.css";
 
@@ -16,6 +16,7 @@ const ContactUs = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [formId, setFormId] = useState(1);
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const initialValues = {
     name: "",
@@ -42,9 +43,13 @@ const ContactUs = () => {
   });
 
   const onSubmit = (values) => {
+    const formValues = {
+      ...values,
+      capcaptchaValue: captchaValue,
+    };
     setIsLoading(true);
     axios
-      .post(`/contact`, values)
+      .post(`/contact`, formValues)
       .then(() => {
         setSuccess(true);
         setError(null);
@@ -58,6 +63,10 @@ const ContactUs = () => {
       });
   };
 
+  const onCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
+
   return (
     <>
       <title>Contact Us - Ingredients Bank</title>
@@ -66,7 +75,7 @@ const ContactUs = () => {
           <h1>Contact Us</h1>
           <div className={styles.Content}>
             <div className={styles.ContentLeft}>
-              <div class={styles.Contact}>
+              <div className={styles.Contact}>
                 <img src="/assets/imgs/india.png" alt="India" />
                 <h3>India</h3>
                 <h4>Novel Nutrientss Private Limited</h4>
@@ -81,7 +90,7 @@ const ContactUs = () => {
                   <strong>Email:</strong> mail@novelnutrient.com
                 </p>
               </div>
-              <div class={styles.Contact}>
+              <div className={styles.Contact}>
                 <img src="/assets/imgs/uk.png" alt="United Kingdom" />
                 <h3>United Kingdom</h3>
                 <h4>Novel Nutrientss Limited</h4>
@@ -96,7 +105,7 @@ const ContactUs = () => {
                   <strong>Email:</strong> mail@novelnutrientss.co.uk
                 </p>
               </div>
-              <div class={styles.Contact}>
+              <div className={styles.Contact}>
                 <img
                   src="/assets/imgs/usa.png"
                   alt="United States of America"
@@ -108,13 +117,13 @@ const ContactUs = () => {
                   <strong>Email:</strong> mail@novelnutrient.com
                 </p>
 
-                <h4 class="pt20">New Jersey</h4>
+                <h4>New Jersey</h4>
                 <p>#230 Mill Road, Edison, NJ 08817</p>
                 <p>
                   <strong>Email:</strong> mail@novelnutrient.com
                 </p>
               </div>
-              <div class={styles.Contact}>
+              <div className={styles.Contact}>
                 <img src="/assets/imgs/uae.png" alt="United Arab Emirates" />
                 <h3>United Arab Emirates</h3>
                 <h4>Novel Bioscience FZCO</h4>
@@ -192,7 +201,10 @@ const ContactUs = () => {
                           Submit
                         </Button>
                         <div className={styles.Recaptcha}>
-                          <reCAPTCHA />
+                          <ReCAPTCHA
+                            sitekey="6LdOjPkpAAAAAOtAEYyeRgCQjr_XKOWDC4bqgq_p"
+                            onChange={onCaptchaChange}
+                          />
                         </div>
                       </div>
                     </Form>
