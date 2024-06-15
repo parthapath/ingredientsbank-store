@@ -202,7 +202,7 @@ const ContactUs = () => {
                         </Button>
                         <div className={styles.Recaptcha}>
                           <ReCAPTCHA
-                            sitekey="6LdOjPkpAAAAAOtAEYyeRgCQjr_XKOWDC4bqgq_p"
+                            sitekey="6Lcrt_kpAAAAAL5xSRrh5hvAUwKUUTi6fdQhTFK9"
                             onChange={onCaptchaChange}
                           />
                         </div>
