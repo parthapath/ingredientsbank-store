@@ -45,7 +45,7 @@ const ContactUs = () => {
   const onSubmit = (values) => {
     const formValues = {
       ...values,
-      capcaptchaValue: captchaValue,
+      captcha: captchaValue,
     };
     setIsLoading(true);
     axios
