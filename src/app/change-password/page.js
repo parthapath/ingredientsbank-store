@@ -64,67 +64,74 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className={["page-wrapper", styles.Account].join(" ")}>
-      <div className={["container", styles.Container].join(" ")}>
-        <SideMenu />
-        <div className={styles.Content}>
-          <div className={styles.PageHeader}>
-            <h1>Change Password</h1>
-          </div>
-          <div className={styles.PageContent}>
-            <div className={["form-container", styles.FormContainer].join(" ")}>
-              <Formik
-                key={formId}
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
+    <>
+      <title>Change Password - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.Account].join(" ")}>
+        <div className={["container", styles.Container].join(" ")}>
+          <SideMenu />
+          <div className={styles.Content}>
+            <div className={styles.PageHeader}>
+              <h1>Change Password</h1>
+            </div>
+            <div className={styles.PageContent}>
+              <div
+                className={["form-container", styles.FormContainer].join(" ")}
               >
-                {() => {
-                  return (
-                    <Form>
-                      <div className={["form-body", styles.FormBody].join(" ")}>
-                        <FormikControl
-                          control="password"
-                          type="password"
-                          label="Current Password"
-                          name="currentPassword"
-                          autoComplete="new-password"
-                        />
-
-                        <FormikControl
-                          control="passwordStrength"
-                          type="password"
-                          label="New Password"
-                          name="newPassword"
-                          setPassword={setPassword}
-                          password={password}
-                        />
-
-                        <FormikControl
-                          control="password"
-                          type="password"
-                          label="Confirm New Password"
-                          name="confirmNewPassword"
-                        />
-                      </div>
-                      <div className="form-actions">
-                        <Button
-                          btnType="Primary"
-                          type="Submit"
-                          isLoading={isLoading}
+                <Formik
+                  key={formId}
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={onSubmit}
+                >
+                  {() => {
+                    return (
+                      <Form>
+                        <div
+                          className={["form-body", styles.FormBody].join(" ")}
                         >
-                          Save
-                        </Button>
-                      </div>
-                    </Form>
-                  );
-                }}
-              </Formik>
+                          <FormikControl
+                            control="password"
+                            type="password"
+                            label="Current Password"
+                            name="currentPassword"
+                            autoComplete="new-password"
+                          />
+
+                          <FormikControl
+                            control="passwordStrength"
+                            type="password"
+                            label="New Password"
+                            name="newPassword"
+                            setPassword={setPassword}
+                            password={password}
+                          />
+
+                          <FormikControl
+                            control="password"
+                            type="password"
+                            label="Confirm New Password"
+                            name="confirmNewPassword"
+                          />
+                        </div>
+                        <div className="form-actions">
+                          <Button
+                            btnType="Primary"
+                            type="Submit"
+                            isLoading={isLoading}
+                          >
+                            Save
+                          </Button>
+                        </div>
+                      </Form>
+                    );
+                  }}
+                </Formik>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

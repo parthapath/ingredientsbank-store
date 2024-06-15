@@ -10,6 +10,10 @@ import customFetch from "@/utils/fetch.util";
 
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: process.env.APP_NAME,
+};
+
 const Home = async () => {
   const isAuthenticated = checkAuth();
 

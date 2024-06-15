@@ -6,11 +6,6 @@ import SignInForm from "@/components/SignInForm/SignInForm";
 
 import "../../public/assets/css/main.css";
 
-export const metadata = {
-  title: "Ingredients Bank",
-  description: "Ingredients Bank",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

@@ -133,44 +133,48 @@ const Products = () => {
   };
 
   return (
-    <div className={["page-wrapper", styles.ProductsPage].join(" ")}>
-      <div className="container">
-        <div className={styles.PageContent}>
-          <div className={styles.Filters}>
-            <div className={styles.Filter}>
-              <h4>Categories</h4>
-              <ul>
-                <li
-                  className={selectedCategories === "" ? styles.Active : null}
-                  onClick={() => clearSelectedCategories()}
-                >
-                  All
-                </li>
-                {categories.map((item, i) => {
-                  return (
-                    <li
-                      className={
-                        selectedCategories === item.name ? styles.Active : null
-                      }
-                      onClick={() => handleCategoryFilter(item.name)}
-                      key={i}
-                    >
-                      {item.name}
-                    </li>
-                  );
-                })}
-              </ul>
+    <>
+      <title>Products - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.ProductsPage].join(" ")}>
+        <div className="container">
+          <div className={styles.PageContent}>
+            <div className={styles.Filters}>
+              <div className={styles.Filter}>
+                <h4>Categories</h4>
+                <ul>
+                  <li
+                    className={selectedCategories === "" ? styles.Active : null}
+                    onClick={() => clearSelectedCategories()}
+                  >
+                    All
+                  </li>
+                  {categories.map((item, i) => {
+                    return (
+                      <li
+                        className={
+                          selectedCategories === item.name
+                            ? styles.Active
+                            : null
+                        }
+                        onClick={() => handleCategoryFilter(item.name)}
+                        key={i}
+                      >
+                        {item.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className={styles.Filter}>
+                <h4>Applications</h4>
+                <Applications
+                  handleApplicationFilter={handleApplicationFilter}
+                  selectedApplications={selectedApplications}
+                />
+              </div>
             </div>
-            <div className={styles.Filter}>
-              <h4>Applications</h4>
-              <Applications
-                handleApplicationFilter={handleApplicationFilter}
-                selectedApplications={selectedApplications}
-              />
-            </div>
-          </div>
-          <div className={styles.ProductsWrapper}>
-            {/* <div className={styles.Overview}>
+            <div className={styles.ProductsWrapper}>
+              {/* <div className={styles.Overview}>
               <h1>Vegetable / Fruits Spray Dried Powder</h1>
               <div className={styles.CategoryDesc}>
                 <p>
@@ -188,50 +192,54 @@ const Products = () => {
                 </p>
               </div>
             </div> */}
-            <div className={styles.Products}>
-              <div className={styles.NoOfProducts}>
-                {recordCount > 0 ? (
-                  <span>
-                    Showing {startRecord} - {endRecord} of {recordCount}
-                  </span>
-                ) : (
-                  <span>No Products found</span>
-                )}
-              </div>
+              <div className={styles.Products}>
+                <div className={styles.NoOfProducts}>
+                  {recordCount > 0 ? (
+                    <span>
+                      Showing {startRecord} - {endRecord} of {recordCount}
+                    </span>
+                  ) : (
+                    <span>No Products found</span>
+                  )}
+                </div>
 
-              <div className={styles.ProductsList}>
-                <ProductsList products={products} isAuthenticated={isAuthenticated} />
-              </div>
-              {recordCount > 20 ? (
-                <div className={styles.Pagination}>
-                  <ReactPaginate
-                    nextLabel="NEXT"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={3}
-                    marginPagesDisplayed={2}
-                    forcePage={page - 1}
-                    pageCount={pageCount}
-                    previousLabel="PREVIOUS"
-                    pageClassName="page-item"
-                    pageLinkClassName="page-link"
-                    previousClassName="page-item"
-                    previousLinkClassName="page-link"
-                    nextClassName="page-item"
-                    nextLinkClassName="page-link"
-                    breakLabel="..."
-                    breakClassName="page-item"
-                    breakLinkClassName="page-link"
-                    containerClassName="pagination"
-                    activeClassName="active"
-                    renderOnZeroPageCount={null}
+                <div className={styles.ProductsList}>
+                  <ProductsList
+                    products={products}
+                    isAuthenticated={isAuthenticated}
                   />
                 </div>
-              ) : null}
+                {recordCount > 20 ? (
+                  <div className={styles.Pagination}>
+                    <ReactPaginate
+                      nextLabel="NEXT"
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={3}
+                      marginPagesDisplayed={2}
+                      forcePage={page - 1}
+                      pageCount={pageCount}
+                      previousLabel="PREVIOUS"
+                      pageClassName="page-item"
+                      pageLinkClassName="page-link"
+                      previousClassName="page-item"
+                      previousLinkClassName="page-link"
+                      nextClassName="page-item"
+                      nextLinkClassName="page-link"
+                      breakLabel="..."
+                      breakClassName="page-item"
+                      breakLinkClassName="page-link"
+                      containerClassName="pagination"
+                      activeClassName="active"
+                      renderOnZeroPageCount={null}
+                    />
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

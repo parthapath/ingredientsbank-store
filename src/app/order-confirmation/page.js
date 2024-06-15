@@ -5,6 +5,10 @@ import styles from "./page.module.css";
 
 import ContinueShoppingBtn from "@/components/ContinueShoppingBtn/ContinueShoppingBtn";
 
+export const metadata = {
+  title: `Order Confirmed - ${process.env.APP_NAME}`,
+};
+
 const orderConfirmation = async ({ searchParams }) => {
   const reqOrder = await fetch(`${api_server}/orders/${searchParams.ref_id}`);
   const order = await reqOrder.json();

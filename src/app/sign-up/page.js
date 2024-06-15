@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Head from "next/head";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
@@ -13,6 +14,8 @@ import FormikControl from "@/components/FormikControl/FormikControl";
 import Button from "@/components/Button/Button";
 import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
+import countries from "../../../public/static/countries.json";
+
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,6 +28,7 @@ const SignUp = () => {
     first_name: "",
     last_name: "",
     email: "",
+    isd_code: "",
     phone: "",
     password: "",
     confirm_password: "",
@@ -100,163 +104,168 @@ const SignUp = () => {
   };
 
   return (
-    <div className={["page-wrapper", styles.SignUp].join(" ")}>
-      <div className="container">
-        <h1>Welcome to Ingredients Bank</h1>
-        <div className={styles.Notes}>
-          {!success ? (
-            <p>Fill in a few details to get started with Ingredients Bank!</p>
-          ) : (
-            <>
-              <p>
-                Your account has been successfully created. We have sent an
-                email to verify your email. Please follow the instuctions
-                provided in the email.
-              </p>
-              <p>
-                If you have not received the email yet.{" "}
-                <a href="#" onClick={() => handleResend()}>
-                  Click here
-                </a>{" "}
-                to resend.
-              </p>
-              {verificationEmailSuccess ? (
-                <p className={styles.ResendSuccess}>
-                  <IoIosCheckmarkCircle /> Verification email has been
-                  successfully sent.
+    <>
+      <title>Sign Up - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.SignUp].join(" ")}>
+        <div className="container">
+          <h1>Welcome to Ingredients Bank</h1>
+          <div className={styles.Notes}>
+            {!success ? (
+              <p>Fill in a few details to get started with Ingredients Bank!</p>
+            ) : (
+              <>
+                <p>
+                  Your account has been successfully created. We have sent an
+                  email to verify your email. Please follow the instuctions
+                  provided in the email.
                 </p>
-              ) : null}
-            </>
-          )}
-        </div>
-        {!success ? (
-          <div
-            className={["form-container", styles.SignUpFormWrapper].join(" ")}
-          >
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-            >
-              {({ isSubmitting }) => (
-                <Form>
-                  <div className={["form-body", styles.FormBody].join(" ")}>
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="First Name"
-                      name="first_name"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Last Name"
-                      name="last_name"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Phone"
-                      name="phone"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Email"
-                      name="email"
-                    />
-
-                    <FormikControl
-                      control="password"
-                      type="password"
-                      label="Password"
-                      name="password"
-                    />
-
-                    <FormikControl
-                      control="password"
-                      type="password"
-                      label="Confirm Password"
-                      name="confirm_password"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Company Name *"
-                      name="company_name"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Website *"
-                      name="website"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Street Address 1 *"
-                      name="street_address_1"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Street Address 2"
-                      name="street_address_2"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="City *"
-                      name="city"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="State/Province *"
-                      name="state_province"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Zip/Postal Code *"
-                      name="zip_postal_code"
-                    />
-
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      label="Country *"
-                      name="country"
-                    />
-                  </div>
-
-                  <div className="form-actions">
-                    <Button
-                      btnType="Primary"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Submit
-                    </Button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                <p>
+                  If you have not received the email yet.{" "}
+                  <a href="#" onClick={() => handleResend()}>
+                    Click here
+                  </a>{" "}
+                  to resend.
+                </p>
+                {verificationEmailSuccess ? (
+                  <p className={styles.ResendSuccess}>
+                    <IoIosCheckmarkCircle /> Verification email has been
+                    successfully sent.
+                  </p>
+                ) : null}
+              </>
+            )}
           </div>
-        ) : null}
-        {error ? <ErrorMessages error={error} /> : null}
+          {!success ? (
+            <div
+              className={["form-container", styles.SignUpFormWrapper].join(" ")}
+            >
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+              >
+                {({ isSubmitting, setFieldValue }) => (
+                  <Form>
+                    <div className={["form-body", styles.FormBody].join(" ")}>
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="First Name"
+                        name="first_name"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Last Name"
+                        name="last_name"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Phone"
+                        name="phone"
+                        placeholder="Include country code"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Email"
+                        name="email"
+                      />
+
+                      <FormikControl
+                        control="password"
+                        type="password"
+                        label="Password"
+                        name="password"
+                      />
+
+                      <FormikControl
+                        control="password"
+                        type="password"
+                        label="Confirm Password"
+                        name="confirm_password"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Company Name *"
+                        name="company_name"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Website *"
+                        name="website"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Street Address 1 *"
+                        name="street_address_1"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Street Address 2"
+                        name="street_address_2"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="City *"
+                        name="city"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="State/Province *"
+                        name="state_province"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        label="Zip/Postal Code *"
+                        name="zip_postal_code"
+                      />
+                      <FormikControl
+                        control="select"
+                        label="Country *"
+                        name="country"
+                        options={countries}
+                        setFieldValue={setFieldValue}
+                      />
+                    </div>
+
+                    <div className="form-actions">
+                      <Button
+                        btnType="Primary"
+                        type="submit"
+                        disabled={isSubmitting}
+                        isLoading={isLoading}
+                      >
+                        Submit
+                      </Button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
+          ) : null}
+          {error ? <ErrorMessages error={error} /> : null}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

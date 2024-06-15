@@ -13,6 +13,10 @@ import styles from "./page.module.css";
 import SideMenu from "@/components/SideMenu/SideMenu";
 import CancelOrderBtn from "@/components/CancelOrderBtn/CancelOrderBtn";
 
+export const metadata = {
+  title: "Order Details - Ingredients Bank",
+};
+
 const OrderDetails = () => {
   const params = useParams();
 

@@ -85,83 +85,86 @@ const AddressessPage = () => {
   );
 
   return (
-    <div className={["page-wrapper", styles.Addressess].join(" ")}>
-      <div className={["container", styles.Container].join(" ")}>
-        <SideMenu />
-        <div className={styles.Content}>
-          <div className={styles.PageHeader}>
-            <div className={styles.Title}>
-              <h1>Addressess</h1>
-            </div>
-            <div className={styles.PageActions}>
-              <div
-                className={styles.AddNew}
-                onClick={() => handleAddressForm()}
-              >
-                <IoMdAddCircleOutline /> Add a New Address
+    <>
+      <title>My Addressess - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.Addressess].join(" ")}>
+        <div className={["container", styles.Container].join(" ")}>
+          <SideMenu />
+          <div className={styles.Content}>
+            <div className={styles.PageHeader}>
+              <div className={styles.Title}>
+                <h1>Addressess</h1>
+              </div>
+              <div className={styles.PageActions}>
+                <div
+                  className={styles.AddNew}
+                  onClick={() => handleAddressForm()}
+                >
+                  <IoMdAddCircleOutline /> Add a New Address
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles.PageContent}>
-            {addressess.length ? (
-              addressess.map((item, i) => {
-                return (
-                  <div className={styles.AddressessList} key={i}>
-                    <div className={styles.AddressWrapper}>
-                      <div className={styles.Address}>
-                        <div className={styles.Name}>
-                          <div>{item.contact_name}</div>
-                          {item.default_address.id === 1 ? (
-                            <div>Default</div>
-                          ) : null}
+            <div className={styles.PageContent}>
+              {addressess.length ? (
+                addressess.map((item, i) => {
+                  return (
+                    <div className={styles.AddressessList} key={i}>
+                      <div className={styles.AddressWrapper}>
+                        <div className={styles.Address}>
+                          <div className={styles.Name}>
+                            <div>{item.contact_name}</div>
+                            {item.default_address.id === 1 ? (
+                              <div>Default</div>
+                            ) : null}
+                          </div>
+                          <div>{item.contact_no}</div>
+                          <div>
+                            {[
+                              item.address.street_address_1,
+                              item.address.street_address_2,
+                              item.address.city,
+                              item.address.state_province,
+                              item.address.country,
+                              item.address.zip_postal_code,
+                            ].join(", ")}
+                          </div>
                         </div>
-                        <div>{item.contact_no}</div>
-                        <div>
-                          {[
-                            item.address.street_address_1,
-                            item.address.street_address_2,
-                            item.address.city,
-                            item.address.state_province,
-                            item.address.country,
-                            item.address.zip_postal_code,
-                          ].join(", ")}
-                        </div>
-                      </div>
-                      <div className={styles.Actions}>
-                        <div
-                          className={styles.Action}
-                          onClick={() => handleEdit(item)}
-                        >
-                          Edit
-                        </div>
-                        {item.default_address.id === 0 ? (
+                        <div className={styles.Actions}>
                           <div
                             className={styles.Action}
-                            onClick={() => handleDelete(item.id)}
+                            onClick={() => handleEdit(item)}
                           >
-                            Delete
+                            Edit
                           </div>
-                        ) : null}
+                          {item.default_address.id === 0 ? (
+                            <div
+                              className={styles.Action}
+                              onClick={() => handleDelete(item.id)}
+                            >
+                              Delete
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div>You do not have any saved address...</div>
-            )}
+                  );
+                })
+              ) : (
+                <div>You do not have any saved address...</div>
+              )}
+            </div>
           </div>
         </div>
+        {addressModal}
+        <DialogBox
+          show={showDeleteDialogBox}
+          confirm={confirmDelete}
+          cancel={handleDelete}
+          title="Delete Address"
+          message="Are you sure you want to delete this Address?"
+        />
       </div>
-      {addressModal}
-      <DialogBox
-        show={showDeleteDialogBox}
-        confirm={confirmDelete}
-        cancel={handleDelete}
-        title="Delete Address"
-        message="Are you sure you want to delete this Address?"
-      />
-    </div>
+    </>
   );
 };
 

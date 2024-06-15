@@ -1,41 +1,48 @@
 .Content {
-    display: flex;
+  display: flex;
 }
 
 .ContentLeft {
-    width: 60%;
+  width: 60%;
 }
 
 .ContentRight {
-    width: 40%;
+  width: 40%;
 }
 
 .ContentRight h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .ContactUs h1 {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .Contact + .Contact {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 .Contact img {
-    width: 50px;
+  width: 50px;
 }
 
 .Contact h3 {
-    margin: 5px 0;
-    text-transform: uppercase;
+  margin: 5px 0;
+  text-transform: uppercase;
 }
 
 .Contact h4 {
-    margin-bottom: 5px;
-    font-size: 16px;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .Contact p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.Notes {
+  padding: 20px;
+  margin-top: 30px 12px 0;
+  background-color: #fff7ea;
+  border-top: 5px solid #03956e;
 }

@@ -57,133 +57,136 @@ const Orders = () => {
   }, [fetchOrders]);
 
   return (
-    <div className={["page-wrapper", styles.OrdersWrapper].join(" ")}>
-      <div className={["container", styles.Container].join(" ")}>
-        <SideMenu />
-        <div className={styles.Content}>
-          <div className={styles.PageHeader}>
-            <div className={styles.Title}>
-              <h1>Orders ({recordCount})</h1>
-            </div>
-          </div>
-          <div className={styles.PageContent}>
-            <div className={styles.Orders}>
-              {orders.length ? (
-                orders.map((item, i) => {
-                  return (
-                    <Link href={`/orders/${item.ref_id}`} key={i}>
-                      <div className={styles.Order}>
-                        <div className={styles.Overview}>
-                          <div>
-                            <div>
-                              <span>Order ID</span>{" "}
-                              <span className={styles.OrderId}>
-                                {item.ref_id}
-                              </span>
-                            </div>
-                            <div>
-                              <span>Ordered On</span>
-                              {moment(item.created_at).format(
-                                "DD MMM YYYY, h:mm A"
-                              )}
-                            </div>
-                          </div>
-                          <div>
-                            <div>
-                              <span>Status:</span>
-                              {item.status.name}
-                            </div>
-                            <div>
-                              <span>Payment Status:</span>
-                              {item.payment_status.name}
-                            </div>
-                          </div>
-                        </div>
-                        <div className={styles.OrderDetails}>
-                          <div className={styles.Image}>
-                            <img src={item.product.image} />
-                          </div>
-                          <div className={styles.Description}>
-                            <div className={styles.Details}>
-                              <h2>{item.product.name}</h2>
-                              <h3>{item.product.alternate_name}</h3>
-                              <div>
-                                <span>Size </span>
-                                {item.size.name}
-                              </div>
-                              <div>
-                                <span>Price </span>
-                                {item.currency + " " + item.price}
-                              </div>
-                              <div>
-                                <span>QTY </span> {item.quantity}
-                              </div>
-                              <div>
-                                <span>Total Amount </span>
-                                {item.currency + " " + item.total_amount}
-                              </div>
-                            </div>
-                            <div className={styles.ShippingAddress}>
-                              <div>Shipping To:</div>
-                              <div className={styles.Address}>
-                                <div>
-                                  {item.shipping_address.contact_name},{" "}
-                                  {item.shipping_address.contact_no}
-                                </div>
-                                <div>{item.shipping_address.address}</div>
-                              </div>
-                              {item.status.id === 3 ? (
-                                <>
-                                  <div className={styles.shippingNo}>
-                                    <div>Courier</div>
-                                    <div>{item.courier}</div>
-                                  </div>
-                                  <div className={styles.shippingNo}>
-                                    <div>Shipping Tracking No</div>
-                                    <div>{item.shipping_tracking_no}</div>
-                                  </div>
-                                </>
-                              ) : null}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })
-              ) : (
-                <div>You have not placed any order...</div>
-              )}
-            </div>
-            {orders.length ? (
-              <div className={styles.Pagination}>
-                <ReactPaginate
-                  nextLabel="NEXT"
-                  onPageChange={handlePageClick}
-                  pageRangeDisplayed={3}
-                  marginPagesDisplayed={2}
-                  forcePage={page - 1}
-                  pageCount={pageCount}
-                  previousLabel="PREVIOUS"
-                  pageClassName="page-item"
-                  pageLinkClassName="page-link"
-                  previousClassName="page-item"
-                  previousLinkClassName="page-link"
-                  nextClassName="page-item"
-                  nextLinkClassName="page-link"
-                  breakLabel="..."
-                  breakClassName="page-item"
-                  breakLinkClassName="page-link"
-                  containerClassName="pagination"
-                  activeClassName="active"
-                  renderOnZeroPageCount={null}
-                />
+    <>
+      <title>Orders - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.OrdersWrapper].join(" ")}>
+        <div className={["container", styles.Container].join(" ")}>
+          <SideMenu />
+          <div className={styles.Content}>
+            <div className={styles.PageHeader}>
+              <div className={styles.Title}>
+                <h1>Orders ({recordCount})</h1>
               </div>
-            ) : null}
+            </div>
+            <div className={styles.PageContent}>
+              <div className={styles.Orders}>
+                {orders.length ? (
+                  orders.map((item, i) => {
+                    return (
+                      <Link href={`/orders/${item.ref_id}`} key={i}>
+                        <div className={styles.Order}>
+                          <div className={styles.Overview}>
+                            <div>
+                              <div>
+                                <span>Order ID</span>{" "}
+                                <span className={styles.OrderId}>
+                                  {item.ref_id}
+                                </span>
+                              </div>
+                              <div>
+                                <span>Ordered On</span>
+                                {moment(item.created_at).format(
+                                  "DD MMM YYYY, h:mm A"
+                                )}
+                              </div>
+                            </div>
+                            <div>
+                              <div>
+                                <span>Status:</span>
+                                {item.status.name}
+                              </div>
+                              <div>
+                                <span>Payment Status:</span>
+                                {item.payment_status.name}
+                              </div>
+                            </div>
+                          </div>
+                          <div className={styles.OrderDetails}>
+                            <div className={styles.Image}>
+                              <img src={item.product.image} />
+                            </div>
+                            <div className={styles.Description}>
+                              <div className={styles.Details}>
+                                <h2>{item.product.name}</h2>
+                                <h3>{item.product.alternate_name}</h3>
+                                <div>
+                                  <span>Size </span>
+                                  {item.size.name}
+                                </div>
+                                <div>
+                                  <span>Price </span>
+                                  {item.currency + " " + item.price}
+                                </div>
+                                <div>
+                                  <span>QTY </span> {item.quantity}
+                                </div>
+                                <div>
+                                  <span>Total Amount </span>
+                                  {item.currency + " " + item.total_amount}
+                                </div>
+                              </div>
+                              <div className={styles.ShippingAddress}>
+                                <div>Shipping To:</div>
+                                <div className={styles.Address}>
+                                  <div>
+                                    {item.shipping_address.contact_name},{" "}
+                                    {item.shipping_address.contact_no}
+                                  </div>
+                                  <div>{item.shipping_address.address}</div>
+                                </div>
+                                {item.status.id === 3 ? (
+                                  <>
+                                    <div className={styles.shippingNo}>
+                                      <div>Courier</div>
+                                      <div>{item.courier}</div>
+                                    </div>
+                                    <div className={styles.shippingNo}>
+                                      <div>Shipping Tracking No</div>
+                                      <div>{item.shipping_tracking_no}</div>
+                                    </div>
+                                  </>
+                                ) : null}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })
+                ) : (
+                  <div>You have not placed any order...</div>
+                )}
+              </div>
+              {orders.length ? (
+                <div className={styles.Pagination}>
+                  <ReactPaginate
+                    nextLabel="NEXT"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    forcePage={page - 1}
+                    pageCount={pageCount}
+                    previousLabel="PREVIOUS"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={null}
+                  />
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

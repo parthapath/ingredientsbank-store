@@ -168,86 +168,89 @@ const Checkout = () => {
   );
 
   return (
-    <div className={["page-wrapper", styles.Checkout].join(" ")}>
-      <div className="container">
-        <div className={styles.Details}>
-          <div className={styles.ContentLeft}>
-            {cart ? (
-              <div className={styles.Product}>
-                <h1>{cart.product_name}</h1>
-                <h2>{cart.product_alternate_name}</h2>
-                <div className={styles.Size}>
-                  <span>Size:</span> {cart.size_name}
-                </div>
-                <div className={styles.Qty}>
-                  <span>Qty:</span> {cart.quantity}
-                </div>
-                <div className={styles.Price}>
-                  <span>Price:</span> USD {cart.price} / kg
-                </div>
-              </div>
-            ) : null}
-            <div className={styles.ShippingAddress}>
-              <h2>Shipping Address:</h2>
-              {selectedAddress ? (
-                <div className={styles.DefaultAddress}>
-                  <div className={styles.Name}>
-                    {selectedAddress.contact_name}
+    <>
+      <title>Checkout - Ingredients Bank</title>
+      <div className={["page-wrapper", styles.Checkout].join(" ")}>
+        <div className="container">
+          <div className={styles.Details}>
+            <div className={styles.ContentLeft}>
+              {cart ? (
+                <div className={styles.Product}>
+                  <h1>{cart.product_name}</h1>
+                  <h2>{cart.product_alternate_name}</h2>
+                  <div className={styles.Size}>
+                    <span>Size:</span> {cart.size_name}
                   </div>
-                  <div className={styles.ContactNo}>
-                    {selectedAddress.contact_no}
+                  <div className={styles.Qty}>
+                    <span>Qty:</span> {cart.quantity}
                   </div>
-                  <div className={styles.Address}>
-                    {[
-                      selectedAddress.address.street_address_1,
-                      selectedAddress.address.street_address_2,
-                      selectedAddress.address.city,
-                      selectedAddress.address.state_province,
-                      selectedAddress.address.country,
-                      selectedAddress.address.zip_postal_code,
-                    ].join(", ")}
+                  <div className={styles.Price}>
+                    <span>Price:</span> USD {cart.price} / kg
                   </div>
                 </div>
               ) : null}
-              <div
-                className={styles.ChangeAddress}
-                onClick={() => handleAddressModal()}
-              >
-                Change Address
-              </div>
-            </div>
-          </div>
-          {cart ? (
-            <div className={styles.ContentRight}>
-              <h3>Price Details</h3>
-              <div className={styles.TotalAmount}>
-                <span>Total Amount:</span>{" "}
-                <span>
-                  USD{" "}
-                  {parseFloat(cart.price) *
-                    parseInt(cart.quantity) *
-                    parseInt(cart.weight)}
-                </span>
-              </div>
-              <div className={styles.Tax}>
-                Excluding Taxes and Shipping Charge
-              </div>
-              <div className={styles.PlaceOrderBtn}>
-                <Button
-                  btnType="Primary"
-                  width="W100"
-                  clicked={handlePlaceOrder}
+              <div className={styles.ShippingAddress}>
+                <h2>Shipping Address:</h2>
+                {selectedAddress ? (
+                  <div className={styles.DefaultAddress}>
+                    <div className={styles.Name}>
+                      {selectedAddress.contact_name}
+                    </div>
+                    <div className={styles.ContactNo}>
+                      {selectedAddress.contact_no}
+                    </div>
+                    <div className={styles.Address}>
+                      {[
+                        selectedAddress.address.street_address_1,
+                        selectedAddress.address.street_address_2,
+                        selectedAddress.address.city,
+                        selectedAddress.address.state_province,
+                        selectedAddress.address.country,
+                        selectedAddress.address.zip_postal_code,
+                      ].join(", ")}
+                    </div>
+                  </div>
+                ) : null}
+                <div
+                  className={styles.ChangeAddress}
+                  onClick={() => handleAddressModal()}
                 >
-                  Place Order
-                </Button>
+                  Change Address
+                </div>
               </div>
             </div>
-          ) : null}
+            {cart ? (
+              <div className={styles.ContentRight}>
+                <h3>Price Details</h3>
+                <div className={styles.TotalAmount}>
+                  <span>Total Amount:</span>{" "}
+                  <span>
+                    USD{" "}
+                    {parseFloat(cart.price) *
+                      parseInt(cart.quantity) *
+                      parseInt(cart.weight)}
+                  </span>
+                </div>
+                <div className={styles.Tax}>
+                  Excluding Taxes and Shipping Charge
+                </div>
+                <div className={styles.PlaceOrderBtn}>
+                  <Button
+                    btnType="Primary"
+                    width="W100"
+                    clicked={handlePlaceOrder}
+                  >
+                    Place Order
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          {error ? <ErrorMessages error={error} /> : null}
         </div>
-        {error ? <ErrorMessages error={error} /> : null}
+        {addressModal}
       </div>
-      {addressModal}
-    </div>
+    </>
   );
 };
 

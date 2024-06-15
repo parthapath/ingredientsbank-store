@@ -3,6 +3,10 @@ import styles from "./page.module.css";
 import customFetch from "@/utils/fetch.util";
 import SideMenu from "@/components/SideMenu/SideMenu";
 
+export const metadata = {
+  title: `My Profile - ${process.env.APP_NAME}`,
+};
+
 const account = async () => {
   const reqData = await customFetch("/users");
   const data = await reqData.json();

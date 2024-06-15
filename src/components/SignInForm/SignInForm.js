@@ -14,6 +14,7 @@ import styles from "./SignInForm.module.css";
 import Modal from "../Modal/Modal";
 import FormikControl from "../FormikControl/FormikControl";
 import Button from "../Button/Button";
+import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
 const SignInForm = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -84,6 +85,7 @@ const SignInForm = () => {
   const showResetForm = (val) => {
     setFormId(formId + 1);
     setShowForgotPassword(val);
+    setError(null)
   };
 
   const initialValuesReset = {
@@ -249,6 +251,7 @@ const SignInForm = () => {
             </Button>
           </div>
         </div>
+        {error ? <ErrorMessages error={error} /> : null}
       </Modal>
     </div>
   );

@@ -23,8 +23,8 @@ const Select = (props) => {
   };
 
   return (
-    <div className="FormGroup">
-      <label htmlFor={name} className="ControlLabel">
+    <div className="form-group">
+      <label htmlFor={name} className="control-label">
         {label}
       </label>
       <ReactSelect
