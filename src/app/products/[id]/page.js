@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import styles from "./page.module.css";
 
 import { checkAuth } from "@/utils/checkAuth";
@@ -56,7 +58,13 @@ const ProductDetails = async ({ params, searchParams }) => {
       <div className="container">
         <div className={styles.PageContent}>
           <div className={styles.ProductImage}>
-            <img src={product.images[0].url} alt={product.name} />
+            <Image
+              src={product.images[0].url}
+              width={400}
+              height={500}
+              alt={product.name}
+              loading="lazy"
+            />
           </div>
           <div className={styles.ProductDetails}>
             <div className={styles.Overview}>
