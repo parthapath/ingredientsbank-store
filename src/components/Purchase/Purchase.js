@@ -2,8 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-
-import { api_server } from "@/config";
+import axios from "../../axios";
 
 import styles from "./Purchase.module.css";
 import Input from "../FormElements/Input/Input";
@@ -31,37 +30,35 @@ const Purchase = (props) => {
     regionId = region.id;
   }
 
-  const fetchPricings = useCallback(async (id) => {
-    try {
-      const response = await fetch(
-        `${api_server}/products/${props.id}/prices?size=${id}&region=${regionId}`
-      );
-      const data = await response.json();
-      setPricings(data);
-      setPrice(parseFloat(data[0].price));
-      setCurrency(data[0].currency);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const fetchPricings = useCallback((id) => {
+    axios
+      .get(`/products/${props.id}/prices?size=${id}&region=${regionId}`)
+      .then((response) => {
+        setPricings(response.data);
+        setPrice(parseFloat(response.data[0].price));
+        setCurrency(response.data[0].currency);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error.response.data);
+      });
   }, []);
 
   useEffect(() => {
-    const fetchSizes = async () => {
-      try {
-        const response = await fetch(
-          `${api_server}/products/${props.id}/sizes?region=${regionId}`
-        );
-        const data = await response.json();
-        if (data.length) {
-          setSizes(data);
-          setSelectedSize(data[0]);
-          fetchPricings(data[0].id);
-        } else {
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+    const fetchSizes = () => {
+      axios
+        .get(`/products/${props.id}/sizes?region=${regionId}`)
+        .then((response) => {
+          if (response.data.length) {
+            setSizes(response.data);
+            setSelectedSize(response.data[0]);
+            fetchPricings(response.data[0].id);
+          } else {
+            setIsLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error.response.data);
+        });
     };
 
     fetchSizes();

@@ -130,6 +130,7 @@ const Products = () => {
   const handlePageClick = (e) => {
     setPage(e.selected + 1);
     router.push(updateSearchParam({ key: "page", value: e.selected + 1 }));
+    window.scrollTo(0, 0);
   };
 
   return (

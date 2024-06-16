@@ -6,6 +6,7 @@ import moment from "moment";
 import Link from "next/link";
 import ReactPaginate from "react-paginate";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 import styles from "./page.module.css";
 
@@ -25,6 +26,13 @@ const Orders = () => {
   const [pageCount, setPageCount] = useState(0);
   const [recordCount, setRecordCount] = useState(0);
 
+  const regionObj = Cookies.get("region");
+  let regionId = 5;
+  if (regionObj) {
+    const region = JSON.parse(regionObj);
+    regionId = region.id;
+  }
+
   const updateSearchParam = ({ key, value }) => {
     const params = new URLSearchParams(searchParams);
 
@@ -35,11 +43,12 @@ const Orders = () => {
   const handlePageClick = (e) => {
     setPage(e.selected + 1);
     router.push(updateSearchParam({ key: "page", value: e.selected + 1 }));
+    window.scrollTo(0, 0);
   };
 
   const fetchOrders = useCallback(() => {
     axios
-      .get(`/orders?page=${page}&per-page=5`)
+      .get(`/orders?page=${page}&per-page=5&region=${regionId}`)
       .then((response) => {
         setOrders(response.data);
         setPageCount(parseInt(response.headers["x-pagination-page-count"]));
@@ -164,7 +173,7 @@ const Orders = () => {
                   <div>You have not placed any order...</div>
                 )}
               </div>
-              {orders.length ? (
+              {recordCount > 5 ? (
                 <div className={styles.Pagination}>
                   <ReactPaginate
                     nextLabel="NEXT"

@@ -19,6 +19,7 @@ const RegionSelector = () => {
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [success, setSuccess] = useState([]);
   const [error, setError] = useState([]);
+  //const [country, setCountry] = useState(null);
   const refRegionMenu = useRef(null);
 
   const isAuthenticated = useAuth();
@@ -42,7 +43,20 @@ const RegionSelector = () => {
       });
   }, []);
 
+  /* const getGeoInfo = () => {
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setCountry(data.country_name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }; */
+
   useEffect(() => {
+    //getGeoInfo();
     fetchData();
   }, [fetchData]);
 
