@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import styles from "./Footer.module.css";
 
@@ -10,7 +11,13 @@ const Footer = () => {
         <div className={styles.ContentWrapper}>
           <div className={styles.About}>
             <div className={styles.Logo}>
-              <img src="/assets/imgs/logo.png" />
+              <Image
+                src="/assets/imgs/logo.png"
+                width={175}
+                height={70}
+                alt="Ingredients Bank"
+                loading="lazy"
+              />
             </div>
             <div className={styles.Terms}>
               <ul>

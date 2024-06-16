@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import Image from "next/image";
 
 import { checkAuth } from "@/utils/checkAuth";
 
@@ -37,7 +38,13 @@ const Home = async () => {
               return (
                 <div className={styles.Category} key={item.id}>
                   <div className={styles.Image}>
-                    <img src={item.photo} />
+                    <Image
+                      src={item.photo}
+                      width={236}
+                      height={238}
+                      alt={item.name}
+                      loading="lazy"
+                    />
                   </div>
                   <div className={styles.Desc}>
                     <div>
@@ -92,7 +99,6 @@ const Home = async () => {
             challenges in ingredient sourcing can serve as powerful launch pads
             toward a brighter future.
           </p>
-          <Link href="/">Read More</Link>
         </div>
       </div>
     </div>

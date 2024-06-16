@@ -46,3 +46,11 @@
   background-color: #fff7ea;
   border-top: 5px solid #03956e;
 }
+
+.FormActions {
+  display: block !important;
+}
+
+.FormActions button {
+  margin-top: 20px;
+}

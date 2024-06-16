@@ -220,6 +220,7 @@ const SignInForm = () => {
                               btnType="Primary"
                               type="submit"
                               isLoading={isLoading}
+                              style={{ width: "100px" }}
                             >
                               Submit
                             </Button>

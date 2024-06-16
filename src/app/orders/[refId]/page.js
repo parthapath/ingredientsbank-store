@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import moment from "moment";
 import Link from "next/link";
 import axios from "../../../axios";
+import Image from "next/image";
 
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 
@@ -74,9 +75,12 @@ const OrderDetails = () => {
                     </div>
                     <div className={styles.Product}>
                       <div>
-                        <img
+                        <Image
                           src={order.product.image}
+                          width={150}
+                          height={187}
                           alt={order.product.name}
+                          loading="lazy"
                         />
                       </div>
                       <div className={styles.ProductDetails}>

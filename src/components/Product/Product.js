@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
 
@@ -22,7 +23,13 @@ const Product = ({ product, isAuthenticated }) => {
     <div className={styles.Product} key={product.id}>
       <div className={styles.Image}>
         <Link href={`/products/${product.id}?region=${regionId}`}>
-          <img src={product.images[0].url} alt={product.name} />
+          <Image
+            src={product.images[0].url}
+            width={200}
+            height={250}
+            alt={product.name}
+            loading="lazy"
+          />
         </Link>
       </div>
       <div className={styles.Desc}>

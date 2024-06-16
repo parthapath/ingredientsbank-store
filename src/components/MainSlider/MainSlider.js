@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import Image from "next/image";
 
 import { api_server } from "@/config";
 
@@ -45,7 +46,13 @@ const MainSlider = () => {
           {slides.map((item, i) => {
             return (
               <SwiperSlide key={i}>
-                <img src={item.image} alt={item.title} />
+                <Image
+                  src={item.image}
+                  width={1460}
+                  height={440}
+                  alt={item.title}
+                  loading="lazy"
+                />
               </SwiperSlide>
             );
           })}

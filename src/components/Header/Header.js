@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
+import Image from "next/image";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
@@ -76,7 +77,13 @@ const Header = () => {
           <div className={styles.HeaderLeft}>
             <div className={styles.Logo}>
               <Link href="/">
-                <img src="/assets/imgs/logo.png" />
+                <Image
+                  src="/assets/imgs/logo.png"
+                  width={175}
+                  height={70}
+                  alt="Ingredients Bank"
+                  loading="lazy"
+                />
               </Link>
             </div>
             <SearchBox />

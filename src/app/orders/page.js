@@ -5,6 +5,7 @@ import axios from "../../axios";
 import moment from "moment";
 import Link from "next/link";
 import ReactPaginate from "react-paginate";
+import Image from "next/image";
 
 import styles from "./page.module.css";
 
@@ -103,7 +104,13 @@ const Orders = () => {
                           </div>
                           <div className={styles.OrderDetails}>
                             <div className={styles.Image}>
-                              <img src={item.product.image} />
+                              <Image
+                                src={item.product.image}
+                                width={110}
+                                height={137}
+                                alt={item.product.name}
+                                loading="lazy"
+                              />
                             </div>
                             <div className={styles.Description}>
                               <div className={styles.Details}>

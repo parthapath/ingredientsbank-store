@@ -4,6 +4,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
 import ReCAPTCHA from "react-google-recaptcha";
+import Image from "next/image";
 
 import styles from "./page.module.css";
 
@@ -54,6 +55,7 @@ const ContactUs = () => {
         setSuccess(true);
         setError(null);
         setFormId(formId + 1);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         setError(error.response.data);
@@ -76,7 +78,13 @@ const ContactUs = () => {
           <div className={styles.Content}>
             <div className={styles.ContentLeft}>
               <div className={styles.Contact}>
-                <img src="/assets/imgs/india.png" alt="India" />
+                <Image
+                  src="/assets/imgs/india.png"
+                  width={50}
+                  height={25}
+                  alt="India"
+                  loading="lazy"
+                />
                 <h3>India</h3>
                 <h4>Novel Nutrientss Private Limited</h4>
                 <p>
@@ -91,7 +99,13 @@ const ContactUs = () => {
                 </p>
               </div>
               <div className={styles.Contact}>
-                <img src="/assets/imgs/uk.png" alt="United Kingdom" />
+                <Image
+                  src="/assets/imgs/uk.png"
+                  width={50}
+                  height={25}
+                  alt="United Kingdom"
+                  loading="lazy"
+                />
                 <h3>United Kingdom</h3>
                 <h4>Novel Nutrientss Limited</h4>
                 <p>
@@ -106,9 +120,12 @@ const ContactUs = () => {
                 </p>
               </div>
               <div className={styles.Contact}>
-                <img
+                <Image
                   src="/assets/imgs/usa.png"
+                  width={50}
+                  height={25}
                   alt="United States of America"
+                  loading="lazy"
                 />
                 <h3>United States of America</h3>
                 <h4>California</h4>
@@ -124,7 +141,13 @@ const ContactUs = () => {
                 </p>
               </div>
               <div className={styles.Contact}>
-                <img src="/assets/imgs/uae.png" alt="United Arab Emirates" />
+                <Image
+                  src="/assets/imgs/uae.png"
+                  width={50}
+                  height={25}
+                  alt="United Arab Emirates"
+                  loading="lazy"
+                />
                 <h3>United Arab Emirates</h3>
                 <h4>Novel Bioscience FZCO</h4>
                 <p>
@@ -141,84 +164,92 @@ const ContactUs = () => {
             </div>
             <div className={styles.ContentRight}>
               <h2>Write to us</h2>
-              <div
-                className={[
-                  "form-container w100 ",
-                  styles.SignUpFormWrapper,
-                ].join(" ")}
-              >
-                <Formik
-                  key={formId}
-                  initialValues={initialValues}
-                  validationSchema={validationSchema}
-                  onSubmit={onSubmit}
+              {success ? (
+                <div className={styles.Notes}>
+                  <p>
+                    Your message has been successfully sent. We will get back to
+                    you soon. Thanks...
+                  </p>
+                </div>
+              ) : (
+                <div
+                  className={[
+                    "form-container w100 ",
+                    styles.SignUpFormWrapper,
+                  ].join(" ")}
                 >
-                  {({ isSubmitting }) => (
-                    <Form>
-                      <div className={["form-body", styles.FormBody].join(" ")}>
-                        <FormikControl
-                          control="input"
-                          type="text"
-                          label="Your Name *"
-                          name="name"
-                        />
-
-                        <FormikControl
-                          control="input"
-                          type="text"
-                          label="Email Address *"
-                          name="email"
-                        />
-
-                        <FormikControl
-                          control="input"
-                          type="text"
-                          label="Phone Number"
-                          name="phone"
-                        />
-
-                        <FormikControl
-                          control="input"
-                          type="text"
-                          label="Subject *"
-                          name="subject"
-                        />
-
-                        <FormikControl
-                          control="textarea"
-                          label="Message *"
-                          name="message"
-                        />
-                      </div>
-
-                      <div className="form-actions">
-                        <Button
-                          btnType="Primary"
-                          type="submit"
-                          disabled={isSubmitting}
-                          isLoading={isLoading}
+                  <Formik
+                    key={formId}
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmit}
+                  >
+                    {({ isSubmitting }) => (
+                      <Form>
+                        <div
+                          className={["form-body", styles.FormBody].join(" ")}
                         >
-                          Submit
-                        </Button>
-                        <div className={styles.Recaptcha}>
-                          <ReCAPTCHA
-                            sitekey="6Lcrt_kpAAAAAL5xSRrh5hvAUwKUUTi6fdQhTFK9"
-                            onChange={onCaptchaChange}
+                          <FormikControl
+                            control="input"
+                            type="text"
+                            label="Your Name *"
+                            name="name"
+                          />
+
+                          <FormikControl
+                            control="input"
+                            type="text"
+                            label="Email Address *"
+                            name="email"
+                          />
+
+                          <FormikControl
+                            control="input"
+                            type="text"
+                            label="Phone Number"
+                            name="phone"
+                          />
+
+                          <FormikControl
+                            control="input"
+                            type="text"
+                            label="Subject *"
+                            name="subject"
+                          />
+
+                          <FormikControl
+                            control="textarea"
+                            label="Message *"
+                            name="message"
                           />
                         </div>
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
-                {success ? (
-                  <div className={styles.Notes}>
-                    <p>
-                      Your message has been successfully sent. We will get back
-                      to you soon. Thanks...
-                    </p>
-                  </div>
-                ) : null}
-              </div>
+
+                        <div
+                          className={["form-actions", styles.FormActions].join(
+                            " "
+                          )}
+                        >
+                          <div className={styles.Recaptcha}>
+                            <ReCAPTCHA
+                              sitekey="6Lcrt_kpAAAAAL5xSRrh5hvAUwKUUTi6fdQhTFK9"
+                              onChange={onCaptchaChange}
+                            />
+                          </div>
+                          <Button
+                            btnType="Primary"
+                            type="submit"
+                            disabled={isSubmitting}
+                            isLoading={isLoading}
+                            style={{ width: "120px", height: "50px" }}
+                          >
+                            Submit
+                          </Button>
+                        </div>
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
+              )}
             </div>
           </div>
         </div>

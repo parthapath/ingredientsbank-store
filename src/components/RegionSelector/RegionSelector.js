@@ -6,6 +6,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import Image from "next/image";
 
 import useOutsideClick from "@/utils/OutsideClick.util";
 import { useAuth } from "@/hooks/useAuth";
@@ -128,7 +129,13 @@ const RegionSelector = () => {
                       >
                         <div className={styles.RegionName}>
                           <div className={styles.Flag}>
-                            <img src={item.icon} />
+                            <Image
+                              src={item.icon}
+                              width={22}
+                              height={22}
+                              alt={item.name}
+                              loading="lazy"
+                            />
                           </div>
                           <div className={styles.Name}>{item.name}</div>
                         </div>
