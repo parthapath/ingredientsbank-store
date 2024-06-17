@@ -60,7 +60,7 @@ const Orders = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [page]);
+  }, [page, regionId]);
 
   useEffect(() => {
     fetchOrders();

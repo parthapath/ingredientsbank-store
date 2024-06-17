@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useCallback } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import ReactPaginate from "react-paginate";
@@ -40,12 +40,15 @@ const Products = () => {
   const [startRecord, setStartRecord] = useState(0);
   const [endRecord, setEndRecord] = useState(0);
 
-  const updateSearchParam = ({ key, value }) => {
-    const params = new URLSearchParams(searchParams);
+  const updateSearchParam = useCallback(
+    ({ key, value }) => {
+      const params = new URLSearchParams(searchParams);
 
-    params.set(key, value);
-    return `${pathname}?${params.toString()}`;
-  };
+      params.set(key, value);
+      return `${pathname}?${params.toString()}`;
+    },
+    [searchParams, pathname]
+  );
 
   const handleCategoryFilter = (val) => {
     setSelectedCategories(val);
@@ -87,13 +90,13 @@ const Products = () => {
     router.push(
       updateSearchParam({ key: "categories", value: selectedCategories })
     );
-  }, [selectedCategories, updateSearchParam]);
+  }, [router, selectedCategories, updateSearchParam]);
 
   useEffect(() => {
     router.push(
       updateSearchParam({ key: "applications", value: selectedApplications })
     );
-  }, [selectedApplications, updateSearchParam]);
+  }, [router, selectedApplications, updateSearchParam]);
 
   useEffect(() => {
     const fetchProducts = async () => {

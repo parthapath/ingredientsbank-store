@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import styles from "./page.module.css";
@@ -15,6 +16,10 @@ export async function generateMetadata({ params, searchParams }) {
     `/products/${params.id}?region=${searchParams.region}`
   );
   const product = await reqProduct.json();
+
+  if (!product.name) {
+    return notFound();
+  }
 
   return {
     title: product.name,

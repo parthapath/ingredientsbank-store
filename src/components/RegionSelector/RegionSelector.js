@@ -112,7 +112,13 @@ const RegionSelector = () => {
             onClick={() => handleRegionSelector()}
           >
             <div className={styles.Flag}>
-              <img src={selectedRegion.icon} />
+              <Image
+                src={selectedRegion.icon}
+                width={22}
+                height={22}
+                alt={selectedRegion.name}
+                loading="lazy"
+              />
             </div>
             <div className={styles.RegionName}>{selectedRegion.name}</div>
             <div className={styles.Currency}>

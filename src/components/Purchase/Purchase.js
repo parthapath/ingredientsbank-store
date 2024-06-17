@@ -41,7 +41,7 @@ const Purchase = (props) => {
       .catch((error) => {
         console.error("Error fetching data:", error.response.data);
       });
-  }, []);
+  }, [props.id, regionId]);
 
   useEffect(() => {
     const fetchSizes = () => {
@@ -62,7 +62,7 @@ const Purchase = (props) => {
     };
 
     fetchSizes();
-  }, []);
+  }, [props.id, regionId, fetchPricings]);
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size);

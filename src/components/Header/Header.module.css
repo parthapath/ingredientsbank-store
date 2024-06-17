@@ -57,6 +57,7 @@
   margin: 0 15px;
   list-style-type: none;
   display: flex;
+  color: #222;
 }
 
 .MainNav ul li a {
@@ -90,6 +91,7 @@
 .AccountName {
   display: flex;
   align-items: center;
+  color: #222;
 }
 
 .AccountName span {

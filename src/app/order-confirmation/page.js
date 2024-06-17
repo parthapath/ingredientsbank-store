@@ -1,7 +1,9 @@
+import { notFound } from "next/navigation";
 import moment from "moment";
-import { api_server } from "@/config";
 
 import styles from "./page.module.css";
+
+import customFetch from "@/utils/fetch.util";
 
 import ContinueShoppingBtn from "@/components/ContinueShoppingBtn/ContinueShoppingBtn";
 
@@ -10,8 +12,11 @@ export const metadata = {
 };
 
 const orderConfirmation = async ({ searchParams }) => {
-  const reqOrder = await fetch(`${api_server}/orders/${searchParams.ref_id}`);
+  const reqOrder = await customFetch(`/orders/${searchParams.ref_id}`);
   const order = await reqOrder.json();
+  if (!order.ref_id) {
+    return notFound();
+  }
 
   return (
     <div className={["page-wrapper", styles.OrderConfirmation].join(" ")}>

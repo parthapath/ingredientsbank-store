@@ -55,7 +55,7 @@ const SearchBox = (props) => {
     } else {
       setShowResults(false);
     }
-  }, [keyword, props.region, searchResultClicked]);
+  }, [keyword, region, searchResultClicked]);
 
   const handleInputClick = () => {
     if (keyword.length > 2) {
