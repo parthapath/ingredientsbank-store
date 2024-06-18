@@ -61,7 +61,7 @@ ul li {
 
 .form-container .form-group {
   width: 50%;
-  min-height: 110px;
+  min-height: 100px;
   padding: 10px 12px;
   position: relative;
 }

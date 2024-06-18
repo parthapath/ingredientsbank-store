@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
@@ -108,14 +108,16 @@ const Header = () => {
                     hideShopMenu={hideShopMenu}
                   />
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/shop">About Us</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className={styles.HeaderActions}>
               <div className={styles.HeaderAction}>
-                <RegionSelector />
+                <Suspense fallback={<p>Loading...</p>}>
+                  <RegionSelector />
+                </Suspense>
               </div>
               {!isAuthenticated ? (
                 <div

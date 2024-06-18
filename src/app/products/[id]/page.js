@@ -21,13 +21,27 @@ export async function generateMetadata({ params, searchParams }) {
     return notFound();
   }
 
+  const formatDescription = (str) => {
+    // Remove the <ul> and </ul> tags
+    let noUlStr = str.replace(/<\/?ul>/g, "");
+
+    // Replace <li> tags with a comma and a space, and remove </li> tags
+    let withCommasStr = noUlStr.replace(/<li>/g, "").replace(/<\/li>/g, ", ");
+
+    // Remove any leading or trailing commas and spaces
+    withCommasStr = withCommasStr.replace(/^, |, $/g, "");
+
+    // Trim any extra spaces at the start and end
+    return withCommasStr.trim();
+  };
+
   return {
     title: product.name,
-    description: `Detailed view of ${product.name}`,
+    description: formatDescription(product.description),
     keywords: product.keywords,
     openGraph: {
       title: product.name,
-      description: `Detailed view of ${product.name}`,
+      description: formatDescription(product.description),
       images: [
         {
           url: product.images[0].url,
@@ -40,7 +54,7 @@ export async function generateMetadata({ params, searchParams }) {
     twitter: {
       card: "summary_large_image",
       title: product.name,
-      description: `Detailed view of ${product.name}`,
+      description: formatDescription(product.description),
       image: product.images[0].url,
     },
   };

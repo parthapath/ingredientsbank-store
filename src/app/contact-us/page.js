@@ -77,7 +77,7 @@ const ContactUs = () => {
           <h1>Contact Us</h1>
           <div className={styles.Content}>
             <div className={styles.ContentLeft}>
-              <div className={styles.Contact}>
+              {/* <div className={styles.Contact}>
                 <Image
                   src="/assets/imgs/india.png"
                   width={50}
@@ -97,7 +97,7 @@ const ContactUs = () => {
                 <p>
                   <strong>Email:</strong> mail@novelnutrient.com
                 </p>
-              </div>
+              </div> */}
               <div className={styles.Contact}>
                 <Image
                   src="/assets/imgs/uk.png"
@@ -112,12 +112,6 @@ const ContactUs = () => {
                   5 Churchill Court, Ground Floor, 58 Station Road, North
                   Harrow, Middlesex, HA2 7SA
                 </p>
-                <p>
-                  <strong>Phone:</strong> +44 7448 762143
-                </p>
-                <p>
-                  <strong>Email:</strong> mail@novelnutrientss.co.uk
-                </p>
               </div>
               <div className={styles.Contact}>
                 <Image
@@ -130,15 +124,9 @@ const ContactUs = () => {
                 <h3>United States of America</h3>
                 <h4>California</h4>
                 <p>#15910, Euclid Ave, Chino, CA 91708</p>
-                <p>
-                  <strong>Email:</strong> mail@novelnutrient.com
-                </p>
 
                 <h4>New Jersey</h4>
                 <p>#230 Mill Road, Edison, NJ 08817</p>
-                <p>
-                  <strong>Email:</strong> mail@novelnutrient.com
-                </p>
               </div>
               <div className={styles.Contact}>
                 <Image
@@ -154,12 +142,6 @@ const ContactUs = () => {
                   Warehouse CB-02, Street 418 Near Roundabout 8, Jafza Dubai
                   United Arab Emirates.
                 </p>
-                <p>
-                  <strong>Phone:</strong> 971-042847662
-                </p>
-                <p>
-                  <strong>Email:</strong> mail@novelbioscience.com
-                </p>
               </div>
             </div>
             <div className={styles.ContentRight}>
@@ -174,7 +156,7 @@ const ContactUs = () => {
               ) : (
                 <div
                   className={[
-                    "form-container w100 ",
+                    "form-container w100",
                     styles.SignUpFormWrapper,
                   ].join(" ")}
                 >
