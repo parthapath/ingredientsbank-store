@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useAuth = () => {
@@ -21,9 +21,9 @@ export const useAuth = () => {
   }, []);
 
   return isAuthenticated;
-};
+}; */
 
-/* import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 export const useAuth = () => {
   const token = Cookies.get("token");
@@ -33,4 +33,4 @@ export const useAuth = () => {
     return true;
   }
 };
- */
+

@@ -6,13 +6,13 @@ export async function GET() {
   const token = cookies().get("token");
 
   if (!token) {
-    return NextResponse.json({ message: "Unauthorized 1" }, { status: 401 });
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
   try {
     jwt.verify(token.value, process.env.JWT_SECRET);
     return NextResponse.json({ message: "Authorized" });
   } catch (err) {
-    return NextResponse.json({ message: "Unauthorized 2" }, { status: 401 });
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 }
