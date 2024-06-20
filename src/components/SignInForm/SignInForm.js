@@ -55,7 +55,7 @@ const SignInForm = () => {
           .post("/api/auth/sign-in", token)
           .then(() => {
             dispatch(openSignInModal(false));
-            window.location.reload();
+           // window.location.reload();
           })
           .catch((error) => {
             setError(error.response.data);
