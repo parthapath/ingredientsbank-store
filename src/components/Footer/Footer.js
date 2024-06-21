@@ -10,15 +10,6 @@ const Footer = () => {
       <div className="container">
         <div className={styles.ContentWrapper}>
           <div className={styles.About}>
-            <div className={styles.Logo}>
-              <Image
-                src="/assets/imgs/logo.png"
-                width={234}
-                height={70}
-                alt="Ingredients Bank"
-                loading="lazy"
-              />
-            </div>
             <div className={styles.Terms}>
               <ul>
                 <li>

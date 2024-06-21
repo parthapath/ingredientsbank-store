@@ -123,7 +123,7 @@ const OrderDetails = () => {
                       </div>
                     ) : null}
                   </div>
-                  {order.status.id <= 2 ? (
+                  {order.status.id <= 2 && order.payment_status.id === 0 ? (
                     <div className={styles.CancelBtn}>
                       <CancelOrderBtn
                         refId={order.ref_id}

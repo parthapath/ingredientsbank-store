@@ -2,14 +2,14 @@
   width: 221px;
   height: 380px;
   margin: 0 9px 18px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   transition: all ease 0.3s;
   background-color: #fff;
 }
 
 .Product:hover {
-  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .Product .Image {
@@ -49,8 +49,8 @@
 }
 
 .Product .Login span {
-  font-size: 12px;
-  font-style: italic;
+  font-size: 14px;
   text-decoration: underline;
   cursor: pointer;
+  color: #D68181;
 }

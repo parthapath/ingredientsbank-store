@@ -79,7 +79,7 @@
 }
 
 .MainNav .ShopBtn.Active span {
-  color: #03956e;
+  color: #378532;
 }
 
 .MyAccount {
@@ -105,7 +105,7 @@
 }
 
 .AccountName.Active {
-  color: #03956e;
+  color: #378532;
 }
 
 .AccountMenu {
@@ -128,7 +128,7 @@
 }
 
 .AccountMenu a:hover {
-  color: #03956e;
+  color: #378532;
 }
 
 .Overlay {

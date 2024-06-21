@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: #03956e;
+  color: #378532;
 }
 
 ul {
@@ -236,7 +236,7 @@ table tbody tr button {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #03956e;
+  color: #378532;
   background-color: #fff;
   border: 1px solid #f0f0f0;
   cursor: default;
@@ -247,7 +247,7 @@ table tbody tr button {
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #03956e;
+  background-color: #378532;
   color: #fff;
 }
 

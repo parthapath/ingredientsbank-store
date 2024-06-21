@@ -21,7 +21,7 @@ const Input = (props) => {
         id={name}
         name={name}
         as="textarea"
-        rows="10"
+        rows="7"
         {...rest}
         autoComplete="off"
       ></Field>

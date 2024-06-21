@@ -53,7 +53,6 @@ const Home = async () => {
                           {item.name}
                         </Link>
                       </h3>
-                      <p>{item.description}</p>
                       <Link href={`/products?categories=${item.name}`}>
                         Shop Now <MdKeyboardDoubleArrowRight />
                       </Link>

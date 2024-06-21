@@ -1,0 +1,37 @@
+.FileUploadInput input {
+  display: none;
+}
+
+.UploadInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.UploadInput .Content {
+  width: 60%;
+  padding-right: 10px;
+  font-size: 12px;
+  overflow-x: hidden;
+}
+
+.UploadInput span {
+  margin-right: 10px;
+  display: inline-block;
+  color: #5dc900;
+  text-decoration: underline;
+  cursor: default;
+}
+
+.UploadInput img {
+  width: 32px;
+}
+
+.Horizonal {
+  min-height: 80px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.UploadBtn {
+  cursor: pointer;
+}

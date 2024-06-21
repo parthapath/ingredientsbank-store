@@ -1,6 +1,7 @@
 .Footer {
   padding: 50px 0;
-  background-color: #fff7ea;
+  background-color: #378532;
+  color: #fff;
 }
 
 .Footer .ContentWrapper {
@@ -13,12 +14,16 @@
   flex-grow: 1;
 }
 
-.About .Logo {
-  margin: 20px 0 85px;
+.Footer h4 {
+  font-size: 18px;
 }
 
-.About p {
-  color: #666;
+.Footer a {
+  color: #fff;
+}
+
+.About {
+  margin-top: 20px;
 }
 
 .About .Terms {
@@ -35,7 +40,7 @@
 }
 
 .Footer .Terms ul li + li {
-  border-left: 1px solid #222;
+  border-left: 1px solid #fff;
 }
 
 .Footer .Menu ul li + li {
@@ -51,7 +56,7 @@
 }
 
 .Contact div span {
-    width: 200px;
-    display: inline-block;
-    font-weight: 600;
+  width: 200px;
+  display: inline-block;
+  font-weight: 600;
 }

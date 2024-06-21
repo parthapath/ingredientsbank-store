@@ -238,6 +238,7 @@ const SignUp = () => {
                         label="Zip/Postal Code *"
                         name="zip_postal_code"
                       />
+                      
                       <FormikControl
                         control="select"
                         label="Country *"

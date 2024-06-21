@@ -9,6 +9,7 @@ import customFetch from "@/utils/fetch.util";
 import HtmlContent from "../../../components/HtmlContent/HtmlContent";
 import LoginBtn from "@/components/LoginBtn/LoginBtn";
 import Purchase from "@/components/Purchase/Purchase";
+import ProductEnquiryBtn from "@/components/ProductEnquiryBtn/ProductEnquiryBtn";
 
 // Metadata function to dynamically set the title
 export async function generateMetadata({ params, searchParams }) {
@@ -132,6 +133,11 @@ const ProductDetails = async ({ params, searchParams }) => {
               <h3>Highlights</h3>
               <HtmlContent html={product.highlights} />
             </div>
+            {isAuthenticated ? (
+              <div className={styles.ProductEnquiry}>
+                <ProductEnquiryBtn />
+              </div>
+            ) : null}
           </div>
           <div className={styles.Documents}>
             {documents.documents.length ? (

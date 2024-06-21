@@ -1,0 +1,34 @@
+.ProductEnquiryBtn {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    background-color: #fff7ea;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #C5E8C3;
+    color: #378532;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.ProductEnquiryBtn p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ProductEnquiryBtn p:first-child {
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.ProductEnquiryBtn p:last-child {
+    font-weight: 400;
+}
+
+.ProductEnquiryBtn span,
+.ProductEnquiryBtn a {
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -28,7 +28,7 @@
 
 .OrderDetails h1 {
   margin-top: 0;
-  color: #03956e;
+  color: #378532;
 }
 
 .OrderDetails h2 {
@@ -116,6 +116,6 @@
   padding: 20px;
   margin: 30px 0 20px;
   background-color: #fff7ea;
-  border-top: 5px solid #03956e;
+  border-top: 5px solid #378532;
   font-size: 16px;
 }
