@@ -139,9 +139,9 @@ const ProductEnquiryForm = () => {
                         control="fileInput"
                         label="Document"
                         name="document"
-                        accept=".pdf"
+                        accept=".pdf,.jpg,.png,.docx"
                         setFieldValue={setFieldValue}
-                        fileFormats="PDF"
+                        fileFormats="PDF, JPG, PNG, DOCX"
                         maxFileSize="3MB"
                       />
                     </div>

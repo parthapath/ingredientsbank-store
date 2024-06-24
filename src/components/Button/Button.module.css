@@ -28,16 +28,16 @@
 
 .Secondary {
   color: #378532;
-  background-color: #f7f7f7;
+  background-color: #C5E8C3;
 }
 
 .Secondary:hover {
-  background-color: #e9e9e9;
+  background-color: #C5E8C3;
 }
 
 .Default {
   color: #000;
-  background-color: #f1f1f1;
+  background-color: #9BD798;
 }
 
 .Btn[disabled] {

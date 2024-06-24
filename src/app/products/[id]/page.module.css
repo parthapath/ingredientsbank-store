@@ -2,8 +2,13 @@
   display: flex;
 }
 
+.Product {
+  width: 75%;
+  display: flex;
+}
+
 .ProductImage {
-  width: 30%;
+  width: 400px;
 }
 
 .ProductImage img {
@@ -11,7 +16,7 @@
 }
 
 .ProductDetails {
-  width: 45%;
+  width: calc(100% - 400px);
   padding: 0 20px;
 }
 

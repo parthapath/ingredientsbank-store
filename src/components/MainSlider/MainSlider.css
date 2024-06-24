@@ -37,9 +37,9 @@
 
 .SwiperSlider .swiper-button-prev:hover,
 .SwiperSlider .swiper-button-next:hover {
-  background-color: #3bb77e;
+  background-color: #378532;
   color: #fff;
-  border-color: #3bb77e;
+  border-color: #378532;
 }
 
 .SwiperSlider .swiper-pagination-bullet {
@@ -48,8 +48,8 @@
 }
 
 .SwiperSlider .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #3bb77e;
-  border-color: #3bb77e;
+  background-color: #378532;
+  border-color: #378532;
 }
 
 .SwiperSlider .swiper-pagination-horizontal {

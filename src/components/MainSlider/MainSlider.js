@@ -3,26 +3,29 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
-
-import { api_server } from "@/config";
+import axios from "../../axios";
+import { useErrorBoundary, ErrorBoundary } from "react-error-boundary";
 
 import "./MainSlider.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const MainSlider = () => {
+const Slides = () => {
   const [slides, setSlides] = useState([]);
+
+  const { showBoundary } = useErrorBoundary();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(`${api_server}/slides`);
-        const data = await response.json();
-        setSlides(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      await axios
+        .get("/slides")
+        .then((response) => {
+          setSlides(response.data);
+        })
+        .catch(() => {
+          showBoundary("Failed to fetch slides");
+        });
     };
 
     fetchData();
@@ -30,7 +33,7 @@ const MainSlider = () => {
 
   return (
     <div className="container">
-      {slides ? (
+      {slides.length ? (
         <Swiper
           navigation={true}
           autoplay={{
@@ -59,6 +62,14 @@ const MainSlider = () => {
         </Swiper>
       ) : null}
     </div>
+  );
+};
+
+const MainSlider = () => {
+  return (
+    <ErrorBoundary>
+      <Slides />
+    </ErrorBoundary>
   );
 };
 

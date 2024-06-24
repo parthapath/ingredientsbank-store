@@ -2,6 +2,10 @@
   font-size: 20px;
 }
 
+.MainSlider {
+  height: 440px;
+}
+
 /* Featured Categories */
 .FeaturedCategories {
   margin-top: 60px;
