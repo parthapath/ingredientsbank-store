@@ -1,18 +1,101 @@
 "use client";
-import { useState, useEffect, Suspense, useCallback } from "react";
+import { useState, useEffect, Suspense, useCallback, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
-import ReactPaginate from "react-paginate";
+import dynamic from "next/dynamic";
 import axios from "../../axios";
 
 import { useAuth } from "@/hooks/useAuth";
 
-import { api_server } from "@/config";
-
 import styles from "./page.module.css";
 
 import ProductsList from "@/components/ProductsList/ProductsList";
-import Applications from "../../components/Applications/Applications";
+import Checkbox from "@/components/FormElements/Checkbox/Checkbox";
+
+const ReactPaginate = dynamic(() => import("react-paginate"), { ssr: false });
+
+const useCategories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      axios
+        .get("/categories")
+        .then((response) => {
+          setCategories(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching categories:", error);
+        });
+    };
+    fetchCategories();
+  }, []);
+
+  return categories;
+};
+
+const useApplications = () => {
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    const fetchApplications = async () => {
+      axios
+        .get("/applications")
+        .then((response) => {
+          setApplications(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching applications:", error);
+        });
+    };
+    fetchApplications();
+  }, []);
+
+  return applications;
+};
+
+const useProducts = (page, selectedCategories, selectedApplications) => {
+  const [products, setProducts] = useState([]);
+  const [pageInfo, setPageInfo] = useState({
+    pageCount: 0,
+    recordCount: 0,
+    recordRange: { start: 0, end: 0 },
+  });
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const regionObj = Cookies.get("region");
+      let regionId = 5;
+      if (regionObj) {
+        const region = JSON.parse(regionObj);
+        regionId = region.id;
+      }
+      try {
+        const response = await axios.get(
+          `/products?page=${page}&per-page=20&region=${regionId}&categories=${selectedCategories}&applications=${selectedApplications.join(
+            ","
+          )}`
+        );
+        setProducts(response.data);
+        setPageInfo({
+          pageCount: parseInt(response.headers["x-pagination-page-count"]),
+          recordCount: parseInt(response.headers["x-pagination-total-count"]),
+          recordRange: {
+            start: parseInt(response.headers["x-pagination-start-record"]),
+            end: parseInt(response.headers["x-pagination-end-record"]),
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    if (selectedCategories !== false) {
+      fetchProducts();
+    }
+  }, [selectedCategories, selectedApplications, page]);
+
+  return { products, pageInfo };
+};
 
 const Products = () => {
   const searchParams = useSearchParams();
@@ -22,68 +105,47 @@ const Products = () => {
 
   const selectedPage = searchParams.get("page");
   const queryCategories = searchParams.get("categories");
-
   const queryApplications = searchParams.get("applications");
-  let searchApplications = [];
-  if (queryApplications) {
-    searchApplications = queryApplications.split(",");
-  }
 
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState(false);
-  const [selectedApplications, setSelectedApplications] =
-    useState(searchApplications);
+  const [selectedCategories, setSelectedCategories] = useState(
+    queryCategories || ""
+  );
+  const [selectedApplications, setSelectedApplications] = useState(() =>
+    queryApplications ? queryApplications.split(",") : []
+  );
   const [page, setPage] = useState(selectedPage ? parseInt(selectedPage) : 1);
-  const [pageCount, setPageCount] = useState(0);
-  const [recordCount, setRecordCount] = useState(0);
-  const [startRecord, setStartRecord] = useState(0);
-  const [endRecord, setEndRecord] = useState(0);
+
+  const categories = useCategories();
+  const applications = useApplications();
+  const { products, pageInfo } = useProducts(
+    page,
+    selectedCategories,
+    selectedApplications
+  );
 
   const updateSearchParam = useCallback(
     ({ key, value }) => {
       const params = new URLSearchParams(searchParams);
-
       params.set(key, value);
       return `${pathname}?${params.toString()}`;
     },
     [searchParams, pathname]
   );
 
-  const handleCategoryFilter = (val) => {
+  const handleCategoryFilter = useCallback((val) => {
     setSelectedCategories(val);
-  };
+  }, []);
 
-  const clearSelectedCategories = () => {
+  const clearSelectedCategories = useCallback(() => {
     setSelectedCategories("");
-  };
+  }, []);
 
-  const handleApplicationFilter = (val) => {
-    if (selectedApplications.includes(val)) {
-      setSelectedApplications(
-        selectedApplications.filter((value) => value !== val)
-      );
-    } else {
-      setSelectedApplications([...selectedApplications, val]);
-    }
-  };
-
-  useEffect(() => {
-    setSelectedCategories(queryCategories);
-  }, [queryCategories]);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch(`${api_server}/categories`);
-        const data = await response.json();
-        setCategories(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchCategories();
+  const handleApplicationFilter = useCallback((val) => {
+    setSelectedApplications((prev) =>
+      prev.includes(val)
+        ? prev.filter((value) => value !== val)
+        : [...prev, val]
+    );
   }, []);
 
   useEffect(() => {
@@ -94,47 +156,50 @@ const Products = () => {
 
   useEffect(() => {
     router.push(
-      updateSearchParam({ key: "applications", value: selectedApplications })
+      updateSearchParam({
+        key: "applications",
+        value: selectedApplications.join(","),
+      })
     );
   }, [router, selectedApplications, updateSearchParam]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const regionObj = Cookies.get("region");
-      let regionId = 5;
-      if (regionObj) {
-        const region = JSON.parse(regionObj);
-        regionId = region.id;
-      }
-      axios
-        .get(
-          `/products?page=${page}&per-page=20&region=${regionId}&categories=${selectedCategories}&applications=${selectedApplications}`
-        )
-        .then((response) => {
-          setProducts(response.data);
-          setPageCount(parseInt(response.headers["x-pagination-page-count"]));
-          setRecordCount(
-            parseInt(response.headers["x-pagination-total-count"])
-          );
-          setStartRecord(
-            parseInt(response.headers["x-pagination-start-record"])
-          );
-          setEndRecord(parseInt(response.headers["x-pagination-end-record"]));
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    };
-    if (selectedCategories !== false) {
-      fetchProducts();
-    }
-  }, [selectedCategories, selectedApplications, page]);
+    const handlePopState = () => {
+      const newParams = new URLSearchParams(window.location.search);
+      const newPage = newParams.get("page");
+      const newCategories = newParams.get("categories");
+      const newApplications = newParams.get("applications");
 
-  const handlePageClick = (e) => {
-    setPage(e.selected + 1);
-    router.push(updateSearchParam({ key: "page", value: e.selected + 1 }));
-    window.scrollTo(0, 0);
-  };
+      setPage(newPage ? parseInt(newPage) : 1);
+      setSelectedCategories(newCategories || "");
+      setSelectedApplications(
+        newApplications ? newApplications.split(",") : []
+      );
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
+  const handlePageClick = useCallback(
+    (e) => {
+      const newPage = e.selected + 1;
+      setPage(newPage);
+      router.push(updateSearchParam({ key: "page", value: newPage }));
+      window.scrollTo(0, 0);
+    },
+    [router, updateSearchParam]
+  );
+
+  const memoizedProductsList = useMemo(
+    () => (
+      <ProductsList products={products} isAuthenticated={isAuthenticated} />
+    ),
+    [products, isAuthenticated]
+  );
 
   return (
     <>
@@ -152,68 +217,65 @@ const Products = () => {
                   >
                     All
                   </li>
-                  {categories.map((item, i) => {
-                    return (
-                      <li
-                        className={
-                          selectedCategories === item.name
-                            ? styles.Active
-                            : null
-                        }
-                        onClick={() => handleCategoryFilter(item.name)}
-                        key={i}
-                      >
-                        {item.name}
-                      </li>
-                    );
-                  })}
+                  {categories.length
+                    ? categories.map((item, i) => {
+                        return (
+                          <li
+                            className={
+                              selectedCategories === item.name
+                                ? styles.Active
+                                : null
+                            }
+                            onClick={() => handleCategoryFilter(item.name)}
+                            key={i}
+                          >
+                            {item.name}
+                          </li>
+                        );
+                      })
+                    : null}
                 </ul>
               </div>
               <div className={styles.Filter}>
                 <h4>Applications</h4>
-                <Applications
-                  handleApplicationFilter={handleApplicationFilter}
-                  selectedApplications={selectedApplications}
-                />
+                <ul>
+                  {applications.length
+                    ? applications.map((item, i) => {
+                        return (
+                          <li key={i}>
+                            <Checkbox
+                              checked={
+                                selectedApplications.includes(item.name)
+                                  ? true
+                                  : false
+                              }
+                              name={item.id}
+                              change={() => handleApplicationFilter(item.name)}
+                              label={item.name}
+                            />
+                          </li>
+                        );
+                      })
+                    : null}
+                </ul>
               </div>
             </div>
             <div className={styles.ProductsWrapper}>
-              {/* <div className={styles.Overview}>
-              <h1>Vegetable / Fruits Spray Dried Powder</h1>
-              <div className={styles.CategoryDesc}>
-                <p>
-                  Vegetable and fruit spray-dried powder is produced through
-                  spray drying, preserving nutrients while extending shelf life
-                  by removing moisture and inhibiting microbial growth. These
-                  powders are versatile, used in soups, sauces, baked goods,
-                  beverages, supplements, and pharmaceuticals. Though flavor and
-                  aroma may slightly diminish, this is often compensated for
-                  with natural flavorings. Convenient and lightweight, they
-                  don&#39;t require refrigeration, simplifying storage and
-                  transportation. They offer a practical, nutritious option for
-                  food manufacturers and consumers seeking longer-lasting,
-                  easy-to-use ingredients with the benefits of fresh produce.
-                </p>
-              </div>
-            </div> */}
               <div className={styles.Products}>
                 <div className={styles.NoOfProducts}>
-                  {recordCount > 0 ? (
+                  {pageInfo.recordCount > 0 ? (
                     <span>
-                      Showing {startRecord} - {endRecord} of {recordCount}
+                      Showing {pageInfo.recordRange.start} -{" "}
+                      {pageInfo.recordRange.end} of {pageInfo.recordCount}
                     </span>
                   ) : (
                     <span>No Products found</span>
                   )}
                 </div>
-
                 <div className={styles.ProductsList}>
-                  <ProductsList
-                    products={products}
-                    isAuthenticated={isAuthenticated}
-                  />
+                  {memoizedProductsList}
                 </div>
-                {recordCount > 20 ? (
+                {pageInfo.recordCount > 20 && (
                   <div className={styles.Pagination}>
                     <ReactPaginate
                       nextLabel="NEXT"
@@ -221,7 +283,7 @@ const Products = () => {
                       pageRangeDisplayed={3}
                       marginPagesDisplayed={2}
                       forcePage={page - 1}
-                      pageCount={pageCount}
+                      pageCount={pageInfo.pageCount}
                       previousLabel="PREVIOUS"
                       pageClassName="page-item"
                       pageLinkClassName="page-link"
@@ -237,7 +299,7 @@ const Products = () => {
                       renderOnZeroPageCount={null}
                     />
                   </div>
-                ) : null}
+                )}
               </div>
             </div>
           </div>
@@ -247,12 +309,10 @@ const Products = () => {
   );
 };
 
-const ProductsWithSuspense = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Products />
-    </Suspense>
-  );
-};
+const ProductsWithSuspense = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Products />
+  </Suspense>
+);
 
 export default ProductsWithSuspense;

@@ -1,16 +1,16 @@
 .Footer {
-  padding: 50px 0;
+  padding: 50px 0 20px;
   background-color: #378532;
   color: #fff;
 }
 
 .Footer .ContentWrapper {
-  margin: 0 -40px;
+  margin: 0 -10px;
   display: flex;
 }
 
 .Footer .ContentWrapper > div {
-  padding: 0 40px;
+  padding: 0 1px;
   flex-grow: 1;
 }
 
@@ -26,23 +26,6 @@
   margin-top: 20px;
 }
 
-.About .Terms {
-  margin-bottom: 8px;
-}
-
-.About .Terms ul {
-  margin: 0 -20px;
-  display: flex;
-}
-
-.About .Terms ul li {
-  padding: 0 20px;
-}
-
-.Footer .Terms ul li + li {
-  border-left: 1px solid #fff;
-}
-
 .Footer .Menu ul li + li {
   margin-top: 20px;
 }
@@ -56,7 +39,65 @@
 }
 
 .Contact div span {
-  width: 200px;
-  display: inline-block;
+  display: block;
   font-weight: 600;
+}
+
+.Contact .ContactNo span + span {
+  margin-top: 5px;
+}
+
+.Terms {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.Terms ul {
+  margin: 0 -20px;
+  display: flex;
+}
+
+.Terms ul li {
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.Terms ul li + li::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.Terms ul li a {
+  margin-left: 20px;
+}
+
+.SocialMedia {
+  margin-top: 30px;
+}
+
+.SocialMedia ul {
+  display: flex;
+}
+
+.SocialMedia ul li {
+  margin: 0 10px;
+}
+
+.SocialMedia ul li svg {
+  font-size: 20px;
+}
+
+.NewsLetter p {
+  margin-bottom: 0;
+}
+
+.FormWrapper form {
+  display: flex;
+  flex-direction: column;
 }

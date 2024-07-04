@@ -1,0 +1,15 @@
+
+.NewsLetterForm .FormBody > div {
+  width: 100%;
+  min-height: 80px;
+  padding-top: 0;
+}
+
+.NewsLetterForm .FormBody input {
+  background-color: #C5E8C3;
+  border: 0;
+}
+
+.NewsLetterForm .FormActions button {
+  background-color: #fff;
+}

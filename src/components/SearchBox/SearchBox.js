@@ -2,12 +2,11 @@
 import React, { useState, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
+import axios from "../../axios";
 
 import { FiSearch } from "react-icons/fi";
 
 import useOutsideClick from "@/utils/OutsideClick.util";
-
-import { api_server } from "@/config";
 
 import styles from "./SearchBox.module.css";
 
@@ -40,16 +39,15 @@ const SearchBox = (props) => {
   useEffect(() => {
     if (keyword.length > 2 && !searchResultClicked) {
       const search = async () => {
-        try {
-          const response = await fetch(
-            `${api_server}/products/search?region=${region}&keyword=${keyword}`
-          );
-          const data = await response.json();
-          setSearchResults(data);
-          setShowResults(true);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+        axios
+          .get(`/products/search?region=${region}&keyword=${keyword}`)
+          .then((response) => {
+            setSearchResults(response.data);
+            setShowResults(true);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
       };
       search();
     } else {
@@ -133,7 +131,7 @@ const SearchBox = (props) => {
 
 const SearchBoxWithSuspense = () => {
   return (
-    <Suspense fallback={<div className={styles.Fallback}>Loading...</div>}>
+    <Suspense>
       <SearchBox />
     </Suspense>
   );

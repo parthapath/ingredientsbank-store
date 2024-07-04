@@ -1,12 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Head from "next/head";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-
-import { api_server } from "@/config";
 
 import styles from "./page.module.css";
 
@@ -75,7 +72,7 @@ const SignUp = () => {
   const onSubmit = (values) => {
     setIsLoading(true);
     axios
-      .post(`${api_server}/users`, values)
+      .post("/users", values)
       .then(() => {
         setSuccess(true);
         setEmail(values.email);

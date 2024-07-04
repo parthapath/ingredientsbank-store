@@ -32,7 +32,7 @@ const Slides = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       {slides.length ? (
         <Swiper
           navigation={true}

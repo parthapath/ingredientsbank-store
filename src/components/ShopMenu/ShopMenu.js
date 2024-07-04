@@ -1,23 +1,23 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import axios from "../../axios";
 
 import { IoCloseOutline } from "react-icons/io5";
-
-import { api_server } from "@/config";
 
 import styles from "./ShopMenu.module.css";
 
 const ShopMenu = (props) => {
   const [categories, setCategories] = useState([]);
   const fetchData = useCallback(async () => {
-    try {
-      const response = await fetch(`${api_server}/categories`);
-      const data = await response.json();
-      setCategories(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    axios
+      .get("/categories")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -46,18 +46,20 @@ const ShopMenu = (props) => {
         </div>
         <div className={styles.Categories}>
           <ul>
-            {categories.map((item, i) => {
-              return (
-                <li key={i}>
-                  <Link
-                    href={`/products?categories=${item.name}`}
-                    key={item.id}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
+            {categories.length
+              ? categories.map((item, i) => {
+                  return (
+                    <li key={i}>
+                      <Link
+                        href={`/products?categories=${item.name}`}
+                        key={item.id}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       </div>

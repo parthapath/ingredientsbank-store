@@ -1,6 +1,6 @@
 .Header {
   width: 100%;
-  box-shadow: 0px 3px 6px #0000000f;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
   position: fixed;
   z-index: 99;
   background-color: #fff;
@@ -40,46 +40,8 @@
   margin-left: 20px;
 }
 
-.HeaderActions .SignInUp a {
-  margin-left: 16px;
-}
-
-.MainNav {
-  display: flex;
-  align-items: center;
-}
-
-.MainNav ul {
-  display: flex;
-}
-
-.MainNav ul li {
-  margin: 0 15px;
-  list-style-type: none;
-  display: flex;
-  color: #222;
-}
-
-.MainNav ul li a {
-  display: flex;
-  align-items: center;
-  line-height: 24px;
-}
-
-.MainNav ul li svg {
-  width: 22px;
-  height: 22px;
-  margin-right: 5px;
-}
-
-.MainNav .ShopBtn span {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.MainNav .ShopBtn.Active span {
-  color: #378532;
+.HeaderActions .SignInUp span {
+  margin: 0 5px;
 }
 
 .MyAccount {

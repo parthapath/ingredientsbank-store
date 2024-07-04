@@ -1,0 +1,63 @@
+.MainMenu {
+  width: 100%;
+  margin-top: 85px;
+  display: flex;
+  align-items: center;
+  background-color: #378532;
+  position: fixed;
+  z-index: 98;
+}
+
+.Container {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MainMenu ul {
+  margin: 0 -25px;
+  display: flex;
+}
+
+.MainMenu ul li {
+  margin: 0 25px;
+  list-style-type: none;
+  display: flex;
+  color: #222;
+}
+
+.MainMenu ul li a {
+  display: flex;
+  align-items: center;
+  line-height: 24px;
+  color: #fff;
+}
+
+.MainMenu ul li svg {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+}
+
+.MainMenu .ShopBtn span {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.MainMenu .ContactNo {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+
+}
+
+.MainMenu .ContactNo svg {
+  margin: 2px 5px 0;
+}
+
+/* .MainMenu .ShopBtn.Active span {
+  color: #378532;
+} */

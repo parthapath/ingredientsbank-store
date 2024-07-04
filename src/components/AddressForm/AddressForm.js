@@ -4,13 +4,10 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "../../axios";
 
-import { api_server } from "@/config";
-
 import styles from "./AddressForm.module.css";
 
 import FormikControl from "@/components/FormikControl/FormikControl";
 import Button from "@/components/Button/Button";
-import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
 const AddressForm = (props) => {
   const { address } = props;
@@ -50,7 +47,7 @@ const AddressForm = (props) => {
   const onSubmit = (values) => {
     if (!address) {
       axios
-        .post(`${api_server}/addressess`, values)
+        .post("/addressess", values)
         .then(() => {
           setFormId(formId + 1);
           props.fetchAddressess();
@@ -61,7 +58,7 @@ const AddressForm = (props) => {
         });
     } else {
       axios
-        .put(`${api_server}/addressess/${address.id}`, values)
+        .put(`/addressess/${address.id}`, values)
         .then(() => {
           props.fetchAddressess();
           props.handleAddressForm();

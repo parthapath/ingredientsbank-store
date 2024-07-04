@@ -44,7 +44,7 @@ ul li {
 }
 
 .page-content {
-  padding-top: 85px;
+  padding-top: 129px;
 }
 
 /* Form */
@@ -238,7 +238,7 @@ table tbody tr button {
   line-height: 1.25;
   color: #378532;
   background-color: #fff;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #eee;
   cursor: default;
 }
 

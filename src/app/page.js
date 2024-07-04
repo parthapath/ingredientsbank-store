@@ -2,6 +2,10 @@ import Link from "next/link";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Image from "next/image";
 import { Suspense } from "react";
+import { FaTags } from "react-icons/fa6";
+import { BiSolidMessageSquareEdit } from "react-icons/bi";
+import { MdLocalShipping } from "react-icons/md";
+import { PiCertificateFill } from "react-icons/pi";
 
 import styles from "./page.module.css";
 
@@ -45,7 +49,10 @@ const FeaturedCategoriesSection = async () => {
   return (
     <div className={styles.FeaturedCategories}>
       <div className="container">
-        <h2>Featured Categories</h2>
+        <div className={styles.SubTitle}>
+          <h2>Featured Categories</h2>
+          <Link href="">View All</Link>
+        </div>
         <div className={styles.Categories}>
           {categories.map((item) => {
             return (
@@ -85,11 +92,16 @@ const BestSellingSection = async ({ isAuthenticated }) => {
   return (
     <div className={styles.BestSellers}>
       <div className="container">
-        <h2>Best Selling Products</h2>
-        <ProductsList
-          products={bestSelling}
-          isAuthenticated={isAuthenticated}
-        />
+        <div className={styles.SubTitle}>
+          <h2>Best Selling Products</h2>
+          <Link href="">View All</Link>
+        </div>
+        <div className={styles.ListItems}>
+          <ProductsList
+            products={bestSelling}
+            isAuthenticated={isAuthenticated}
+          />
+        </div>
       </div>
     </div>
   );
@@ -100,11 +112,16 @@ const NewArrivalsSection = async ({ isAuthenticated }) => {
   return (
     <div className={styles.NewProducts}>
       <div className="container">
-        <h2>New Arrivals</h2>
-        <ProductsList
-          products={newArrivals}
-          isAuthenticated={isAuthenticated}
-        />
+        <div className={styles.SubTitle}>
+          <h2>New Arrivals</h2>
+          <Link href="">View All</Link>
+        </div>
+        <div className={styles.ListItems}>
+          <ProductsList
+            products={newArrivals}
+            isAuthenticated={isAuthenticated}
+          />
+        </div>
       </div>
     </div>
   );
@@ -140,21 +157,62 @@ const Home = async () => {
       </ErrorBoundary>
 
       <div className={styles.WhyUs}>
-        <div className={["container", styles.Container].join(" ")}>
-          <h2>Why Ingredients Bank?</h2>
-          <p>
-            Ingredients Bank is the premier e-commerce marketplace for bulk and
-            wholesale ingredients. With B2B transactions increasingly moving
-            online, we are at the forefront of the digital revolution thanks to
-            our cutting-edge technology and a fearless focus on innovation. As
-            we help build a new kind of supply chain, we firmly believe that our
-            continued ability to lead depends on the growth of the businesses
-            who buy and sell on Ingredients Bank. That&#39;s why our main
-            priority at all times is to create maximum value for them. It is our
-            conviction that when all of us are at our best, today&#39;s
-            challenges in ingredient sourcing can serve as powerful launch pads
-            toward a brighter future.
-          </p>
+        <div className="container">
+          {/* <div className={styles.SubTitle}>
+            <h2>Why us</h2>
+          </div> */}
+          <div className={styles.Overview}>
+            <div>
+              <div>
+                <FaTags />
+              </div>
+              <div>Best Price</div>
+            </div>
+            <div>
+              <div>
+                <BiSolidMessageSquareEdit />
+              </div>
+              <div>Custom Product</div>
+            </div>
+            <div>
+              <div>
+                <MdLocalShipping />
+              </div>
+              <div>Easy Shipping & Returns</div>
+            </div>
+            <div>
+              <div>
+                <PiCertificateFill />
+              </div>
+              <div>Assured Quality</div>
+            </div>
+          </div>
+          <div className={styles.Content}>
+            <div>
+              <img src="/assets/imgs/why-us.png" />
+            </div>
+            <div>
+              <h2>Why Ingredients Bank?</h2>
+              <p>
+                Ingredients Bank is the premier e-commerce marketplace for bulk
+                and wholesale ingredients. With B2B transactions increasingly
+                moving online, we are at the forefront of the digital revolution
+                thanks to our cutting-edge technology and a fearless focus on
+                innovation. As we help build a new kind of supply chain, we
+                firmly believe that our continued ability to lead depends on the
+                growth of the businesses who buy and sell on Ingredients Bank.
+                That&#39;s why our main priority at all times is to create
+                maximum value for them. It is our conviction that when all of us
+                are at our best, today&#39;s challenges in ingredient sourcing
+                can serve as powerful launch pads toward a brighter future.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.Cetificates}>
+        <div className="container">
+          <img src="/assets/imgs/certifications.png" />
         </div>
       </div>
     </div>

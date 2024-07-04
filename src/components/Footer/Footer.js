@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaTwitter, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 import styles from "./Footer.module.css";
+
+import NewsLetterForm from "../NewsletterForm/NewsletterForm";
 
 const Footer = () => {
   return (
@@ -10,65 +13,103 @@ const Footer = () => {
       <div className="container">
         <div className={styles.ContentWrapper}>
           <div className={styles.About}>
-            <div className={styles.Terms}>
+            <div className={styles.Logo}>
+              <Link href="/">
+                <Image
+                  src="/assets/imgs/logo.png"
+                  width={234}
+                  height={70}
+                  alt="Ingredients Bank"
+                  loading="lazy"
+                />
+              </Link>
+            </div>
+            <div className={styles.SocialMedia}>
               <ul>
                 <li>
-                  <Link href="/">Terms and Conditions</Link>
+                  <Link href="#">
+                    <FaTwitter />
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Privacy Policy</Link>
+                  <Link href="#">
+                    <FaFacebook />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <FaLinkedin />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <FaYoutube />
+                  </Link>
                 </li>
               </ul>
             </div>
-            <p>
-             Ingredients Bank. © 2024 All Rights Reserved.
-            </p>
           </div>
           <div className={styles.Menu}>
-            <h4>Company</h4>
+            <h4>About</h4>
             <ul>
               <li>
-                <Link href="/products?categories=">Shop</Link>
-              </li>
-              {/* <li>
-                <Link href="/">About Us</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/">FAQs</Link>
-              </li> */}
+                <Link href="/products?categories=">Find Ingredients</Link>
+              </li>
+              <li>
+                <Link href="/">Blogs</Link>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.Menu}>
+            <h4>Help</h4>
+            <ul>
+              <li>
+                <Link href="/contact-us">Contact Us</Link>
+              </li>
               <li>
                 <Link href="/">Shipping & Returns</Link>
               </li>
               <li>
-                <Link href="/contact-us">Contact Us</Link>
+                <Link href="/">FAQs</Link>
               </li>
             </ul>
           </div>
           <div className={styles.Contact}>
             <h4>Contact</h4>
-            {/* <div>
-              <span>India</span> #9E/17, Peenya Industrial Area, 2nd Phase,
-              Chokkasandra, Bengaluru - 560058
-            </div> */}
             <div>
-              <span>United Kingdom</span> 5 Churchill Court, Ground Floor, 58
-              Station Road, North Harrow, Middlesex, HA2 7SA
+              <span>Phone</span>
+              <div className={styles.ContactNo}>
+                <span>+971-553599144</span>
+                <span>+1-862 367-5128</span>
+              </div>
             </div>
             <div>
-              <span>United States of America</span> #15910, Euclid Ave, Chino,
-              CA 91708
-            </div>
-            <div>
-              <span>United Arab Emirates</span> Warehouse CB-02, Street 418 Near
-              Roundabout 8, Jafza Dubai United Arab Emirates.
-            </div>
-            <div>
-              <span>Phone</span> +971-553599144 / +1-862 367-5128
-            </div>
-            <div>
-              <span>Email</span> support@ingredientsbank.com
+              <span>Email</span> <div>support@ingredientsbank.com</div>
             </div>
           </div>
+          <div className={styles.NewsLetter}>
+            <h4>Subscribe to our Newsletter</h4>
+            <p>For product announcements and offers</p>
+            <div className={styles.FormWrapper}>
+              <NewsLetterForm />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className={styles.Terms}>
+          <ul>
+            <li>Ingredients Bank. © 2024 All Rights Reserved</li>
+            <li>
+              <Link href="/">Terms and Conditions</Link>
+            </li>
+            <li>
+              <Link href="/">Privacy Policy</Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

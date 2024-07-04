@@ -14,32 +14,17 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "./Header.module.css";
 
 import SearchBox from "../SearchBox/SearchBox";
-import Button from "../Button/Button";
-import ShopMenu from "../ShopMenu/ShopMenu";
 import RegionSelector from "../RegionSelector/RegionSelector";
 import axios from "axios";
 
 const Header = () => {
-  const [showShopMenu, setShowShopMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
   const isAuthenticated = useAuth();
 
-  const refShopMenu = useRef(null);
   const refAccountMenu = useRef(null);
-
-  /* Shop Menu */
-  const handleShopMenu = () => {
-    setShowShopMenu(!showShopMenu);
-  };
-
-  const hideShopMenu = () => {
-    setShowShopMenu(false);
-  };
-
-  useOutsideClick(refShopMenu, hideShopMenu);
 
   /* Account Dropdown */
   const styleAccountMenu = {
@@ -89,33 +74,9 @@ const Header = () => {
             <SearchBox />
           </div>
           <div className={styles.HeaderRight}>
-            <div className={styles.MainNav}>
-              <ul>
-                <li
-                  className={[
-                    styles.ShopBtn,
-                    showShopMenu ? styles["Active"] : "",
-                  ].join(" ")}
-                  onClick={() => handleShopMenu()}
-                  ref={refShopMenu}
-                >
-                  <span>
-                    <RiShoppingBag3Line /> Shop
-                  </span>
-                  <ShopMenu
-                    show={showShopMenu}
-                    handleShopMenu={handleShopMenu}
-                    hideShopMenu={hideShopMenu}
-                  />
-                </li>
-                {/* <li>
-                  <Link href="/shop">About Us</Link>
-                </li> */}
-              </ul>
-            </div>
             <div className={styles.HeaderActions}>
               <div className={styles.HeaderAction}>
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense>
                   <RegionSelector />
                 </Suspense>
               </div>
@@ -123,21 +84,14 @@ const Header = () => {
                 <div
                   className={[styles.HeaderAction, styles.SignInUp].join(" ")}
                 >
-                  <Button
-                    type="button"
-                    btnType="Secondary"
-                    clicked={() => dispatch(openSignInModal(true))}
+                  <Link
+                    href="#"
+                    onClick={() => dispatch(openSignInModal(true))}
                   >
                     Sign In
-                  </Button>
-                  <Button
-                    type="button"
-                    btnType="Primary"
-                    elementType="link"
-                    link="/sign-up"
-                  >
-                    Sign Up
-                  </Button>
+                  </Link>
+                  <span>or</span>
+                  <Link href="/sign-up">Sign Up</Link>
                 </div>
               ) : (
                 <div
