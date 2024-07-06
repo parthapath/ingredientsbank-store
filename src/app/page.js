@@ -51,7 +51,7 @@ const FeaturedCategoriesSection = async () => {
       <div className="container">
         <div className={styles.SubTitle}>
           <h2>Featured Categories</h2>
-          <Link href="">View All</Link>
+          <Link href="/products?categories=">View All</Link>
         </div>
         <div className={styles.Categories}>
           {categories.map((item) => {
@@ -94,7 +94,7 @@ const BestSellingSection = async ({ isAuthenticated }) => {
       <div className="container">
         <div className={styles.SubTitle}>
           <h2>Best Selling Products</h2>
-          <Link href="">View All</Link>
+          <Link href="/products?categories=">View All</Link>
         </div>
         <div className={styles.ListItems}>
           <ProductsList
@@ -114,7 +114,7 @@ const NewArrivalsSection = async ({ isAuthenticated }) => {
       <div className="container">
         <div className={styles.SubTitle}>
           <h2>New Arrivals</h2>
-          <Link href="">View All</Link>
+          <Link href="/products?categories=">View All</Link>
         </div>
         <div className={styles.ListItems}>
           <ProductsList

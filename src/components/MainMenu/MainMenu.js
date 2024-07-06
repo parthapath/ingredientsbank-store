@@ -52,7 +52,7 @@ const MainMenu = () => {
             <Link href="#">About Us</Link>
           </li>
           <li>
-            <Link href="#">Contact Us</Link>
+            <Link href="/contact-us">Contact Us</Link>
           </li>
         </ul>
         <div className={styles.ContactNo}>

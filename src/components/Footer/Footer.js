@@ -58,9 +58,6 @@ const Footer = () => {
               <li>
                 <Link href="/products?categories=">Find Ingredients</Link>
               </li>
-              <li>
-                <Link href="/">Blogs</Link>
-              </li>
             </ul>
           </div>
           <div className={styles.Menu}>
@@ -70,10 +67,10 @@ const Footer = () => {
                 <Link href="/contact-us">Contact Us</Link>
               </li>
               <li>
-                <Link href="/">Shipping & Returns</Link>
+                <Link href="/shipping-and-returns">Shipping & Returns</Link>
               </li>
               <li>
-                <Link href="/">FAQs</Link>
+                <Link href="/faq">FAQs</Link>
               </li>
             </ul>
           </div>
@@ -104,10 +101,10 @@ const Footer = () => {
           <ul>
             <li>Ingredients Bank. © 2024 All Rights Reserved</li>
             <li>
-              <Link href="/">Terms and Conditions</Link>
+              <Link href="/terms-and-conditions">Terms and Conditions</Link>
             </li>
             <li>
-              <Link href="/">Privacy Policy</Link>
+              <Link href="/privacy-policy">Privacy Policy</Link>
             </li>
           </ul>
         </div>
