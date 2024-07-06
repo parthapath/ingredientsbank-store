@@ -52,7 +52,7 @@ const shippingAndReturns = async () => {
           </li>
           <li>
             You can track your order using the tracking number provided on the
-            carrier's website.
+            carrier&apos;s website.
           </li>
         </ul>
         <h4>Shipping Restrictions</h4>
@@ -130,7 +130,7 @@ const shippingAndReturns = async () => {
           <li>
             If you receive a damaged or defective item, please contact us
             immediately at <a rel="noreferrer">support@ingredientsbank.com</a>{" "}
-            with your order number and details of the product's condition.
+            with your order number and details of the product&apos;s condition.
           </li>
           <li>
             We will provide instructions for returning the damaged or defective

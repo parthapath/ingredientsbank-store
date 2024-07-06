@@ -146,7 +146,7 @@ const privacyPolicy = async () => {
           sites. We encourage you to review the privacy policies of any
           third-party sites you visit.
         </p>
-        <h3>Children's Privacy</h3>
+        <h3>Children&apos;s Privacy</h3>
         <p>
           Our website is not intended for children under the age of 13. We do
           not knowingly collect personal information from children. If we become

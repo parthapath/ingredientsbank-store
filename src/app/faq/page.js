@@ -6,7 +6,7 @@ const Faq = () => {
       <div className="container">
         <h2>Frequently Asked Questions (FAQ)</h2>
         <p>
-          Welcome to the Ingredients Bank FAQ page! Here, you'll find answers to
+          Welcome to the Ingredients Bank FAQ page! Here, you&apos;ll find answers to
           some of the most commonly asked questions about our products,
           services, and policies. If you have any additional questions, please
           feel free to contact us.
@@ -63,7 +63,7 @@ const Faq = () => {
         <p>
           <strong>Q: How can I track my order?</strong> A: Once your order is
           shipped, you will receive an email with a tracking number. You can use
-          this number to track your order on the carrier's website.
+          this number to track your order on the carrier&apos;s website.
         </p>
         <h3>Returns and Refunds</h3>
         <p>
@@ -113,20 +113,20 @@ const Faq = () => {
         <h3>Account and Website</h3>
         <p>
           <strong>Q: How do I create an account?</strong> A: To create an
-          account, click on the "Sign Up" or "Create Account" link at the top of
+          account, click on the &quot;Sign Up&quot; or &quot;Create Account&quot; link at the top of
           our website and fill in the required information. You will receive a
           confirmation email once your account is created.
         </p>
         <p>
           <strong>Q: What should I do if I forget my password?</strong> A: If
-          you forget your password, click on the "Forgot Password" link on the
+          you forget your password, click on the &quot;Forgot Password&quot; link on the
           login page and follow the instructions to reset your password. You
           will receive an email with a link to create a new password.
         </p>
         <p>
           <strong>Q: How do I update my account information?</strong> A: To
           update your account information, log in to your account and navigate
-          to the "Account Settings" or "Profile" section. Here, you can update
+          to the &quot;Account Settings&quot; or &quot;Profile&quot; section. Here, you can update
           your contact details, shipping address, and other preferences.
         </p>
         <h3>Privacy and Security</h3>

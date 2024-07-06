@@ -189,7 +189,13 @@ const Home = async () => {
           </div>
           <div className={styles.Content}>
             <div>
-              <img src="/assets/imgs/why-us.png" />
+              <Image
+                src="/assets/imgs/why-us.png"
+                width={294}
+                height={309}
+                alt="About Us"
+                loading="lazy"
+              />
             </div>
             <div>
               <h2>Why Ingredients Bank?</h2>
@@ -212,7 +218,13 @@ const Home = async () => {
       </div>
       <div className={styles.Cetificates}>
         <div className="container">
-          <img src="/assets/imgs/certifications.png" />
+          <img
+            src="/assets/imgs/certifications.png"
+            width={1460}
+            height={52}
+            alt="Certificates"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
