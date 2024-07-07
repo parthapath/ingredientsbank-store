@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { Formik, Form } from "formik";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "../../axios";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
 import { api_server } from "@/config";
@@ -45,27 +47,27 @@ const SignInForm = () => {
   const onSubmit = (values) => {
     setIsLoading(true);
     axios
-      .post(`${api_server}/users/login`, values)
+      .post("/users/login", values)
       .then((response) => {
+        const token = response.data.access_token;
+        const jwtToken = jwtDecode(token);
+        const expiresAt = new Date(jwtToken.exp * 1000);
+
+        Cookies.set("token", token, {
+          httpOnly: false,
+          secure: true,
+          expires: expiresAt,
+          sameSite: "strict",
+          path: "/",
+        });
         localStorage.setItem("name", response.data.name);
-        const token = {
-          token: response.data.access_token,
-        };
-        axios
-          .post("/api/auth/sign-in", token)
-          .then(() => {
-            dispatch(openSignInModal(false));
-            window.location.reload();
-          })
-          .catch((error) => {
-            setError(error.response.data);
-          })
-          .finally(() => {
-            setIsLoading(false);
-          });
+        dispatch(openSignInModal(false));
+        window.location.reload();
       })
       .catch((error) => {
         setError(error.response.data);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -85,7 +87,7 @@ const SignInForm = () => {
   const showResetForm = (val) => {
     setFormId(formId + 1);
     setShowForgotPassword(val);
-    setError(null)
+    setError(null);
   };
 
   const initialValuesReset = {

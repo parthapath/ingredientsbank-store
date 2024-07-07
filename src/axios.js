@@ -5,6 +5,7 @@ import { api_server } from "@/config";
 const instance = axios.create({
   baseURL: api_server,
   timeout: 100000,
+  withCredentials: true,
 });
 
 instance.interceptors.request.use(

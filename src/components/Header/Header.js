@@ -3,19 +3,21 @@ import React, { useRef, useState, useEffect, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
-import { RiShoppingBag3Line } from "react-icons/ri";
+import Cookies from "js-cookie";
+import axios from "../../axios";
+import { jwtDecode } from "jwt-decode";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
 import { openSignInModal } from "@/redux/features/SignIn/SignInSlice";
 
 import useOutsideClick from "@/utils/OutsideClick.util";
 import { useAuth } from "@/hooks/useAuth";
+import { refreshAccessToken } from "@/services/authSevice";
 
 import styles from "./Header.module.css";
 
 import SearchBox from "../SearchBox/SearchBox";
 import RegionSelector from "../RegionSelector/RegionSelector";
-import axios from "axios";
 
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
@@ -44,8 +46,11 @@ const Header = () => {
   useOutsideClick(refAccountMenu, hideAccountMenu);
 
   const handleLogout = async () => {
-    await axios.post("/api/auth/logout");
-    window.location.reload();
+    axios.post("/users/logout").then(() => {
+      Cookies.remove("token");
+      localStorage.removeItem("name");
+      window.location.reload();
+    });
   };
 
   useEffect(() => {
@@ -53,6 +58,30 @@ const Header = () => {
       const storedName = localStorage.getItem("name");
       setName(storedName || "");
     }
+  }, []);
+
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = Cookies.get("token");
+      if (!token) return;
+
+      const jwtToken = jwtDecode(token);
+      const expiresIn = jwtToken.exp - Math.floor(Date.now() / 1000);
+
+      intervalRef.current = setInterval(() => {
+        refreshAccessToken();
+      }, (expiresIn - 60) * 1000);
+    };
+
+    checkAuth();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   return (
