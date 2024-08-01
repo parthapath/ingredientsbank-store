@@ -95,7 +95,7 @@ const SearchBox = (props) => {
               name="keyword"
               value={keyword}
               handleInput={handleSearchInput}
-              placeholder="Search for products..."
+              placeholder="Search products..."
               onClick={() => handleInputClick()}
             />
             <div

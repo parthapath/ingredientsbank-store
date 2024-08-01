@@ -56,7 +56,7 @@ const Regions = () => {
           return (
             <motion.div
               key={region.id}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               className={[styles.Region, styles.Active].join(" ")}
               onClick={() => handleSelectRegion(region)}
             >

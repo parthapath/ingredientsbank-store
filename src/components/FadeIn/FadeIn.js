@@ -17,7 +17,7 @@ export default function FadeIn({ children, delay }) {
     <motion.div
       ref={ref}
       variants={{
-        hidden: { opacity: 0, scale: 0.95 },
+        hidden: { opacity: 0, scale: 0.85 },
         visible: { opacity: 1, scale: 1 },
       }}
       transition={{

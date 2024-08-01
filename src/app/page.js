@@ -23,8 +23,6 @@ export const metadata = {
   title: process.env.APP_NAME,
 };
 
-const isAuthenticated = checkAuth();
-
 const fetchCategories = async () => {
   const response = await customFetch("/categories/featured");
   if (!response.ok) {
@@ -72,6 +70,8 @@ const OurCategories = async () => {
 };
 
 const Home = async () => {
+  const isAuthenticated = checkAuth();
+
   return (
     <div className={["page-content", styles.Home].join(" ")}>
       <div className={styles.SubHeader}>
@@ -102,6 +102,7 @@ const Home = async () => {
               <Regions />
             </div>
           </Slide>
+          
           <FadeIn delay={0.5}>
             <h3>
               Now, Buy Ingredients <br />@<br /> www.ingredientsbank.com
