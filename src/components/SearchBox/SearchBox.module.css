@@ -3,7 +3,7 @@
 }
 
 .SearchForm {
-  width: 500px;
+  width: 560px;
   display: flex;
   border-radius: 4px;
   background-color: #fff;
@@ -17,19 +17,19 @@
 .SearchInput input {
   height: 44px;
   padding: 0 70px 0 20px;
-  font-size: 14px;
+  font-size: 16px;
   background-repeat: no-repeat;
   background-position: center right;
   border-radius: 22px;
   background-color: #f7f7f7;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
   transition: all ease 0.3s;
 }
 
 .SearchInput input:focus,
 .SearchInput input:active {
   background-color: #fff0ab;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
 }
 
 .SubmitBtn {

@@ -124,7 +124,7 @@ const Home = async () => {
 
       <ErrorBoundary>
         <Suspense>
-          <Slide delay={0.5}>
+          <Slide delay={0.7}>
             <FeaturedCategoriesSection />
           </Slide>
         </Suspense>
@@ -132,7 +132,7 @@ const Home = async () => {
 
       <ErrorBoundary>
         <Suspense>
-          <Slide delay={0.5}>
+          <Slide delay={0.7}>
             <OurCategories isAuthenticated={isAuthenticated} />
           </Slide>
         </Suspense>
@@ -140,7 +140,7 @@ const Home = async () => {
 
       <div className={styles.WhyUs}>
         <div className="container">
-          <Slide delay={0.5}>
+          <Slide delay={0.7}>
             <div className={styles.Content}>
               <p>
                 <strong>Ingredients Bank™</strong> is a digital marketing
@@ -183,7 +183,7 @@ const Home = async () => {
               </div>
               <div>
                 <div>
-                  <FadeIn delay={0.7}>
+                  <FadeIn delay={.8}>
                     <LuHeartHandshake />
                   </FadeIn>
                 </div>
@@ -191,7 +191,7 @@ const Home = async () => {
               </div>
               <div>
                 <div>
-                  <FadeIn delay={0.8}>
+                  <FadeIn delay={1}>
                     <PiSealCheckBold />
                   </FadeIn>
                 </div>
@@ -199,7 +199,7 @@ const Home = async () => {
               </div>
               <div>
                 <div>
-                  <FadeIn delay={0.9}>
+                  <FadeIn delay={1.2}>
                     <TbTruckDelivery />
                   </FadeIn>
                 </div>
@@ -207,7 +207,7 @@ const Home = async () => {
               </div>
               <div>
                 <div>
-                  <FadeIn delay={1}>
+                  <FadeIn delay={1.4}>
                     <TbCertificate />
                   </FadeIn>
                 </div>
@@ -220,7 +220,7 @@ const Home = async () => {
       <div className={styles.Cetificates}>
         <div className="container">
           <ul>
-            <Slide delay={0.2}>
+            <Slide delay={0.5}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/kosher.png"
@@ -232,7 +232,7 @@ const Home = async () => {
               </li>
             </Slide>
 
-            <Slide delay={0.3}>
+            <Slide delay={0.8}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/halal.png"
@@ -243,7 +243,7 @@ const Home = async () => {
                 />
               </li>
             </Slide>
-            <Slide delay={0.4}>
+            <Slide delay={1.1}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/fssc-22000.png"
@@ -255,7 +255,7 @@ const Home = async () => {
               </li>
             </Slide>
 
-            <Slide delay={0.5}>
+            <Slide delay={1.3}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/gmp-quality.png"
@@ -267,7 +267,7 @@ const Home = async () => {
               </li>
             </Slide>
 
-            <Slide delay={0.6}>
+            <Slide delay={1.6}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/fda.png"
@@ -279,7 +279,7 @@ const Home = async () => {
               </li>
             </Slide>
 
-            <Slide delay={0.7}>
+            <Slide delay={1.9}>
               <li>
                 <Image
                   src="/assets/imgs/certificates/usda-organic.png"

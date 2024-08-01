@@ -17,12 +17,12 @@ export default function Slide({ children, delay }) {
     <motion.div
       ref={ref}
       variants={{
-        hidden: { opacity: 0, translateY: 20 },
+        hidden: { opacity: 0, translateY: 40 },
         visible: { opacity: 1, translateY: 0 },
       }}
       transition={{
         type: "spring",
-        duration: 0.2,
+        duration: 0.3,
         damping: 8,
         delay: delay,
         stiffness: 100,
