@@ -1,7 +1,3 @@
-.SwiperSlider {
-  height: 440px;
-}
-
 .SwiperSlider .swiper-button-prev,
 .SwiperSlider .swiper-button-next {
   width: 45px;
@@ -37,9 +33,9 @@
 
 .SwiperSlider .swiper-button-prev:hover,
 .SwiperSlider .swiper-button-next:hover {
-  background-color: #378532;
+  background-color: #3E9538;
   color: #fff;
-  border-color: #378532;
+  border-color: #3E9538;
 }
 
 .SwiperSlider .swiper-pagination-bullet {
@@ -48,8 +44,8 @@
 }
 
 .SwiperSlider .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #378532;
-  border-color: #378532;
+  background-color: #3E9538;
+  border-color: #3E9538;
 }
 
 .SwiperSlider .swiper-pagination-horizontal {

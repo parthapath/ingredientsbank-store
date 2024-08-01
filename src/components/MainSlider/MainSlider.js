@@ -49,10 +49,8 @@ const Slides = () => {
           {slides.map((item, i) => {
             return (
               <SwiperSlide key={i}>
-                <Image
+                <img
                   src={item.image}
-                  width={1460}
-                  height={440}
                   alt={item.title}
                   loading="lazy"
                 />

@@ -1,6 +1,6 @@
 .Header {
   width: 100%;
-  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   z-index: 99;
   background-color: #fff;
@@ -67,7 +67,7 @@
 }
 
 .AccountName.Active {
-  color: #378532;
+  color: #3E9538;
 }
 
 .AccountMenu {
@@ -90,7 +90,7 @@
 }
 
 .AccountMenu a:hover {
-  color: #378532;
+  color: #3E9538;
 }
 
 .Overlay {

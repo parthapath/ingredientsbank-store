@@ -24,39 +24,12 @@ const Footer = () => {
                 />
               </Link>
             </div>
-            <div className={styles.SocialMedia}>
-              <ul>
-                <li>
-                  <Link href="#">
-                    <FaTwitter />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#">
-                    <FaFacebook />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#">
-                    <FaLinkedin />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#">
-                    <FaYoutube />
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
           <div className={styles.Menu}>
             <h4>About</h4>
             <ul>
               <li>
                 <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/products?categories=">Find Ingredients</Link>
               </li>
             </ul>
           </div>
@@ -95,8 +68,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container">
+
         <div className={styles.Terms}>
           <ul>
             <li>Ingredients Bank. © 2024 All Rights Reserved</li>

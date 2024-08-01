@@ -4,13 +4,15 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import axios from "../../axios";
 import moment from "moment";
 import Link from "next/link";
-import ReactPaginate from "react-paginate";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
 
 import styles from "./page.module.css";
 
 import SideMenu from "@/components/SideMenu/SideMenu";
+
+const ReactPaginate = dynamic(() => import("react-paginate"), { ssr: false });
 
 const Orders = () => {
   const searchParams = useSearchParams();

@@ -3,7 +3,7 @@
 }
 
 .SearchForm {
-  width: 430px;
+  width: 500px;
   display: flex;
   border-radius: 4px;
   background-color: #fff;
@@ -22,7 +22,7 @@
   background-position: center right;
   border-radius: 22px;
   background-color: #f7f7f7;
-  border: none;
+  border: 1px solid #CCC;
 }
 
 .SubmitBtn {

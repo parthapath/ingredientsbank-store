@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Image from "next/image";
 import { Suspense } from "react";
-import { FaTags } from "react-icons/fa6";
-import { BiSolidMessageSquareEdit } from "react-icons/bi";
-import { MdLocalShipping } from "react-icons/md";
-import { PiCertificateFill } from "react-icons/pi";
+import { RiShieldUserLine } from "react-icons/ri";
+import { PiSealCheckBold } from "react-icons/pi";
+import { TbTruckDelivery } from "react-icons/tb";
+import { LuHeartHandshake } from "react-icons/lu";
+import { TbCertificate } from "react-icons/tb";
 
 import styles from "./page.module.css";
 
@@ -13,12 +13,17 @@ import { checkAuth } from "@/utils/checkAuth";
 import customFetch from "@/utils/fetch.util";
 
 import MainSlider from "@/components/MainSlider/MainSlider";
-import ProductsList from "@/components/ProductsList/ProductsList";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
+import CategoryList from "@/components/CategoryList/CategoryList";
+import Regions from "@/components/Regions/Regions";
+import Slide from "@/components/Slide/Slide";
+import FadeIn from "@/components/FadeIn/FadeIn";
 
 export const metadata = {
   title: process.env.APP_NAME,
 };
+
+const isAuthenticated = checkAuth();
 
 const fetchCategories = async () => {
   const response = await customFetch("/categories/featured");
@@ -28,18 +33,10 @@ const fetchCategories = async () => {
   return response.json();
 };
 
-const fetchBestSelling = async () => {
-  const response = await customFetch("/products/best-selling");
+const fetchAllCategories = async () => {
+  const response = await customFetch("/categories");
   if (!response.ok) {
-    throw new Error("Failed to fetch Best Selling");
-  }
-  return response.json();
-};
-
-const fetchNewArrivals = async () => {
-  const response = await customFetch("/products/new-arrivals");
-  if (!response.ok) {
-    throw new Error("Failed to fetch New Arrivals");
+    throw new Error("Failed to fetch Categories");
   }
   return response.json();
 };
@@ -50,181 +47,249 @@ const FeaturedCategoriesSection = async () => {
     <div className={styles.FeaturedCategories}>
       <div className="container">
         <div className={styles.SubTitle}>
-          <h2>Featured Categories</h2>
+          <h2>Promotional Products | Upto 30% off</h2>
           <Link href="/products?categories=">View All</Link>
         </div>
-        <div className={styles.Categories}>
-          {categories.map((item) => {
-            return (
-              <div className={styles.Category} key={item.id}>
-                <div className={styles.Image}>
-                  <Image
-                    src={item.photo}
-                    width={236}
-                    height={238}
-                    alt={item.name}
-                    loading="lazy"
-                  />
-                </div>
-                <div className={styles.Desc}>
-                  <div>
-                    <h3>
-                      <Link href={`/products?categories=${item.name}`}>
-                        {item.name}
-                      </Link>
-                    </h3>
-                    <Link href={`/products?categories=${item.name}`}>
-                      Shop Now <MdKeyboardDoubleArrowRight />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <CategoryList categories={categories} />
       </div>
     </div>
   );
 };
 
-const BestSellingSection = async ({ isAuthenticated }) => {
-  const bestSelling = await fetchBestSelling();
+const OurCategories = async () => {
+  const categories = await fetchAllCategories();
   return (
     <div className={styles.BestSellers}>
       <div className="container">
         <div className={styles.SubTitle}>
-          <h2>Best Selling Products</h2>
+          <h2>We Supply</h2>
           <Link href="/products?categories=">View All</Link>
         </div>
-        <div className={styles.ListItems}>
-          <ProductsList
-            products={bestSelling}
-            isAuthenticated={isAuthenticated}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const NewArrivalsSection = async ({ isAuthenticated }) => {
-  const newArrivals = await fetchNewArrivals();
-  return (
-    <div className={styles.NewProducts}>
-      <div className="container">
-        <div className={styles.SubTitle}>
-          <h2>New Arrivals</h2>
-          <Link href="/products?categories=">View All</Link>
-        </div>
-        <div className={styles.ListItems}>
-          <ProductsList
-            products={newArrivals}
-            isAuthenticated={isAuthenticated}
-          />
-        </div>
+        <CategoryList categories={categories} />
       </div>
     </div>
   );
 };
 
 const Home = async () => {
-  const isAuthenticated = checkAuth();
-
   return (
     <div className={["page-content", styles.Home].join(" ")}>
+      <div className={styles.SubHeader}>
+        <div className="container">
+          <Slide delay={0.5}>
+            <h1>Nutraceutical Ingredients Supplier</h1>
+          </Slide>
+        </div>
+      </div>
+
       <div className={styles.MainSlider}>
         <ErrorBoundary>
           <MainSlider />
         </ErrorBoundary>
       </div>
 
+      <div className={styles.Intro}>
+        <div className="container">
+          <FadeIn delay={0.3}>
+            <h2>
+              Are you looking for ingredients <br />
+              in the
+            </h2>
+          </FadeIn>
+
+          <Slide delay={0.4}>
+            <div className={styles.Countries}>
+              <Regions />
+            </div>
+          </Slide>
+          <FadeIn delay={0.5}>
+            <h3>
+              Now, Buy Ingredients <br />@<br /> www.ingredientsbank.com
+            </h3>
+          </FadeIn>
+        </div>
+      </div>
+
+      <Slide delay={0.5}>
+        <div className={styles.Message}>
+          <div className="container">
+            <h3>
+              We Are Your Trusted Ingredients Partner. &quot;We Deliver You,
+              Wherever You Are.&quot;
+            </h3>
+          </div>
+        </div>
+      </Slide>
+
       <ErrorBoundary>
         <Suspense>
-          <FeaturedCategoriesSection />
+          <Slide delay={0.5}>
+            <FeaturedCategoriesSection />
+          </Slide>
         </Suspense>
       </ErrorBoundary>
 
       <ErrorBoundary>
         <Suspense>
-          <BestSellingSection isAuthenticated={isAuthenticated} />
-        </Suspense>
-      </ErrorBoundary>
-
-      <ErrorBoundary>
-        <Suspense>
-          <NewArrivalsSection isAuthenticated={isAuthenticated} />
+          <Slide delay={0.5}>
+            <OurCategories isAuthenticated={isAuthenticated} />
+          </Slide>
         </Suspense>
       </ErrorBoundary>
 
       <div className={styles.WhyUs}>
         <div className="container">
-          {/* <div className={styles.SubTitle}>
-            <h2>Why us</h2>
-          </div> */}
-          <div className={styles.Overview}>
-            <div>
-              <div>
-                <FaTags />
-              </div>
-              <div>Best Price</div>
-            </div>
-            <div>
-              <div>
-                <BiSolidMessageSquareEdit />
-              </div>
-              <div>Custom Product</div>
-            </div>
-            <div>
-              <div>
-                <MdLocalShipping />
-              </div>
-              <div>Easy Shipping & Returns</div>
-            </div>
-            <div>
-              <div>
-                <PiCertificateFill />
-              </div>
-              <div>Assured Quality</div>
-            </div>
-          </div>
-          <div className={styles.Content}>
-            <div>
-              <Image
-                src="/assets/imgs/why-us.png"
-                width={294}
-                height={309}
-                alt="About Us"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <h2>Why Ingredients Bank?</h2>
+          <Slide delay={0.5}>
+            <div className={styles.Content}>
               <p>
-                Ingredients Bank is the premier e-commerce marketplace for bulk
-                and wholesale ingredients. With B2B transactions increasingly
-                moving online, we are at the forefront of the digital revolution
-                thanks to our cutting-edge technology and a fearless focus on
-                innovation. As we help build a new kind of supply chain, we
-                firmly believe that our continued ability to lead depends on the
-                growth of the businesses who buy and sell on Ingredients Bank.
-                That&#39;s why our main priority at all times is to create
-                maximum value for them. It is our conviction that when all of us
-                are at our best, today&#39;s challenges in ingredient sourcing
-                can serve as powerful launch pads toward a brighter future.
+                <strong>Ingredients Bank™</strong> is a digital marketing
+                website where you can find Nutraceutical Ingredients for your
+                supplement formulation. Our ingredients are manufactured in
+                India, and distributed globally through our supply chain system.
+                Our distribution centers are located in USA, UK, EU & UAE.
+                Ingredients Bank trademark owner is Novel Nutrientss, certified
+                for FSSC 22000, Kosher, Halal, GMP, and Organic certification
+                from reputed certifying bodies. We have a strong technical team
+                to manufacture Nutra- ceuticals as per Global regulatory
+                standards to supply them globally. We comply with the Ethical
+                Business System. You can trust quality and performance because,
+                through our continual global food hygiene and safety culture
+                practices, we ensure that manufactured products are tested at
+                each stage of the process and assure customers a high degree of
+                confidence
+              </p>
+              <p>
+                We acquire, supply, and develop ingredients for Nutraceutical
+                industries and markets. We are well-known as pioneers in
+                nutritional and wellness ingredients.
               </p>
             </div>
+          </Slide>
+
+          <div className={styles.SubTitle}>
+            <h2>Why us</h2>
           </div>
+
+          <Slide delay={0.5}>
+            <div className={styles.Overview}>
+              <div>
+                <div>
+                  <FadeIn delay={0.6}>
+                    <RiShieldUserLine />
+                  </FadeIn>
+                </div>
+                <div>We prioritize our customer&apos;s needs</div>
+              </div>
+              <div>
+                <div>
+                  <FadeIn delay={0.7}>
+                    <LuHeartHandshake />
+                  </FadeIn>
+                </div>
+                <div>We always work for your demand</div>
+              </div>
+              <div>
+                <div>
+                  <FadeIn delay={0.8}>
+                    <PiSealCheckBold />
+                  </FadeIn>
+                </div>
+                <div>We carefully monitor the global regulatory system</div>
+              </div>
+              <div>
+                <div>
+                  <FadeIn delay={0.9}>
+                    <TbTruckDelivery />
+                  </FadeIn>
+                </div>
+                <div>Your annual demand is our special project</div>
+              </div>
+              <div>
+                <div>
+                  <FadeIn delay={1}>
+                    <TbCertificate />
+                  </FadeIn>
+                </div>
+                <div>Our Quality is always constant</div>
+              </div>
+            </div>
+          </Slide>
         </div>
       </div>
       <div className={styles.Cetificates}>
         <div className="container">
-          <img
-            src="/assets/imgs/certifications.png"
-            width={1460}
-            height={52}
-            alt="Certificates"
-            loading="lazy"
-          />
+          <ul>
+            <Slide delay={0.2}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/kosher.png"
+                  width={86}
+                  height={86}
+                  alt="Kosher"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+
+            <Slide delay={0.3}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/halal.png"
+                  width={70}
+                  height={70}
+                  alt="Halal India"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+            <Slide delay={0.4}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/fssc-22000.png"
+                  width={208}
+                  height={38}
+                  alt="FSSC 22000"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+
+            <Slide delay={0.5}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/gmp-quality.png"
+                  width={70}
+                  height={70}
+                  alt="GMP Quality"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+
+            <Slide delay={0.6}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/fda.png"
+                  width={114}
+                  height={56}
+                  alt="FDA"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+
+            <Slide delay={0.7}>
+              <li>
+                <Image
+                  src="/assets/imgs/certificates/usda-organic.png"
+                  width={86}
+                  height={86}
+                  alt="Organic"
+                  loading="lazy"
+                />
+              </li>
+            </Slide>
+          </ul>
         </div>
       </div>
     </div>

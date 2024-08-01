@@ -1,0 +1,30 @@
+.Region {
+  width: 140px;
+  height: 70px;
+  margin: 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+
+.Region span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+}
+
+.Region.Active {
+  cursor: pointer;
+}
+
+.Region.Active:hover {
+  background-color: #3E9538;
+  color: #fff;
+}

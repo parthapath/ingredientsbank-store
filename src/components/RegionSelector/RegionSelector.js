@@ -29,14 +29,18 @@ const RegionSelector = () => {
       .get("/regions")
       .then((response) => {
         setRegions(response.data);
-        let defaultRegion = response.data.find(
-          (region) => region.selected_region
-        );
-        if (!defaultRegion) {
-          defaultRegion = response.data[0];
+        let defaultRegion = response.data[0];
+        if (isAuthenticated) {
+          defaultRegion = response.data.find(
+            (region) => region.selected_region
+          );
+          Cookies.set("region", JSON.stringify(defaultRegion));
+        }
+        const regionObj = Cookies.get("region");
+        if (!isAuthenticated && regionObj) {
+          defaultRegion = JSON.parse(regionObj);
         }
         setSelectedRegion(defaultRegion);
-        Cookies.set("region", JSON.stringify(defaultRegion));
       })
       .catch((error) => {
         setError(error.response.data);

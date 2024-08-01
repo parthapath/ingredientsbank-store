@@ -31,7 +31,7 @@
 }
 
 .AddNew:hover {
-  color: #378532;
+  color: #3E9538;
 }
 
 .AddNew svg {
@@ -88,7 +88,7 @@
 }
 
 .AddressWrapper .Actions .Action:hover {
-  color: #378532;
+  color: #3E9538;
 }
 
 .AddressWrapper .Actions .Action + .Action {
