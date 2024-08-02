@@ -76,9 +76,7 @@ const Home = async () => {
     <div className={["page-content", styles.Home].join(" ")}>
       <div className={styles.SubHeader}>
         <div className="container">
-          <Slide delay={0.5}>
-            <h1>Nutraceutical Ingredients Supplier</h1>
-          </Slide>
+          <h1>Nutraceutical Ingredients Supplier</h1>
         </div>
       </div>
 
@@ -102,10 +100,13 @@ const Home = async () => {
               <Regions />
             </div>
           </Slide>
-          
+
           <FadeIn delay={0.5}>
             <h3>
-              Now, Buy Ingredients <br />@<br /> www.ingredientsbank.com
+              Now, Buy Ingredients <br />@<br />{" "}
+              <a href="http://localhost:3000/products?categories=&applications=">
+                www.ingredientsbank.com
+              </a>
             </h3>
           </FadeIn>
         </div>
@@ -113,12 +114,10 @@ const Home = async () => {
 
       <Slide delay={0.5}>
         <div className={styles.Message}>
-          <div className="container">
-            <h3>
-              We Are Your Trusted Ingredients Partner. &quot;We Deliver You,
-              Wherever You Are.&quot;
-            </h3>
-          </div>
+          <h3>
+            We Are Your Trusted Ingredients Partner. &quot;We Deliver You,
+            Wherever You Are.&quot;
+          </h3>
         </div>
       </Slide>
 
@@ -183,7 +182,7 @@ const Home = async () => {
               </div>
               <div>
                 <div>
-                  <FadeIn delay={.8}>
+                  <FadeIn delay={0.8}>
                     <LuHeartHandshake />
                   </FadeIn>
                 </div>

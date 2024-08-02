@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 @import url(vendors/normalize.css);
 
 * {
@@ -7,14 +6,9 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: #222;
-}
-
-h1,
-h2 {
-  font-family: "Poppins", sans-serif;
 }
 
 .container {
@@ -37,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: #378532;
+  color: #1dc2d7;
 }
 
 ul {
@@ -132,12 +126,12 @@ ul li {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  border: 1px solid #5dc900;
+  border: 1px solid #25b9e6;
   background-color: transparent;
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: #5dc900;
+  background-color: #25b9e6;
 }
 
 .checkbox .checkmark:after {
@@ -242,7 +236,7 @@ table tbody tr button {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #378532;
+  color: #25b9e6;
   background-color: #fff;
   border: 1px solid #eee;
   cursor: default;
@@ -253,7 +247,7 @@ table tbody tr button {
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #378532;
+  background-color: #25b9e6;
   color: #fff;
 }
 

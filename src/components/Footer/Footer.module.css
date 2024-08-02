@@ -1,6 +1,6 @@
 .Footer {
-  color: #fff;
-  background-color: #3e9538;
+  color: #222;
+  background-color: #FDC311;
 }
 
 .Footer .ContentWrapper {
@@ -19,7 +19,7 @@
 }
 
 .Footer a {
-  color: #fff;
+  color: #222;
 }
 
 .About {
@@ -38,8 +38,12 @@
   margin-top: 20px;
 }
 
-.Contact div span {
+.Contact span {
+  margin-top: 10px;
   display: block;
+}
+
+.Contact span.Title {
   font-weight: 600;
 }
 
@@ -62,6 +66,7 @@
   padding-right: 20px;
   display: flex;
   align-items: center;
+  font-size: 12px;
 }
 
 .Terms ul li + li::before {
@@ -70,7 +75,7 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #222;
 }
 
 .Terms ul li a {

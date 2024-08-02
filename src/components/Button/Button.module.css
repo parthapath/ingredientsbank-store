@@ -18,16 +18,16 @@
 }
 
 .Primary {
-  background-color: #3E9538;
+  background-color: #FDC311;
 }
 
 .Primary:hover {
-  background-color: #2B6827;
+  background-color: #eab102;
   color: #fff;
 }
 
 .Secondary {
-  color: #3E9538;
+  color: #222;
   background-color: #C5E8C3;
 }
 

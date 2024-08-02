@@ -38,6 +38,7 @@
 
 .HeaderActions .SignInUp {
   margin-left: 20px;
+  font-weight: 500;
 }
 
 .HeaderActions .SignInUp span {
@@ -67,7 +68,6 @@
 }
 
 .AccountName.Active {
-  color: #3E9538;
 }
 
 .AccountMenu {
@@ -90,7 +90,7 @@
 }
 
 .AccountMenu a:hover {
-  color: #3E9538;
+  color: #25b9e6;
 }
 
 .Overlay {

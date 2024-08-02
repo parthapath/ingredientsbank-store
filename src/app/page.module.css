@@ -1,5 +1,5 @@
 .Home .SubHeader {
-  background: #3e9538;
+  background: #FDC311;
 }
 
 .Home .SubHeader > div {
@@ -17,7 +17,7 @@
 }
 
 .MainSlider {
-  min-height: 435px;
+  min-height: 650px;
 }
 
 .Home .SubTitle {
@@ -30,6 +30,7 @@
 .Home .SubTitle h2 {
   margin: 0;
   font-size: 26px;
+  font-weight: 500;
 }
 
 .Home .Intro {
@@ -47,19 +48,24 @@
 
 .Home .Intro h2 {
   font-size: 52px;
-  line-height: 62px;
+  line-height: 80px;
   text-align: center;
   font-weight: 700;
-  color: #f5c800;
+  color: #25b9e6;
 }
 
-.Home .Intro h3 {
+.Home .Intro h3,
+.Home .Intro h3 a {
   text-align: center;
   font-size: 42px;
   line-height: 54px;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
-  color: #3e9538;
+  color: #25b9e6;
+}
+
+.Home .Intro h3 a {
+  text-decoration: underline;
 }
 
 .Home .Intro .Countries {
@@ -68,10 +74,7 @@
 }
 
 .Home .Message {
-  background-color: #3e9538;
-}
-
-.Home .Message > div {
+  background-color: #FDC311;
   height: 70px;
   display: flex;
   align-items: center;
@@ -80,7 +83,7 @@
 
 .Home .Message h3 {
   margin: 0;
-  font-size: 32px;
+  font-size: 2.7em;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   color: #fff;
@@ -190,12 +193,13 @@
 
 .WhyUs .Overview div > div > div:first-child {
   font-size: 42px;
-  color: #3e9538;
+  color: #222;
 }
 
 .WhyUs .Overview div > div:last-child {
   margin-top: 10px;
   font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
   color: #444;
   text-align: center;
@@ -203,7 +207,7 @@
 
 .WhyUs .Content {
   padding: 30px;
-  background-color: #ffe154;
+  background-color: #FDC311;
   border-radius: 5px;
 }
 

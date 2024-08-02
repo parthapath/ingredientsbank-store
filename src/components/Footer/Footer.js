@@ -50,14 +50,15 @@ const Footer = () => {
           <div className={styles.Contact}>
             <h4>Contact</h4>
             <div>
-              <span>Phone</span>
+              <span className={styles.Title}>Phone</span>
               <div className={styles.ContactNo}>
                 <span>+971-553599144</span>
                 <span>+1-862 367-5128</span>
               </div>
             </div>
             <div>
-              <span>Email</span> <div>support@ingredientsbank.com</div>
+              <span className={styles.Title}>Email</span>{" "}
+              <span>support@ingredientsbank.com</span>
             </div>
           </div>
           <div className={styles.NewsLetter}>
