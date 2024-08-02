@@ -142,7 +142,7 @@ const Home = async () => {
           <Slide delay={0.7}>
             <div className={styles.Content}>
               <p>
-                <strong>Ingredients Bank™</strong> is a digital marketing
+                <span>Ingredients Bank™</span> is a digital marketing
                 website where you can find Nutraceutical Ingredients for your
                 supplement formulation. Our ingredients are manufactured in
                 India, and distributed globally through our supply chain system.

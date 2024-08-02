@@ -1,6 +1,6 @@
 .Footer {
-  color: #222;
-  background-color: #FDC311;
+  color: #fff;
+  background-color: #2C318D;
 }
 
 .Footer .ContentWrapper {
@@ -19,7 +19,7 @@
 }
 
 .Footer a {
-  color: #222;
+  color: #fff;
 }
 
 .About {
@@ -75,7 +75,7 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: #222;
+  background-color: #fff;
 }
 
 .Terms ul li a {

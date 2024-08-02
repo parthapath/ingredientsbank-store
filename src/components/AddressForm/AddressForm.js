@@ -147,7 +147,7 @@ const AddressForm = (props) => {
               <Button btnType="Primary" type="submit" disabled={isSubmitting}>
                 Submit
               </Button>
-              <Button btnType="Secondary" clicked={props.handleAddressForm}>
+              <Button btnType="Default" clicked={props.handleAddressForm}>
                 Cancel
               </Button>
             </div>

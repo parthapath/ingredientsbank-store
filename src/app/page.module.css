@@ -1,5 +1,5 @@
 .Home .SubHeader {
-  background: #FDC311;
+  background: #2C318D;
 }
 
 .Home .SubHeader > div {
@@ -30,13 +30,13 @@
 .Home .SubTitle h2 {
   margin: 0;
   font-size: 26px;
-  font-weight: 500;
+  color: #2C318D;
 }
 
 .Home .Intro {
   padding: 30px 0;
   margin-top: -4px;
-  background-color: #f0fcf7;
+  background-color: #FEE63E;
 }
 
 .Home .Intro > div {
@@ -47,11 +47,11 @@
 }
 
 .Home .Intro h2 {
-  font-size: 52px;
-  line-height: 80px;
+  font-size: 62px;
+  line-height: 90px;
   text-align: center;
   font-weight: 700;
-  color: #25b9e6;
+  color: #3E56FE;
 }
 
 .Home .Intro h3,
@@ -61,7 +61,7 @@
   line-height: 54px;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
-  color: #25b9e6;
+  color: #3E56FE;
 }
 
 .Home .Intro h3 a {
@@ -74,7 +74,7 @@
 }
 
 .Home .Message {
-  background-color: #FDC311;
+  background-color: #2C318D;
   height: 70px;
   display: flex;
   align-items: center;
@@ -193,7 +193,7 @@
 
 .WhyUs .Overview div > div > div:first-child {
   font-size: 42px;
-  color: #222;
+  color: #3E56FE;
 }
 
 .WhyUs .Overview div > div:last-child {
@@ -207,8 +207,13 @@
 
 .WhyUs .Content {
   padding: 30px;
-  background-color: #FDC311;
+  background-color: #FEE63E;
   border-radius: 5px;
+}
+
+.WhyUs .Content span {
+  font-weight: 600;
+  color: #3E56FE;
 }
 
 .WhyUs p {

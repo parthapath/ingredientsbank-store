@@ -11,6 +11,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: all ease 0.3s;
+  border-radius: 4px;
 }
 
 .Btn span {
@@ -18,26 +19,28 @@
 }
 
 .Primary {
-  background-color: #FDC311;
-}
-
-.Primary:hover {
-  background-color: #eab102;
+  background-color: #3e56fe;
   color: #fff;
 }
 
+.Primary:hover {
+  background-color: #FEE63E;
+  color: #3e56fe;
+}
+
 .Secondary {
-  color: #222;
-  background-color: #C5E8C3;
+  color: #2C318D;
+  background-color: #FEE63E;
 }
 
 .Secondary:hover {
-  background-color: #C5E8C3;
+  color: #2C318D;
+  background-color: #fff;
 }
 
 .Default {
   color: #000;
-  background-color: #9BD798;
+  background-color: #FFF0AB;
 }
 
 .Btn[disabled] {

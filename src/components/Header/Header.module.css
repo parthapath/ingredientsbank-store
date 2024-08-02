@@ -68,6 +68,7 @@
 }
 
 .AccountName.Active {
+  color: #3E56FE;
 }
 
 .AccountMenu {
@@ -87,10 +88,6 @@
 
 .AccountMenu li + li {
   margin-top: 15px;
-}
-
-.AccountMenu a:hover {
-  color: #25b9e6;
 }
 
 .Overlay {
