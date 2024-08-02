@@ -8,12 +8,14 @@
   width: 75%;
   margin-right: 20px;
   border: 1px solid #f0f0f0;
+  border-radius: 4px;
 }
 
 .ContentRight {
   width: 25%;
   padding: 20px;
   background-color: #FFF0AB;
+  border-radius: 4px;
 }
 
 .Product {
@@ -67,7 +69,7 @@
 .ShippingAddress .ChangeAddress {
   margin-top: 20px;
   cursor: pointer;
-  color: #3E9538;
+  color: #3E56FE;
 }
 
 .AddNewAddress {
@@ -75,7 +77,7 @@
 }
 
 .AddNewBtn {
-  color: #3E9538;
+  color: #3E56FE;
   cursor: pointer;
 }
 

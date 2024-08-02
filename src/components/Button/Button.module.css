@@ -24,23 +24,33 @@
 }
 
 .Primary:hover {
-  background-color: #FEE63E;
+  background-color: #fee63e;
   color: #3e56fe;
 }
 
 .Secondary {
-  color: #2C318D;
-  background-color: #FEE63E;
+  color: #2c318d;
+  background-color: #fee63e;
 }
 
 .Secondary:hover {
-  color: #2C318D;
+  color: #2c318d;
   background-color: #fff;
+}
+
+.Alternate {
+  color: #fff;
+  background-color: #3e56fe;
+}
+
+.Alternate:hover {
+  color: #fff;
+  background-color: #2C318D;
 }
 
 .Default {
   color: #000;
-  background-color: #FFF0AB;
+  background-color: #fff0ab;
 }
 
 .Btn[disabled] {

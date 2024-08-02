@@ -48,8 +48,8 @@
 
 /* Show the indicator (dot/circle) when checked */
 .Radio input:checked~.Checkmark {
-  background-color: #5DC900;
-  border-color: #5DC900;
+  background-color: #3E56FE;
+  border-color: #3E56FE;
 }
 
 .Radio input:checked~.Checkmark:after {
