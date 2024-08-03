@@ -9,7 +9,7 @@
   padding: 0 16px;
   display: flex;
   align-items: center;
-  background-color: #3E56FE;
+  background-color: #00A1E0;
   font-weight: 600;
   cursor: pointer;
   border-radius: 4px;
@@ -20,7 +20,7 @@
 .RegionSelector .Selector:hover,
 .RegionSelector .Selector.Active {
   background-color: #fff0ab;
-  color: #3E56FE;
+  color: #00A1E0;
 }
 
 .RegionSelector .Selector > div + div {

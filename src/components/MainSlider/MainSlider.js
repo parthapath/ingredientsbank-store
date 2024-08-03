@@ -36,6 +36,8 @@ const Slides = () => {
       {slides.length ? (
         <Swiper
           navigation={true}
+          centeredSlides={true}
+          centerInsufficientSlides={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
@@ -49,11 +51,7 @@ const Slides = () => {
           {slides.map((item, i) => {
             return (
               <SwiperSlide key={i}>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                />
+                <img src={item.image} alt={item.title} loading="lazy" />
               </SwiperSlide>
             );
           })}

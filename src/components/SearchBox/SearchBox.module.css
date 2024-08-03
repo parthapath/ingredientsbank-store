@@ -22,7 +22,7 @@
   background-position: center right;
   border-radius: 22px;
   background-color: #f7f7f7;
-  border: 1px solid #3E56FE;
+  border: 1px solid #00A1E0;
   transition: all ease 0.3s;
 }
 
@@ -30,7 +30,7 @@
 .SearchInput input:focus,
 .SearchInput input:active {
   background-color: #fff0ab;
-  border: 1px solid #3E56FE;
+  border: 1px solid #00A1E0;
 }
 
 .SubmitBtn {

@@ -30,7 +30,7 @@ const CancelOrderBtn = (props) => {
 
   return (
     <>
-      <Button btnType="Default" clicked={handleCancel}>
+      <Button btnType="Primary" clicked={handleCancel}>
         Cancel Order
       </Button>
       <DialogBox

@@ -35,12 +35,12 @@
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  border: 1px solid #3E56FE;
+  border: 1px solid #00A1E0;
   background-color: transparent;
 }
 
 .Checkbox input:checked ~ .Checkmark {
-  background-color: #3E56FE;
+  background-color: #00A1E0;
 }
 
 .Checkbox .Checkmark:after {

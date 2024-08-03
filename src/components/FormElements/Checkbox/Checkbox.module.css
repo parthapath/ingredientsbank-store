@@ -38,7 +38,7 @@
 }
 
 .Checkbox input:checked ~ .Checkmark {
-  background-color: #3E56FE;
+  background-color: #00A1E0;
 }
 
 .Checkbox .Checkmark::after {

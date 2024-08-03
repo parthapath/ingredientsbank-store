@@ -236,7 +236,7 @@ const Checkout = () => {
                 </div>
                 <div className={styles.PlaceOrderBtn}>
                   <Button
-                    btnType="Alternate"
+                    btnType="Primary"
                     width="W100"
                     clicked={handlePlaceOrder}
                   >
