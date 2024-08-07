@@ -11,7 +11,7 @@ const Category = ({ category }) => {
           <Image
             src={category.photo}
             width={236}
-            height={238}
+            height={236}
             alt={category.name}
             loading="lazy"
           />
