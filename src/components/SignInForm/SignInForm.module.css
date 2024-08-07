@@ -21,6 +21,11 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.SignInForm .ForgotPassword:hover {
+  color: #0000b2;
 }
 
 .ResetSuccess {

@@ -106,9 +106,9 @@ const Home = async () => {
             <FadeIn delay={0.5}>
               <h3>
                 Now, Buy Ingredients <br />@<br />{" "}
-                <a href="http://localhost:3000/products?categories=&applications=">
+                <Link href="/products?categories=">
                   www.ingredientsbank.com
-                </a>
+                </Link>
               </h3>
             </FadeIn>
           </div>

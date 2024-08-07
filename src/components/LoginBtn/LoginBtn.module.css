@@ -1,7 +1,7 @@
 .LoginBtn {
     padding: 10px;
-    border-top: 2px solid #3E9538;
-    background-color: #fff7ea;
+    border-top: 2px solid #0000b2;
+    background-color: #fff0ab;
 }
 
 .LoginBtn p {
@@ -10,7 +10,7 @@
 
 .LoginBtn span,
 .LoginBtn a {
-    color: #3E9538;
+    color: #0000b2;
     text-decoration: underline;
     cursor: pointer;
 }

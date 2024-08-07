@@ -227,7 +227,7 @@ const SignInForm = () => {
                               Submit
                             </Button>
                             <Button
-                              btnType="Secondary"
+                              btnType="Default"
                               type="button"
                               clicked={() => showResetForm(false)}
                             >

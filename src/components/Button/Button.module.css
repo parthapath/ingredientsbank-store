@@ -20,25 +20,25 @@
 
 .Primary {
   color: #fff;
-  background-color: #00A1E0;
+  background-color: #0000b2;
 }
 
 .Primary:hover {
-  background-color: #01216A;
+  background-color: #1919FF;
 }
 
 .Secondary {
-  color: #fff;
-  background-color: #00A1E0;
-}
-
-.Secondary:hover {
-  color: #00A1E0;
+  color: #0000b2;
   background-color: #fff;
 }
 
+.Secondary:hover {
+  color: #0000b2;
+  background-color: #fff0ab;
+}
+
 .Default {
-  color: #00A1E0;
+  color: #0000b2;
   background-color: #fff0ab;
 }
 
