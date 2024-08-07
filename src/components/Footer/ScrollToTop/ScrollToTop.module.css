@@ -1,0 +1,17 @@
+.ScrollToTop {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.ScrollToTop svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  transition: all ease-in 0.2s;
+}
+
+.ScrollToTop:hover svg {
+  top: -2px;
+  position: relative;
+}

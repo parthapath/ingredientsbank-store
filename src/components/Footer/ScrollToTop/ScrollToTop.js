@@ -1,5 +1,8 @@
 "use client";
 import React from "react";
+import { IoIosArrowUp } from "react-icons/io";
+
+import styles from "./ScrollToTop.module.css";
 
 const ScrollToTop = () => {
   const scrollToTop = () => {
@@ -9,7 +12,12 @@ const ScrollToTop = () => {
     });
   };
 
-  return <div onClick={scrollToTop}>Go to top</div>;
+  return (
+    <div className={styles.ScrollToTop} onClick={scrollToTop}>
+      <IoIosArrowUp />
+      Go to top
+    </div>
+  );
 };
 
 export default ScrollToTop;
