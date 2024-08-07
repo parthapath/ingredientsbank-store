@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaTwitter, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 import styles from "./Footer.module.css";
 
 import NewsLetterForm from "../NewsletterForm/NewsletterForm";
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
 
 const Footer = () => {
   return (
@@ -69,8 +69,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        <div className={styles.Terms}>
+      </div>
+      <div className={styles.Terms}>
+        <div className="container">
           <ul>
             <li>Ingredients Bank. © 2024 All Rights Reserved</li>
             <li>
@@ -80,6 +81,7 @@ const Footer = () => {
               <Link href="/privacy-policy">Privacy Policy</Link>
             </li>
           </ul>
+          <ScrollToTop />
         </div>
       </div>
     </footer>
