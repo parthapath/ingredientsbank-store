@@ -34,7 +34,7 @@ export async function generateMetadata({ params, searchParams }) {
   };
 
   return {
-    title: product.name,
+    title: `${product.name} - Ingredients Bank`,
     description: formatDescription(product.description),
     keywords: product.keywords,
     openGraph: {

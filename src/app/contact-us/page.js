@@ -10,7 +10,6 @@ import styles from "./page.module.css";
 
 import FormikControl from "@/components/FormikControl/FormikControl";
 import Button from "@/components/Button/Button";
-import ErrorMessages from "@/components/ErrorMessages/ErrorMessages";
 
 const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(false);
