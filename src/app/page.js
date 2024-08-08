@@ -70,7 +70,7 @@ const Home = async () => {
 
   return (
     <>
-      <title>Contact Us - Ingredients Bank</title>
+      <title>Ingredients Bank | Nutraceutical Ingredients Supplier</title>
       <div className={styles.Home}>
         <div className={styles.SubHeader}>
           <div className="container">
