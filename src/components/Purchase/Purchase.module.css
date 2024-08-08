@@ -15,11 +15,11 @@
 
 .Sizes .Size.Active {
   border: 2px solid #0000B2;
-  background-color: #FFF0AB;
+  background-color: #ebebeb;
 }
 
 .Sizes .Size:hover {
-  background-color: #FFF0AB;
+  background-color: #ebebeb;
   border: 2px solid #0000B2;
 }
 

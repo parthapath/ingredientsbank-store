@@ -57,7 +57,8 @@
 }
 
 .Orders a:hover .Overview {
-  background-color: #fff0ab;
+  background-color: #0000B2;
+  color: #fff;
 }
 
 .Overview > div > div {

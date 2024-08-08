@@ -17,12 +17,6 @@
   transition: all ease 0.3s;
 }
 
-.RegionSelector .Selector:hover,
-.RegionSelector .Selector.Active {
-  background-color: #fff0ab;
-  color: #0000B2;
-}
-
 .RegionSelector .Selector > div + div {
   margin-left: 10px;
 }
@@ -86,7 +80,7 @@
 }
 
 .RegionSelector .Regions .Region:hover {
-  background-color: #fff0ab;
+  background-color: #f0f0f0;
 }
 
 .RegionSelector .Regions .Region .RegionName {

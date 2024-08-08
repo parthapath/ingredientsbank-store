@@ -59,7 +59,7 @@
 .AccountName {
   display: flex;
   align-items: center;
-  color: #222;
+  color: #FFF;
 }
 
 .AccountName span {
@@ -70,10 +70,6 @@
   width: 24px;
   height: 24px;
   margin-right: 5px;
-}
-
-.AccountName.Active {
-  color: #0000B2;
 }
 
 .AccountMenu {

@@ -18,7 +18,7 @@ const Footer = () => {
                 <Image
                   src="/assets/imgs/logo.png"
                   width={234}
-                  height={70}
+                  height={49}
                   alt="Ingredients Bank"
                   loading="lazy"
                 />

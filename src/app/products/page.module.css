@@ -11,8 +11,9 @@
 .Filters {
   padding: 0 20px;
   flex: 0 0 260px;
-  background-color: #FFF0AB;
+  background-color: #0000B2;
   border-radius: 12px;
+  color: #fff;
 }
 
 .Filters h4 {
@@ -29,8 +30,8 @@
 }
 
 .Filters .Filter .Active {
-  color: #0000B2;
   font-weight: 600;
+  text-decoration: underline;
 }
 
 .Filters .Filter {

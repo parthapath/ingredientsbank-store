@@ -93,8 +93,8 @@ const Header = () => {
               <Link href="/">
                 <Image
                   src="/assets/imgs/logo.png"
-                  width={234}
-                  height={70}
+                  width={346}
+                  height={72}
                   alt="Ingredients Bank"
                   loading="lazy"
                 />

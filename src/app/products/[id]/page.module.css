@@ -1,5 +1,6 @@
 .PageContent {
   display: flex;
+  align-items: flex-start;
 }
 
 .Product {
@@ -84,7 +85,8 @@
   width: 25%;
   padding: 15px;
   border-radius: 4px;
-  background-color: #FFF0AB;
+  background-color: #0000b2;
+  color: #fff;
 }
 
 .Documents h3 {
@@ -93,6 +95,14 @@
 
 .Documents ul li + li {
   margin-top: 10px;
+}
+
+.Documents ul li a {
+  color: #fff;
+}
+
+.Documents ul li a:hover {
+  text-decoration: underline;
 }
 
 .ProductCertifications {
