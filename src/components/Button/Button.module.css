@@ -28,13 +28,13 @@
 }
 
 .Secondary {
-  color: #0000b2;
+  color: #0A0A5F;
   background-color: #fff;
 }
 
 .Secondary:hover {
   color: #0000b2;
-  background-color: #fff0ab;
+  background-color: #ebebeb;
 }
 
 .Default {
