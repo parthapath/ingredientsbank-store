@@ -92,9 +92,9 @@ const Header = () => {
             <div className={styles.Logo}>
               <Link href="/">
                 <Image
-                  src="/assets/imgs/logo-1.png"
-                  width={346}
-                  height={72}
+                  src="/assets/imgs/logo.svg"
+                  width={337}
+                  height={70}
                   alt="Ingredients Bank"
                   loading="lazy"
                 />
