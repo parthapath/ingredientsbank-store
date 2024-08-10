@@ -11,12 +11,12 @@
   padding: 20px;
   margin-top: 30px;
   background-color: #ebebeb;
-  border-top: 5px solid #0000b2;
+  border-top: 5px solid #0A0A5F;
 }
 
 .Notes a {
   text-decoration: underline;
-  color: #0000b2;
+  color: #0A0A5F;
 }
 
 .ResendSuccess {
@@ -28,7 +28,7 @@
   width: 22px;
   height: 22px;
   margin-right: 5px;
-  color: #0000b2;
+  color: #0A0A5F;
 }
 
 .SignUpFormWrapper {

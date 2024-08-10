@@ -73,7 +73,7 @@
 .ShippingAddress .ChangeAddress {
   margin-top: 20px;
   cursor: pointer;
-  color: #0000B2;
+  color: #0A0A5F;
 }
 
 .AddNewAddress {
@@ -81,7 +81,7 @@
 }
 
 .AddNewBtn {
-  color: #0000B2;
+  color: #0A0A5F;
   cursor: pointer;
 }
 

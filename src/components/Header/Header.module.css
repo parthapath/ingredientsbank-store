@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 99;
   background-color: #0A0A5F;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #ccc;
 }
 
 .HeaderWrap {

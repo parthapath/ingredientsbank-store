@@ -20,11 +20,11 @@
 
 .Primary {
   color: #fff;
-  background-color: #0000b2;
+  background-color: #0A0A5F;
 }
 
 .Primary:hover {
-  background-color: #1919FF;
+  background-color: #1313b1;
 }
 
 .Secondary {
@@ -33,21 +33,17 @@
 }
 
 .Secondary:hover {
-  color: #0000b2;
+  color: #0A0A5F;
   background-color: #ebebeb;
 }
 
 .Default {
-  color: #0000b2;
+  color: #0A0A5F;
   background-color: #ebebeb;
 }
 
 .Btn[disabled] {
   opacity: 0.3;
-}
-
-.Success {
-  background-color: #28c76f;
 }
 
 .W100 {

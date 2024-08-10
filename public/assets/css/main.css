@@ -35,7 +35,7 @@ a {
 }
 
 a:hover {
-  color: #0000B2;
+  color: #0A0A5F;
 }
 
 ul {
@@ -130,12 +130,12 @@ ul li {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  border: 1px solid #0000B2;
+  border: 1px solid #0A0A5F;
   background-color: transparent;
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: #0000B2;
+  background-color: #0A0A5F;
 }
 
 .checkbox .checkmark:after {
@@ -251,7 +251,7 @@ table tbody tr button {
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #0000B2;
+  background-color: #0A0A5F;
   color: #fff;
 }
 
