@@ -33,9 +33,9 @@
 
 .SwiperSlider .swiper-button-prev:hover,
 .SwiperSlider .swiper-button-next:hover {
-  background-color: #0A0A5F;
+  background-color: #0a0a5f;
   color: #fff;
-  border-color: #0A0A5F;
+  border-color: #0a0a5f;
 }
 
 .SwiperSlider .swiper-pagination-bullet {
@@ -44,14 +44,22 @@
 }
 
 .SwiperSlider .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #0A0A5F;
-  border-color: #0A0A5F;
+  background-color: #0a0a5f;
+  border-color: #0a0a5f;
 }
 
 .SwiperSlider .swiper-pagination-horizontal {
   bottom: 20px !important;
 }
 
-.SwiperSlider img {
-  height: 597px;
+@media screen and (min-width: 1540px) {
+  .SwiperSlider img {
+    height: 590px;
+  }
+}
+
+@media screen and (max-width: 1540px) and (min-width: 1281px) {
+  .SwiperSlider img {
+    height: 480px;
+  }
 }

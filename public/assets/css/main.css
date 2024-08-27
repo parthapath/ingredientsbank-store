@@ -11,7 +11,10 @@ body {
   color: #222;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 600;
 }
 
@@ -35,7 +38,7 @@ a {
 }
 
 a:hover {
-  color: #0A0A5F;
+  color: #0a0a5f;
 }
 
 ul {
@@ -48,7 +51,7 @@ ul li {
 }
 
 .page-content {
-  padding-top: 140px;
+  padding-top: 138px;
 }
 
 /* Form */
@@ -130,12 +133,12 @@ ul li {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  border: 1px solid #0A0A5F;
+  border: 1px solid #0a0a5f;
   background-color: transparent;
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: #0A0A5F;
+  background-color: #0a0a5f;
 }
 
 .checkbox .checkmark:after {
@@ -240,7 +243,7 @@ table tbody tr button {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #3E56FE;
+  color: #3e56fe;
   background-color: #fff;
   border: 1px solid #eee;
   cursor: default;
@@ -251,7 +254,7 @@ table tbody tr button {
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #0A0A5F;
+  background-color: #0a0a5f;
   color: #fff;
 }
 
