@@ -132,7 +132,7 @@ const ProductEnquiryForm = () => {
                         type="text"
                         label="Package Size *"
                         name="package_size"
-                        placeholder="e.g. 10kg bag"
+                        placeholder="e.g. 25kg drum"
                       />
 
                       <FormikControl
