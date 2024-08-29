@@ -10,7 +10,7 @@ const ProductEnquiryBtn = () => {
 
   return (
     <div className={styles.ProductEnquiryBtn}>
-      <p>Can not find what you are looking for?</p>
+      <p>Are You Looking for New Ingredients?</p>
       <p>
         <span onClick={() => dispatch(openProductEnquiryModal(true))}>
           Click here{" "}

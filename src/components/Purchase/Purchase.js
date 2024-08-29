@@ -30,18 +30,21 @@ const Purchase = (props) => {
     regionId = region.id;
   }
 
-  const fetchPricings = useCallback((id) => {
-    axios
-      .get(`/products/${props.id}/prices?size=${id}&region=${regionId}`)
-      .then((response) => {
-        setPricings(response.data);
-        setPrice(parseFloat(response.data[0].price));
-        setCurrency(response.data[0].currency);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error.response.data);
-      });
-  }, [props.id, regionId]);
+  const fetchPricings = useCallback(
+    (id) => {
+      axios
+        .get(`/products/${props.id}/prices?size=${id}&region=${regionId}`)
+        .then((response) => {
+          setPricings(response.data);
+          setPrice(parseFloat(response.data[0].price));
+          setCurrency(response.data[0].currency);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error.response.data);
+        });
+    },
+    [props.id, regionId]
+  );
 
   useEffect(() => {
     const fetchSizes = () => {
@@ -164,6 +167,9 @@ const Purchase = (props) => {
     <div className={styles.Purchase}>
       {sizes.length ? (
         <>
+          <div className={styles.Sku}>
+            <span>SKU:</span> {selectedSize.sku}
+          </div>
           <div className={styles.Sizes}>
             {sizes.map((item, i) => {
               return (

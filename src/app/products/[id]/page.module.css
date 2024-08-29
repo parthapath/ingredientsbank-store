@@ -33,15 +33,15 @@
   font-weight: 400;
 }
 
-.Sku {
-  margin: 20px 0 30px;
+.Intro {
+  margin: 20px 0 10px;
 }
 
-.Sku > div {
+.Intro > div {
   margin-top: 10px;
 }
 
-.Sku span {
+.Intro span {
   font-weight: 600;
 }
 
@@ -67,13 +67,14 @@
 
 .HtmlContent ul li {
   list-style-type: inherit;
+  line-height: 22px;
 }
 
 .HtmlContent ul li + li {
   margin-top: 10px;
 }
 
-.Description {
+.Applications {
   margin-top: 40px;
 }
 

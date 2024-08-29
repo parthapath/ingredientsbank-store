@@ -115,19 +115,19 @@ const Home = async () => {
           <Slide delay={0.5}>
             <div className={styles.Message}>
               <h3>
-                We Are Your Trusted Ingredients Partner. &quot;We Deliver You,
-                Wherever You Are.&quot;
+                Your Trusted Ingredients Partner. &quot;We Deliver You, Wherever
+                You Are.&quot;
               </h3>
             </div>
           </Slide>
 
-          <ErrorBoundary>
+          {/* <ErrorBoundary>
             <Suspense>
               <Slide delay={0.7}>
                 <FeaturedCategoriesSection />
               </Slide>
             </Suspense>
-          </ErrorBoundary>
+          </ErrorBoundary> */}
 
           <ErrorBoundary>
             <Suspense>
@@ -150,13 +150,13 @@ const Home = async () => {
                     USA, UK, EU & UAE. Ingredients Bank trademark owner is Novel
                     Nutrientss, certified for FSSC 22000, Kosher, Halal, GMP,
                     and Organic certification from reputed certifying bodies. We
-                    have a strong technical team to manufacture Nutra- ceuticals
+                    have a strong technical team to manufacture Nutraceuticals
                     as per Global regulatory standards to supply them globally.
                     We comply with the Ethical Business System. You can trust
                     quality and performance because, through our continual
                     global food hygiene and safety culture practices, we ensure
                     that manufactured products are tested at each stage of the
-                    process and assure customers a high degree of confidence
+                    process and assure customers a high degree of confidence.
                   </p>
                   <p>
                     We acquire, supply, and develop ingredients for

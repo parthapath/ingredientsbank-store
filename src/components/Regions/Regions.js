@@ -20,7 +20,7 @@ const Regions = () => {
         setRegions(response.data);
       })
       .catch((error) => {
-        console.log("error", error);
+        console.log("error", error.response.data);
       });
   }, []);
 
@@ -39,11 +39,10 @@ const Regions = () => {
       axios
         .put("/users/set-region", values)
         .then(() => {
-          setSuccess(true);
           window.location.reload();
         })
         .catch((error) => {
-          setError(error.response.data);
+          console.log("error", error.response.data);
         });
     } else {
       window.location.reload();

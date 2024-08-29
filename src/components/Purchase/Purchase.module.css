@@ -1,3 +1,11 @@
+.Sku {
+  padding-bottom: 30px;
+}
+
+.Sku span {
+  font-weight: 600;
+}
+
 .Sizes {
   padding-top: 30px;
   display: flex;

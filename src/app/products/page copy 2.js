@@ -10,7 +10,6 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "./page.module.css";
 
 import ProductsList from "@/components/ProductsList/ProductsList";
-import Checkbox from "@/components/FormElements/Checkbox/Checkbox";
 
 const ReactPaginate = dynamic(() => import("react-paginate"), { ssr: false });
 
@@ -34,27 +33,7 @@ const useCategories = () => {
   return categories;
 };
 
-const useApplications = () => {
-  const [applications, setApplications] = useState([]);
-
-  useEffect(() => {
-    const fetchApplications = async () => {
-      axios
-        .get("/applications")
-        .then((response) => {
-          setApplications(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching applications:", error);
-        });
-    };
-    fetchApplications();
-  }, []);
-
-  return applications;
-};
-
-const useProducts = (page, selectedCategories, selectedApplications) => {
+const useProducts = (page, selectedCategories) => {
   const [products, setProducts] = useState([]);
   const [pageInfo, setPageInfo] = useState({
     pageCount: 0,
@@ -72,9 +51,7 @@ const useProducts = (page, selectedCategories, selectedApplications) => {
       }
       try {
         const response = await axios.get(
-          `/products?page=${page}&per-page=20&region=${regionId}&categories=${selectedCategories}&applications=${selectedApplications.join(
-            ","
-          )}`
+          `/products?page=${page}&per-page=20&region=${regionId}&categories=${selectedCategories}`
         );
         setProducts(response.data);
         setPageInfo({
@@ -92,7 +69,7 @@ const useProducts = (page, selectedCategories, selectedApplications) => {
     if (selectedCategories !== false) {
       fetchProducts();
     }
-  }, [selectedCategories, selectedApplications, page]);
+  }, [selectedCategories, page]);
 
   return { products, pageInfo };
 };
@@ -105,23 +82,14 @@ const Products = () => {
 
   const selectedPage = searchParams.get("page");
   const queryCategories = searchParams.get("categories");
-  const queryApplications = searchParams.get("applications");
 
   const [selectedCategories, setSelectedCategories] = useState(
     queryCategories || ""
   );
-  const [selectedApplications, setSelectedApplications] = useState(() =>
-    queryApplications ? queryApplications.split(",") : []
-  );
   const [page, setPage] = useState(selectedPage ? parseInt(selectedPage) : 1);
 
   const categories = useCategories();
-  const applications = useApplications();
-  const { products, pageInfo } = useProducts(
-    page,
-    selectedCategories,
-    selectedApplications
-  );
+  const { products, pageInfo } = useProducts(page, selectedCategories);
 
   const updateSearchParam = useCallback(
     ({ key, value }) => {
@@ -140,14 +108,6 @@ const Products = () => {
     setSelectedCategories("");
   }, []);
 
-  const handleApplicationFilter = useCallback((val) => {
-    setSelectedApplications((prev) =>
-      prev.includes(val)
-        ? prev.filter((value) => value !== val)
-        : [...prev, val]
-    );
-  }, []);
-
   useEffect(() => {
     router.push(
       updateSearchParam({ key: "categories", value: selectedCategories })
@@ -155,26 +115,13 @@ const Products = () => {
   }, [router, selectedCategories, updateSearchParam]);
 
   useEffect(() => {
-    router.push(
-      updateSearchParam({
-        key: "applications",
-        value: selectedApplications.join(","),
-      })
-    );
-  }, [router, selectedApplications, updateSearchParam]);
-
-  useEffect(() => {
     const handlePopState = () => {
       const newParams = new URLSearchParams(window.location.search);
       const newPage = newParams.get("page");
       const newCategories = newParams.get("categories");
-      const newApplications = newParams.get("applications");
 
       setPage(newPage ? parseInt(newPage) : 1);
       setSelectedCategories(newCategories || "");
-      setSelectedApplications(
-        newApplications ? newApplications.split(",") : []
-      );
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -230,29 +177,6 @@ const Products = () => {
                             key={i}
                           >
                             {item.name}
-                          </li>
-                        );
-                      })
-                    : null}
-                </ul>
-              </div>
-              <div className={styles.Filter}>
-                <h4>Applications</h4>
-                <ul>
-                  {applications.length
-                    ? applications.map((item, i) => {
-                        return (
-                          <li key={i}>
-                            <Checkbox
-                              checked={
-                                selectedApplications.includes(item.name)
-                                  ? true
-                                  : false
-                              }
-                              name={item.id}
-                              change={() => handleApplicationFilter(item.name)}
-                              label={item.name}
-                            />
                           </li>
                         );
                       })

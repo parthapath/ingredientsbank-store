@@ -86,7 +86,7 @@ const DocumentsSection = async ({ id, isAuthenticated }) => {
   const documents = await fetchDocuments(id);
   return documents.length ? (
     <div className={styles.ProductDocuments}>
-      <h3>Product Documents</h3>
+      <h3>Technical Documents</h3>
       <ul>
         {documents.map((item, i) => (
           <li key={i}>
@@ -108,7 +108,7 @@ const CertificatesSection = async ({ id, isAuthenticated }) => {
   const certificates = await fetchCertificates(id);
   return certificates.length ? (
     <div className={styles.ProductCertifications}>
-      <h3>Product Certifications</h3>
+      <h3>Company Certifications</h3>
       <ul>
         {certificates.map((item, i) => (
           <li key={i}>
@@ -150,15 +150,12 @@ const ProductDetails = async ({ params, searchParams }) => {
               <div className={styles.Overview}>
                 <h1>{product.name}</h1>
                 <h2>{product.alternate_name}</h2>
-                <div className={styles.Sku}>
+                <div className={styles.Intro}>
                   <div>
                     <span>Category:</span> {categories.join(", ")}
                   </div>
                   <div>
-                    <span>SKU:</span> {product.sku}
-                  </div>
-                  <div>
-                    <span>Code:</span> {product.code}
+                    <span>Product Code:</span> {product.code}
                   </div>
                 </div>
               </div>
@@ -176,6 +173,12 @@ const ProductDetails = async ({ params, searchParams }) => {
                 </div>
               )}
               <div
+                className={[styles.Description, styles.HtmlContent].join(" ")}
+              >
+                <h3>Description</h3>
+                <HtmlContent html={product.description} />
+              </div>
+              <div
                 className={[styles.Applications, styles.HtmlContent].join(" ")}
               >
                 <h3>Applications</h3>
@@ -186,15 +189,9 @@ const ProductDetails = async ({ params, searchParams }) => {
                 </ul>
               </div>
               <div
-                className={[styles.Description, styles.HtmlContent].join(" ")}
-              >
-                <h3>Overview</h3>
-                <HtmlContent html={product.description} />
-              </div>
-              <div
                 className={[styles.Highlights, styles.HtmlContent].join(" ")}
               >
-                <h3>Highlights</h3>
+                <h3>Active Constituents / Principles</h3>
                 <HtmlContent html={product.highlights} />
               </div>
               {isAuthenticated ? (
