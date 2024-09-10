@@ -1,3 +1,7 @@
+.ShippingAndReturns {
+    min-height: 600px;
+}
+
 .ShippingAndReturns h2 {
     font-size: 26px;
 }
@@ -5,4 +9,16 @@
 .ShippingAndReturns h3 {
     margin-top: 30px;
     font-size: 18px;
+}
+
+.ShippingAndReturns ul {
+    padding-left: 15px;
+}
+
+.ShippingAndReturns ul li {
+    list-style-type: decimal;
+}
+
+.ShippingAndReturns ul li + li {
+    margin-top: 25px;
 }
