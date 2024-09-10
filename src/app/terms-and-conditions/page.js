@@ -20,8 +20,8 @@ const termsAndConditions = async () => {
         <p>
           All prices are fixed as of the date of the invoice and/or the order
           acknowledgment date. All prices quoted are exclusive of taxes, fees,
-          levies, duties, handling, and freight charges ("Taxes and Shipping
-          Charges") unless otherwise approved.
+          levies, duties, handling, and freight charges (&quot;Taxes and Shipping
+          Charges&quot;) unless otherwise approved.
         </p>
         <h3>4. Credit Terms</h3>
         <p>Credit terms are agreed upon as per email confirmation.</p>
