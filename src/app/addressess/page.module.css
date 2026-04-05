@@ -94,3 +94,62 @@
 .AddressWrapper .Actions .Action + .Action {
   margin-left: 10px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column;
+  }
+
+  .Content {
+    margin-left: 0;
+  }
+
+  .Content h1 {
+    font-size: 20px;
+  }
+
+  .PageHeader {
+    gap: 10px;
+  }
+
+  .PageActions {
+    margin-top: 0;
+  }
+
+  .AddressessList .AddressWrapper {
+    padding: 15px;
+  }
+
+  .AddressessList .AddressWrapper .Name {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Content {
+    padding: 15px;
+  }
+
+  .Content h1 {
+    font-size: 18px;
+  }
+
+  .AddressessList .AddressWrapper {
+    padding: 12px;
+  }
+
+  .AddressessList .AddressWrapper .Name div:first-child {
+    font-size: 14px;
+  }
+
+  .AddressWrapper .Actions {
+    font-size: 12px;
+  }
+}

@@ -2,4 +2,23 @@
     margin: 0 -4px;
     display: flex;
     flex-wrap: wrap;
+    gap: 9px;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Categories {
+    margin: 0 -4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Categories {
+    margin: 0;
+  }
 }

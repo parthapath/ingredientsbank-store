@@ -98,6 +98,8 @@
   margin-top: 10px;
 }
 
+/* Responsive Styles */
+
 .Documents ul li a {
   color: #fff;
 }
@@ -112,4 +114,93 @@
 
 .ProductEnquiry {
   margin-top: 50px;
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .Product {
+    width: 70%;
+  }
+
+  .Documents {
+    width: 30%;
+  }
+
+  .ProductImage {
+    width: 350px;
+  }
+
+  .ProductDetails {
+    width: calc(100% - 350px);
+  }
+}
+
+@media (max-width: 768px) {
+  .PageContent {
+    flex-direction: column;
+  }
+
+  .Product {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .ProductImage {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .ProductDetails {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .ProductDetails h1 {
+    font-size: 20px;
+  }
+
+  .ProductDetails h2 {
+    font-size: 14px;
+  }
+
+  .Documents {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .Applications,
+  .Highlights {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProductImage {
+    max-width: 100%;
+  }
+
+  .ProductDetails {
+    padding: 15px 0;
+  }
+
+  .ProductDetails h1 {
+    font-size: 18px;
+  }
+
+  .ProductDetails h2 {
+    font-size: 13px;
+  }
+
+  .Applications,
+  .Highlights {
+    margin-top: 20px;
+  }
+
+  .Documents {
+    padding: 12px;
+  }
 }

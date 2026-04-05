@@ -36,3 +36,50 @@
   margin-bottom: 5px;
   color: #777;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Account .Container {
+    flex-direction: column;
+  }
+
+  .Content {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .Content h1 {
+    font-size: 20px;
+  }
+
+  .Details {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .Content {
+    padding: 15px;
+  }
+
+  .Content h1 {
+    font-size: 18px;
+  }
+
+  .Details {
+    padding: 15px 0;
+  }
+
+  .Details .Detail + .Detail {
+    margin-top: 20px;
+  }
+
+  .Label {
+    font-size: 12px;
+  }
+}

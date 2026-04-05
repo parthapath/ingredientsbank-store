@@ -61,3 +61,102 @@
 /* .MainMenu .ShopBtn.Active span {
   color: #3E9538;
 } */
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .MainMenu ul {
+    margin: 0 -15px;
+  }
+  
+  .MainMenu ul li {
+    margin: 0 15px;
+  }
+  
+  .MainMenu ul li a {
+    font-size: 14px;
+  }
+  
+  .MainMenu .ContactNo {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .MainMenu ul {
+    margin: 0 -10px;
+  }
+  
+  .MainMenu ul li {
+    margin: 0 10px;
+  }
+  
+  .MainMenu ul li a {
+    font-size: 13px;
+  }
+  
+  .MainMenu ul li svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .MainMenu {
+    margin-top: auto;
+    position: relative;
+    z-index: 98;
+  }
+  
+  .Container {
+    padding: 8px 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .MainMenu ul {
+    margin: 0 -8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .MainMenu ul li {
+    margin: 4px 8px;
+  }
+  
+  .MainMenu ul li a {
+    font-size: 12px;
+  }
+  
+  .MainMenu .ContactNo {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Container {
+    padding: 6px 0;
+  }
+  
+  .MainMenu ul {
+    margin: 0 -4px;
+  }
+  
+  .MainMenu ul li {
+    margin: 3px 4px;
+  }
+  
+  .MainMenu ul li a {
+    font-size: 11px;
+  }
+  
+  .MainMenu ul li svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+  }
+  
+  .MainMenu .ContactNo {
+    font-size: 12px;
+  }
+}

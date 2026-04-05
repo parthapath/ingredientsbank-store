@@ -1,8 +1,10 @@
 .Header {
   width: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 99;
-  background-color: #0A0A5F;
+  background-color: #0a0a5f;
   border-bottom: 1px solid #ccc;
 }
 
@@ -10,17 +12,29 @@
   height: 87px;
   padding: 6px 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 10px 15px;
 }
 
 .HeaderLeft {
   display: flex;
   align-items: center;
+  order: 1;
 }
 
 .HeaderRight {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  order: 3;
+}
+
+.HeaderBottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  order: 2;
 }
 
 .Logo {
@@ -64,7 +78,7 @@
 .AccountName {
   display: flex;
   align-items: center;
-  color: #FFF;
+  color: #fff;
 }
 
 .AccountName span {
@@ -104,4 +118,209 @@
   left: 0;
   top: 85px;
   z-index: 8;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .Logo {
+    margin-right: 30px;
+  }
+
+  .Logo img {
+    max-width: 260px;
+    height: auto;
+  }
+
+  .HeaderActions .SignInUp {
+    margin-left: 10px;
+  }
+
+  .AccountName span {
+    display: none;
+  }
+
+  .AccountName svg {
+    margin-right: 0;
+  }
+
+  .MyAccount {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .HeaderWrap {
+    height: auto;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+
+  .HeaderLeft {
+    order: 1;
+  }
+
+  .HeaderRight {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .HeaderBottom {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .Logo {
+    margin-right: 0;
+  }
+
+  .Logo img {
+    max-width: 160px;
+    height: auto;
+  }
+
+  .HeaderActions {
+    margin-left: 0;
+    gap: 10px;
+  }
+
+  .HeaderActions .HeaderAction:last-child {
+    padding: 0;
+  }
+
+  .HeaderActions .SignInUp {
+    margin-left: 0;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .HeaderActions .SignInUp span {
+    display: inline;
+    margin: 0 10px;
+  }
+
+  .AccountName span {
+    display: none;
+  }
+
+  .AccountName svg {
+    margin-right: 0;
+  }
+
+  .MyAccount {
+    margin-left: 0;
+  }
+
+  .AccountMenu {
+    margin-top: 38px;
+    width: 180px;
+    padding: 15px;
+  }
+
+  .Overlay {
+    top: 102px;
+  }
+}
+
+@media (max-width: 768px) {
+  .HeaderWrap {
+    flex-wrap: wrap;
+  }
+
+  .HeaderLeft {
+    order: 1;
+  }
+
+  .HeaderRight {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .HeaderBottom {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .Logo {
+    margin-right: 0;
+  }
+
+  .Logo img {
+    max-width: 160px;
+  }
+
+  .HeaderActions {
+    margin-left: 0;
+    gap: 10px;
+  }
+
+  .HeaderActions .HeaderAction:last-child {
+    padding: 0;
+  }
+
+  .HeaderActions .SignInUp {
+    margin-left: 0;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .HeaderActions .SignInUp span {
+    display: inline;
+    margin: 0 10px;
+  }
+
+  .AccountName span {
+    display: none;
+  }
+
+  .AccountName svg {
+    margin-right: 0;
+  }
+
+  .MyAccount {
+    margin-left: 0;
+  }
+
+  .AccountMenu {
+    margin-top: 38px;
+    width: 180px;
+    padding: 15px;
+  }
+
+  .Overlay {
+    top: 102px;
+  }
+}
+
+@media (max-width: 480px) {
+  .HeaderWrap {
+    padding: 8px 12px;
+  }
+
+  .HeaderBottom {
+    margin-top: 6px;
+  }
+
+  .Logo img {
+    max-width: 170px;
+  }
+
+  .HeaderActions .SignInUp {
+    font-size: 12px;
+    gap: 5px;
+  }
+
+  .AccountMenu {
+    width: 160px;
+  }
+
+  .Overlay {
+    top: 86px;
+  }
 }

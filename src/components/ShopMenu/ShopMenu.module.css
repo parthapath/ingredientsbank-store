@@ -63,3 +63,87 @@
   top: 129px;
   z-index: 8;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .ShopMenu {
+    width: 580px;
+    height: 300px;
+    padding: 25px;
+  }
+
+  .ShopMenu .Categories ul {
+    height: 210px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ShopMenu {
+    width: 460px;
+    height: auto;
+    max-height: 70vh;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .ShopMenu .Categories ul {
+    height: auto;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .ShopMenu {
+    width: calc(100vw - 30px);
+    max-width: 400px;
+    height: auto;
+    max-height: 60vh;
+    padding: 15px;
+    margin-top: 28px;
+    left: 0;
+  }
+
+  .ShopMenu .Categories ul {
+    height: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .ShopMenu .Categories li {
+    margin: 4px 0;
+  }
+
+  .ShopMenu .Categories a {
+    font-size: 13px;
+  }
+
+  .Overlay {
+    top: 108px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ShopMenu {
+    width: calc(100vw - 20px);
+    max-width: none;
+    padding: 12px;
+    margin-top: 24px;
+  }
+
+  .ShopMenu .Head .Title a {
+    font-size: 14px;
+  }
+
+  .ShopMenu .Categories a {
+    font-size: 12px;
+  }
+
+  .Overlay {
+    top: 96px;
+  }
+}

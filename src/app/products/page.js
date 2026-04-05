@@ -114,6 +114,7 @@ const Products = () => {
     queryApplications ? queryApplications.split(",") : []
   );
   const [page, setPage] = useState(selectedPage ? parseInt(selectedPage) : 1);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const categories = useCategories();
   const applications = useApplications();
@@ -206,14 +207,57 @@ const Products = () => {
       <title>Products - Ingredients Bank</title>
       <div className={["page-wrapper", styles.ProductsPage].join(" ")}>
         <div className="container">
+          {/* Mobile: selected category + filter toggle */}
+          <div className={styles.MobileTopBar}>
+            <span className={styles.MobileActiveCategory}>
+              {selectedCategories ? selectedCategories : "All Categories"}
+            </span>
+            <button
+              className={styles.FilterToggle}
+              onClick={() => setFilterOpen(true)}
+              aria-label="Open filters"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6"/>
+                <line x1="8" y1="12" x2="20" y2="12"/>
+                <line x1="12" y1="18" x2="20" y2="18"/>
+              </svg>
+              Filters
+              {(selectedCategories || selectedApplications.length > 0) && (
+                <span className={styles.FilterBadge}>
+                  {(selectedCategories ? 1 : 0) + selectedApplications.length}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Mobile drawer backdrop */}
+          {filterOpen && (
+            <div
+              className={styles.FilterBackdrop}
+              onClick={() => setFilterOpen(false)}
+            />
+          )}
+
           <div className={styles.PageContent}>
-            <div className={styles.Filters}>
+            {/* Sidebar / drawer */}
+            <div className={[styles.Filters, filterOpen ? styles.FiltersOpen : ""].join(" ")}>
+              <div className={styles.FilterHeader}>
+                <span>Filters</span>
+                <button
+                  className={styles.FilterClose}
+                  onClick={() => setFilterOpen(false)}
+                  aria-label="Close filters"
+                >
+                  ✕
+                </button>
+              </div>
               <div className={styles.Filter}>
                 <h4>Categories</h4>
                 <ul>
                   <li
                     className={selectedCategories === "" ? styles.Active : null}
-                    onClick={() => clearSelectedCategories()}
+                    onClick={() => { clearSelectedCategories(); setFilterOpen(false); }}
                   >
                     All
                   </li>
@@ -226,7 +270,7 @@ const Products = () => {
                                 ? styles.Active
                                 : null
                             }
-                            onClick={() => handleCategoryFilter(item.name)}
+                            onClick={() => { handleCategoryFilter(item.name); setFilterOpen(false); }}
                             key={i}
                           >
                             {item.name}

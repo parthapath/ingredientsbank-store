@@ -1,7 +1,22 @@
 .ErrorMessages {
   width: 400px;
+  max-width: 100%;
   padding: 20px;
   margin-top: 20px;
   background-color: #fff7ea;
   border-top: 2px solid #f00;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .ErrorMessages {
+    width: 100%;
+    padding: 15px;
+    font-size: 13px;
+  }
 }

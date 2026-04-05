@@ -133,3 +133,98 @@
   width: 150px;
   font-weight: 600;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column;
+  }
+
+  .Content {
+    margin-left: 0;
+  }
+
+  .Content h1 {
+    font-size: 20px;
+  }
+
+  .Overview {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .Overview span {
+    width: 110px;
+  }
+
+  .OrderDetails {
+    flex-direction: column;
+  }
+
+  .OrderDetails img {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .Description {
+    padding-left: 0;
+    padding-top: 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ShippingAddress {
+    width: 100%;
+  }
+
+  .Details span {
+    width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Content {
+    padding: 15px;
+  }
+
+  .Content h1 {
+    font-size: 18px;
+  }
+
+  .Overview {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .Overview span {
+    width: 90px;
+    font-size: 12px;
+  }
+
+  .OrderDetails {
+    padding: 8px;
+  }
+
+  .OrderDetails h2 {
+    font-size: 14px;
+  }
+
+  .OrderDetails h3 {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .Details span {
+    width: 90px;
+    font-size: 12px;
+  }
+
+  .shippingNo div:first-child {
+    width: 120px;
+  }
+}

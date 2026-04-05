@@ -4,11 +4,12 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 201;
   color: #333;
   transition: all 0.3s ease-out;
   background-color: #fff;
   border-radius: 6px;
+  width: calc(100% - 40px);
 }
 
 .ModalHeader {
@@ -37,8 +38,63 @@
   cursor: pointer;
 }
 
-@media (max-width: 1366px) {
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
   .Modal {
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
+    margin: 110px auto 20px;
+    max-height: calc(100dvh - 130px);
+    overflow-y: auto;
+  }
+
+  .ModalHeader {
+    height: 50px;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  .ModalHeader .Title {
+    font-size: 14px;
+  }
+
+  .ModalBody {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Modal {
+    width: calc(100% - 16px);
+    margin: 94px auto 16px;
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+  }
+
+  .ModalHeader {
+    height: 46px;
+    padding: 0 15px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  .ModalHeader .Title {
+    font-size: 13px;
+  }
+
+  .ModalBody {
+    padding: 0 15px 15px;
+  }
+
+  .CloseBtn svg {
+    width: 20px !important;
+    height: 20px !important;
   }
 }

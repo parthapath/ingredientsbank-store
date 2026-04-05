@@ -66,3 +66,69 @@
 .ContinueBtn {
   text-align: center;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Details {
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  .Details h1 {
+    font-size: 22px;
+  }
+
+  .OrderId {
+    font-size: 16px;
+  }
+
+  .Product h2 {
+    font-size: 18px;
+  }
+
+  .Product h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .Product > div span {
+    width: 130px;
+  }
+
+  .ShippingAddress h2 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Details {
+    padding: 10px;
+  }
+
+  .Details h1 {
+    font-size: 18px;
+  }
+
+  .OrderId {
+    font-size: 14px;
+  }
+
+  .Product h2 {
+    font-size: 16px;
+  }
+
+  .Product > div span {
+    width: 100px;
+    font-size: 13px;
+  }
+
+  .Notes {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}

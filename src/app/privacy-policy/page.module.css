@@ -1,8 +1,107 @@
+
 .PrivacyPolicy h2 {
-    font-size: 26px;
+  font-size: 26px;
+  margin-bottom: 30px;
 }
 
 .PrivacyPolicy h3 {
-    margin-top: 30px;
-    font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #0A0A5F;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8e8f0;
 }
+
+.PrivacyPolicy h4 {
+  font-size: 15px;
+  margin-top: 24px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.PrivacyPolicy p {
+  margin-bottom: 16px;
+  line-height: 28px;
+  color: #444;
+}
+
+.PrivacyPolicy ul {
+  margin-bottom: 16px;
+  padding-left: 0;
+}
+
+.PrivacyPolicy ul li {
+  line-height: 26px;
+  padding-left: 14px;
+  position: relative;
+  color: #444;
+}
+
+.PrivacyPolicy ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #0A0A5F;
+}
+
+.PrivacyPolicy ul li + li {
+  margin-top: 8px;
+}
+
+.PrivacyPolicy a {
+  color: #0A0A5F;
+  text-decoration: underline;
+}
+
+.PrivacyPolicy a:hover {
+  color: #1919ff;
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .PrivacyPolicy h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .PrivacyPolicy h3 {
+    margin-top: 32px;
+    font-size: 16px;
+  }
+
+  .PrivacyPolicy h4 {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .PrivacyPolicy p {
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .PrivacyPolicy h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .PrivacyPolicy h3 {
+    margin-top: 28px;
+    font-size: 15px;
+  }
+
+  .PrivacyPolicy p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .PrivacyPolicy ul li {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+

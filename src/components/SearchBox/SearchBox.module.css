@@ -81,3 +81,123 @@
   top: 85px;
   z-index: 8;
 }
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .SearchForm {
+    width: 420px;
+  }
+
+  .SearchResults {
+    width: 420px;
+  }
+}
+
+@media (max-width: 992px) {
+  .SearchBox {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .SearchForm {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .SearchResults {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 48px;
+  }
+
+  .SearchInput input {
+    height: 30px;
+    font-size: 13px;
+    padding: 0 60px 0 15px;
+  }
+
+  .SubmitBtn {
+    width: 56px;
+    height: 26px;
+    top: 2px;
+    right: 2px;
+  }
+
+  .SubmitBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .Overlay {
+    top: 102px;
+  }
+}
+
+@media (max-width: 768px) {
+  .SearchBox {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .SearchForm {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .SearchResults {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 48px;
+  }
+
+  .SearchInput input {
+    height: 30px;
+    font-size: 13px;
+    padding: 0 60px 0 15px;
+  }
+
+  .SubmitBtn {
+    width: 56px;
+    height: 26px;
+    top: 2px;
+    right: 2px;
+  }
+
+  .SubmitBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .Overlay {
+    top: 102px;
+  }
+}
+
+@media (max-width: 480px) {
+  .SearchInput input {
+    height: 30px;
+    font-size: 13px;
+    padding: 0 60px 0 15px;
+  }
+
+  .SubmitBtn {
+    width: 56px;
+    height: 26px;
+    top: 2px;
+    right: 2px;
+    border-radius: 14px;
+  }
+
+  .SubmitBtn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .SearchResults {
+    margin-top: 44px;
+  }
+
+  .Overlay {
+    top: 86px;
+  }
+}

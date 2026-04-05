@@ -1,5 +1,6 @@
 .NewAddressForm {
   width: 900px;
+  max-width: 100%;
 }
 
 .NewAddressForm .FormBody {
@@ -9,9 +10,41 @@
 }
 
 .NewAddressForm .FormBody div:last-child {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .NewAddressForm .FormActions {
-    margin-top: 30px;
+  margin-top: 30px;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .NewAddressForm {
+    width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .NewAddressForm {
+    width: 100%;
+  }
+
+  .NewAddressForm .FormBody {
+    flex-direction: column;
+  }
+  
+  .NewAddressForm .FormActions {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .NewAddressForm .FormActions {
+    margin-top: 15px;
+  }
 }

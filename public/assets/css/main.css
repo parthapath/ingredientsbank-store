@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
 @import url(vendors/normalize.css);
 
 * {
@@ -19,13 +20,17 @@ h4 {
 }
 
 .container {
-  width: 1460px;
+  width: 100%;
+  max-width: 1460px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .page-wrapper {
   padding: 150px 0 70px;
 }
+
+/* Responsive breakpoints */
 
 p {
   margin: 0 0 12px;
@@ -55,7 +60,8 @@ ul li {
 }
 
 /* Form */
-.form-container {
+
+.form-container form {
   margin: 0 -12px;
 }
 
@@ -179,6 +185,7 @@ ul li {
 }
 
 /* Table */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -228,6 +235,7 @@ table tbody tr button {
 }
 
 /* Pagination */
+
 .pagination {
   margin-top: 30px;
   padding-left: 0;
@@ -265,4 +273,106 @@ table tbody tr button {
 .pagination .page-item:first-child .page-link,
 .pagination .page-item:last-child .page-link {
   font-weight: 600;
+}
+
+/* Global Responsive Table */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .page-wrapper {
+    padding: 102px 0 40px;
+  }
+
+  .page-content {
+    padding-top: 102px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .page-wrapper {
+    padding: 102px 0 40px;
+  }
+
+  .page-content {
+    padding-top: 102px;
+  }
+
+  .form-container .form-group {
+    width: 100%;
+    min-height: 80px;
+  }
+
+  .form-container .form-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .form-container .form-actions button {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table th,
+  table td {
+    padding: 8px 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .pagination {
+    margin-top: 20px;
+  }
+
+  .pagination .page-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-wrapper {
+    padding: 94px 0 30px;
+  }
+
+  .page-content {
+    padding-top: 86px;
+  }
+
+  table th {
+    padding: 10px 5px;
+    font-size: 11px;
+  }
+
+  table td {
+    font-size: 12px;
+  }
+
+  .pagination .page-link {
+    padding: 0.35rem 0.5rem;
+    font-size: 12px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

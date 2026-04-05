@@ -9,3 +9,27 @@
 .Footer button + button {
     margin-left: 10px
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .Footer {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .Footer button + button {
+    margin-left: 0;
+  }
+
+  .Footer button {
+    flex: 1;
+    min-width: 120px;
+  }
+}

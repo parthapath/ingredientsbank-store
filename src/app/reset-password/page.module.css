@@ -1,3 +1,16 @@
 .FormContainer {
     width: 420px;
+    max-width: 100%;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .FormContainer {
+    width: 100%;
+  }
 }

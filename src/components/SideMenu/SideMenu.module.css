@@ -1,5 +1,6 @@
 .SideMenu {
   width: 300px;
+  flex-shrink: 0;
   border-radius: 3px;
 }
 
@@ -8,6 +9,7 @@
   display: flex;
   background-color: #fff;
   align-items: center;
+  border-radius: 3px;
 }
 
 .UserName > div:last-child {
@@ -30,9 +32,9 @@
 }
 
 .Menu {
-  height: calc(100% - 92.55px);
   margin-top: 20px;
   background-color: #fff;
+  border-radius: 3px;
 }
 
 .Menu a {
@@ -47,3 +49,178 @@
   background-color: #0A0A5F;
   color: #fff;
 }
+
+/* Mobile top bar — hidden on desktop */
+.MobileBar {
+  display: none;
+}
+
+.MobileBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.MobileAvatar {
+  width: 36px;
+  height: 36px;
+  color: #0A0A5F;
+  flex-shrink: 0;
+}
+
+.MobileGreeting {
+  font-size: 11px;
+  color: #777;
+}
+
+.MobileCurrentPage {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0A0A5F;
+}
+
+.MenuToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #0A0A5F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Drawer header (close button row) — hidden on desktop */
+.DrawerHeader {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 15px;
+  background-color: #0A0A5F;
+  color: #fff;
+}
+
+.DrawerUser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.DrawerUser svg {
+  width: 28px;
+  height: 28px;
+}
+
+.DrawerClose {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+/* Backdrop — only shown on mobile */
+.Backdrop {
+  display: none;
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .SideMenu {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Show the mobile top bar */
+  .MobileBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0 16px;
+    margin-bottom: 4px;
+  }
+
+  /* Backdrop */
+  .Backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 300;
+  }
+
+  /* Sidebar becomes a slide-in drawer */
+  .SideMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100dvh;
+    overflow-y: auto;
+    z-index: 301;
+    border-radius: 0;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .Open {
+    transform: translateX(0);
+  }
+
+  /* Show drawer header, hide desktop user greeting */
+  .DrawerHeader {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .UserName {
+    display: none;
+  }
+
+  .Menu {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .Menu a {
+    padding: 14px 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+@media (max-width: 480px) {
+  .DrawerHeader {
+    padding: 11px 15px;
+  }
+
+  .SideMenu {
+    width: 260px;
+  }
+
+  .MobileCurrentPage {
+    font-size: 14px;
+  }
+
+  .MenuToggle {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}
+

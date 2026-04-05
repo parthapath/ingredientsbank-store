@@ -19,3 +19,33 @@
   margin-top: 0;
   font-size: 22px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Account .Container {
+    flex-direction: column;
+  }
+
+  .Content {
+    margin-left: 0;
+  }
+
+  .Content h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Content {
+    padding: 15px;
+  }
+
+  .Content h1 {
+    font-size: 18px;
+  }
+}

@@ -10,7 +10,7 @@ const Modal = (props) => {
   const style = {
     transform: props.show ? "translateY(0)" : "translateY(-230%)",
     opacity: props.show ? "1" : "0",
-    width: props.width ? props.width : "475px",
+    maxWidth: props.width ? props.width : "475px",
   };
 
   const body = props.scroll ? (

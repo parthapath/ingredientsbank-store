@@ -10,8 +10,8 @@ const Category = ({ category }) => {
         <Link href={`/products?categories=${category.name}`}>
           <Image
             src={category.photo}
-            width={236}
-            height={236}
+            width={230}
+            height={230}
             alt={category.name}
             loading="lazy"
           />

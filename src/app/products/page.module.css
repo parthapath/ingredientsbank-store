@@ -42,6 +42,71 @@
   border-top: 2px solid #fff;
 }
 
+/* Filter header — close button row (mobile only) */
+.FilterHeader {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.FilterClose {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+/* Mobile top bar — hidden on desktop */
+.MobileTopBar {
+  display: none;
+}
+
+.MobileActiveCategory {
+  font-weight: 600;
+  font-size: 15px;
+  color: #0A0A5F;
+}
+
+.FilterToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #0A0A5F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.FilterBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #0A0A5F;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.FilterBackdrop {
+  display: none;
+}
+
 .ProductsWrapper {
   padding-left: 20px;
   flex-grow: 1;
@@ -57,10 +122,6 @@
   margin: 0;
 }
 
-/* .Products {
-  margin-top: 30px;
-} */
-
 .NoOfProducts {
   font-weight: 600;
 }
@@ -68,3 +129,130 @@
 .ProductsList {
   margin-top: 15px;
 }
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .Filters {
+    flex: 0 0 220px;
+    padding: 0 15px;
+  }
+
+  .ProductsWrapper {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+.NoOfProducts {
+  font-size: 12px;
+}
+
+  /* Show mobile top bar */
+  .MobileTopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  /* Backdrop */
+  .FilterBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 199;
+  }
+
+  /* Sidebar becomes a slide-in drawer from the left */
+  .Filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100dvh;
+    overflow-y: auto;
+    z-index: 200;
+    border-radius: 0 12px 12px 0;
+    padding: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    flex: none;
+  }
+
+  .FiltersOpen {
+    transform: translateX(0);
+  }
+
+  /* Show the header row with close button */
+  .FilterHeader {
+    display: flex;
+  }
+
+  .Filters .Filter {
+    padding: 15px 20px;
+  }
+
+  .Filters .Filter + .Filter {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .Filters h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .Filters li + li {
+    margin-top: 10px;
+  }
+
+  /* Products take full width */
+  .PageContent {
+    flex-direction: column;
+  }
+
+  .ProductsWrapper {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .CategoryDesc {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProductsPage h1 {
+    font-size: 18px;
+  }
+
+  .Filters {
+    width: 260px;
+  }
+
+  .Filters h4 {
+    font-size: 14px;
+  }
+
+  .Filters li {
+    font-size: 13px;
+  }
+
+  .MobileActiveCategory {
+    font-size: 14px;
+  }
+
+  .FilterToggle {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .CategoryDesc {
+    padding: 15px 12px;
+    font-size: 14px;
+  }
+}
+

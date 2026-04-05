@@ -24,10 +24,6 @@
   font-size: 32px;
 }
 
-.MainSlider {
-  height: 597px;
-}
-
 .Home .SubTitle {
   margin-bottom: 20px;
   display: flex;
@@ -80,7 +76,6 @@
 }
 
 .Home .Intro .Countries {
-  margin: 40px 0;
   display: flex;
 }
 
@@ -101,11 +96,13 @@
 }
 
 /* Featured Categories */
+
 .FeaturedCategories {
   margin-top: 100px;
 }
 
 /* Bestsellers */
+
 .BestSellers {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -124,6 +121,7 @@
 .Products {
   margin: 0 -10px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .Products .Product {
@@ -226,11 +224,6 @@
   font-weight: 600;
 }
 
-.WhyUs p {
-  font-size: 20px;
-  line-height: 38px;
-}
-
 .Cetificates {
   padding: 40px 0;
 }
@@ -239,4 +232,516 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (min-width: 1201px) {
+  .WhyUs p {
+    font-size: 20px;
+    line-height: 38px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .MainSlider {
+    height: auto;
+  }
+
+  .Home .SubHeader h1 {
+    font-size: 24px;
+  }
+
+  .Home .Intro {
+    padding: 25px 0;
+  }
+
+  .Home .Intro h2 {
+    font-size: 42px;
+    line-height: 60px;
+  }
+
+  .Home .Intro h3,
+  .Home .Intro h3 a {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  .Home .Intro .Countries {
+    margin: 30px 0;
+  }
+
+  .Home .Message h3 {
+    font-size: 2em;
+  }
+
+  .Home .SubTitle h2 {
+    font-size: 24px;
+  }
+
+  .FeaturedCategories {
+    margin-top: 60px;
+  }
+
+  .Products .Product {
+    width: calc(25% - 20px);
+    height: auto;
+  }
+
+  .Products .Product .Image {
+    height: 220px;
+  }
+
+  .Products .Product .Desc .Name {
+    height: auto;
+    min-height: 60px;
+  }
+
+  .BestSellers,
+  .WhyUs {
+    margin-top: 50px;
+  }
+
+  .BestSellers {
+    margin-bottom: 50px;
+  }
+
+  .WhyUs .SubTitle {
+    margin-top: 50px;
+  }
+
+  .WhyUs p {
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  .WhyUs .Overview div > div > div:first-child {
+    font-size: 36px;
+  }
+
+  .WhyUs .Overview div > div:last-child {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .MainSlider {
+    height: auto;
+  }
+
+  .Home {
+    padding-top: 98px;
+  }
+
+  .Home .SubHeader {
+    position: relative;
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .Home .SubHeader > div {
+    height: 40px;
+  }
+
+  .Home :global(.page-content) {
+    padding-top: 0;
+  }
+
+  .Home .SubHeader h1 {
+    font-size: 20px;
+  }
+
+  .Home .Intro {
+    padding: 20px 0;
+  }
+
+  .Home .Intro h2 {
+    font-size: 36px;
+    line-height: 52px;
+  }
+
+  .Home .Intro h3,
+  .Home .Intro h3 a {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .Home .Intro .Countries {
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .Home .Message {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .Home .Message h3 {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  .Home .SubTitle h2 {
+    font-size: 22px;
+  }
+
+  .FeaturedCategories {
+    margin-top: 50px;
+  }
+
+  .Products {
+    margin: 0 -6px;
+  }
+
+  .Products .Product {
+    width: calc(33.33% - 12px);
+    height: auto;
+    margin: 0 6px 12px;
+  }
+
+  .Products .Product .Image {
+    height: 200px;
+  }
+
+  .Products .Product .Desc .Name {
+    height: auto;
+    min-height: 60px;
+  }
+
+  .BestSellers,
+  .FeaturedCategories,
+  .WhyUs {
+    margin-top: 40px;
+  }
+
+  .BestSellers {
+    margin-bottom: 40px;
+  }
+
+  .WhyUs .SubTitle {
+    margin-top: 40px;
+  }
+
+  .WhyUs p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .WhyUs .Content {
+    padding: 20px;
+  }
+
+  .Cetificates {
+    padding: 25px 0;
+  }
+
+  .Cetificates ul {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .Cetificates ul li {
+    margin: 8px 12px;
+    flex: 0 0 auto;
+  }
+
+  .Cetificates ul li img {
+    max-width: 90px;
+    height: auto;
+  }
+
+  .WhyUs .Overview {
+    flex-wrap: nowrap;
+  }
+
+  .WhyUs .Overview > div {
+    width: 20%;
+    padding: 10px 8px;
+  }
+
+  .WhyUs .Overview div > div > div:first-child {
+    font-size: 32px;
+  }
+
+  .WhyUs .Overview div > div:last-child {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .MainSlider {
+    height: auto;
+  }
+
+  .Home {
+    padding-top: 98px;
+  }
+
+  .Home .SubHeader {
+    position: relative;
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .Home .SubHeader > div {
+    height: 40px;
+  }
+
+  .Home .SubHeader h1 {
+    font-size: 16px;
+  }
+
+  .Home :global(.page-content) {
+    padding-top: 0;
+  }
+
+  .Home .Intro h2 {
+    font-size: 36px;
+    line-height: 52px;
+  }
+
+  .Home .Intro h3,
+  .Home .Intro h3 a {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .Home .Intro .Countries {
+    margin: 30px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Home .Message {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .Home .Message h3 {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  .Home .SubTitle h2 {
+    font-size: 20px;
+  }
+
+  .FeaturedCategories {
+    margin-top: 40px;
+  }
+
+  .Products {
+    margin: 0 -6px;
+  }
+
+  .Products .Product {
+    width: calc(50% - 12px);
+    margin: 0 6px 12px;
+  }
+
+  .BestSellers,
+  .FeaturedCategories,
+  .WhyUs {
+    margin-top: 40px;
+  }
+
+  .BestSellers {
+    margin-bottom: 40px;
+  }
+
+  .WhyUs .SubTitle {
+    margin-top: 40px;
+  }
+
+  .WhyUs .Overview {
+    flex-wrap: nowrap;
+  }
+
+  .WhyUs .Overview > div {
+    width: 20%;
+    padding: 10px 6px;
+  }
+
+  .WhyUs .Overview div > div > div:first-child {
+    font-size: 28px;
+  }
+
+  .WhyUs .Overview div > div:last-child {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .WhyUs .Content {
+    padding: 20px;
+  }
+
+  .WhyUs p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .Cetificates {
+    padding: 25px 0;
+  }
+
+  .Cetificates ul {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .Cetificates ul li {
+    margin: 8px 12px;
+    flex: 0 0 auto;
+  }
+
+  .Cetificates ul li img {
+    max-width: 90px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .MainSlider {
+    height: auto;
+  }
+
+  .Home {
+    padding-top: 89px;
+  }
+
+  .Home .SubHeader {
+    margin-top: 0;
+  }
+
+  .Home .SubHeader > div {
+    height: 36px;
+  }
+
+  .Home .SubHeader h1 {
+    font-size: 14px;
+  }
+
+  .Home :global(.page-content) {
+    padding-top: 0;
+  }
+
+  .Home .Intro {
+    padding: 15px 0;
+  }
+
+  .Home .Intro h2 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .Home .Intro h3,
+  .Home .Intro h3 a {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .Home .Intro .Countries {
+    margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .Home .Message {
+    height: auto;
+    min-height: 44px;
+    padding: 8px 15px;
+  }
+
+  .Home .Message h3 {
+    font-size: 1.1em;
+  }
+
+  .Home .SubTitle h2 {
+    font-size: 18px;
+  }
+
+  .FeaturedCategories {
+    margin-top: 25px;
+  }
+
+  .Products {
+    margin: 0 -4px;
+  }
+
+  .Products .Product {
+    width: calc(50% - 8px);
+    margin: 0 4px 10px;
+    height: auto;
+  }
+
+  .Products .Product .Image {
+    height: 150px;
+  }
+
+  .Products .Product .Desc .Name {
+    height: auto;
+    min-height: 50px;
+  }
+
+  .Products .Product h3 {
+    font-size: 12px;
+  }
+
+  .Products .Product h4 {
+    font-size: 11px;
+  }
+
+  .BestSellers,
+  .FeaturedCategories,
+  .WhyUs {
+    margin-top: 30px;
+  }
+
+  .BestSellers {
+    margin-bottom: 30px;
+  }
+
+  .WhyUs .SubTitle {
+    margin-top: 30px;
+  }
+
+  .WhyUs .Overview div > div > div:first-child {
+    font-size: 28px;
+  }
+
+  .WhyUs .Overview div > div:last-child {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .WhyUs p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .WhyUs .Content {
+    padding: 15px;
+  }
+
+  .Cetificates {
+    padding: 15px 0;
+  }
+
+  .Cetificates ul li {
+    margin: 6px 8px;
+  }
+
+  .Cetificates ul li img {
+    max-width: 70px;
+    height: auto;
+  }
 }

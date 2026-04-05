@@ -87,3 +87,102 @@
 .StockWarning {
   color: #777;
 }
+
+.PricingsContent {
+  margin: 0 -32px;
+}
+
+.PricingsTable {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.PricingsTable th,
+.PricingsTable td {
+  width: 33.33%;
+  padding-left: 32px;
+}
+
+@media (max-width: 768px) {
+  .PricingsContent {
+    margin: 0 -20px;
+  }
+
+  .PricingsTable th,
+  .PricingsTable td {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .PricingsContent {
+    margin: 0 -15px;
+  }
+
+  .PricingsTable th,
+  .PricingsTable td {
+    padding-left: 15px;
+  }
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Sizes {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .Sizes .Size + .Size {
+    margin-left: 0;
+  }
+
+  .QuantityPrice {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .Price {
+    margin: 0;
+    padding-top: 22px;
+    font-size: 20px;
+  }
+
+  .PricingList {
+    padding-left: 0;
+    padding-top: 22px;
+  }
+
+  .BuyNow {
+    margin-top: 20px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Sizes .Size {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .Price {
+    font-size: 18px;
+  }
+
+  .Price span {
+    font-size: 14px;
+  }
+
+  .BuyNow {
+    margin-top: 15px;
+    padding-bottom: 20px;
+  }
+
+  .NoStock {
+    font-size: 14px;
+  }
+}

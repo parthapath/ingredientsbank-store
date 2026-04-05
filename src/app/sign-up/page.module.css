@@ -41,3 +41,64 @@
   flex-wrap: wrap;
   flex-direction: row;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .SignUpFormWrapper {
+    width: 600px;
+  }
+
+  .Notes {
+    width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .SignUp h1 {
+    font-size: 22px;
+  }
+
+  .SignUpFormWrapper {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .SignUpFormWrapper .FormBody {
+    flex-direction: column;
+  }
+
+  .Notes {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .SignUp {
+    min-height: 400px;
+  }
+
+  .SignUp h1 {
+    font-size: 20px;
+  }
+
+  .SignUpFormWrapper {
+    margin-top: 20px;
+  }
+
+  .Notes {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .ResendSuccess svg {
+    width: 18px;
+    height: 18px;
+  }
+}

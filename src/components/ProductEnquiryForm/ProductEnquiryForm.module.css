@@ -1,3 +1,22 @@
 .ProductEnquiryForm .FormBody {
   height: 390px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .ProductEnquiryForm .FormBody {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProductEnquiryForm .FormBody {
+    min-height: 250px;
+  }
+}

@@ -111,3 +111,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .Btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}

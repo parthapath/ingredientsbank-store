@@ -160,7 +160,7 @@ const SignInForm = () => {
                         />
                       </div>
 
-                      <div className="form-actions">
+                      <div className={["form-actions", styles.FormActions].join(" ")}>
                         <Button
                           btnType="Primary"
                           type="submit"

@@ -3,3 +3,27 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .ProductsList {
+    margin: 0 -6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProductsList {
+    margin: 0 -5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProductsList {
+    margin: 0;
+  }
+}

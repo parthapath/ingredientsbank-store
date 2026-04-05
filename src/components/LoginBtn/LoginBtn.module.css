@@ -14,3 +14,16 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .LoginBtn {
+    padding: 8px;
+    font-size: 13px;
+  }
+}

@@ -31,3 +31,54 @@
 .ResetSuccess {
   padding: 10px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .SignInForm .Content {
+    flex-direction: column;
+  }
+
+  .SignInForm .SignIn {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 25px;
+  }
+
+  .SignInForm .SignUp {
+    padding: 25px 0 10px;
+    border-left: none;
+    border-top: 1px solid #f1f1f1;
+  }
+
+  .SignInForm .ForgotPassword {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .SignInForm .FormActions {
+    display: flex;
+    gap: 20px;
+  }
+
+  .SignInForm .SignIn {
+    padding-bottom: 20px;
+  }
+
+  .SignInForm .SignUp {
+    padding-top: 20px;
+  }
+
+  .SignInForm .SignUp h4 {
+    font-size: 15px;
+  }
+
+  .SignInForm .ForgotPassword {
+    font-size: 13px;
+  }
+}

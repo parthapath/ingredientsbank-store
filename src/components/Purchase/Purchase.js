@@ -116,8 +116,8 @@ const Purchase = (props) => {
       width="800px"
       title="Pricings"
     >
-      <div className={styles.Content}>
-        <table className="type-1">
+      <div className={styles.PricingsContent}>
+        <table className={styles.PricingsTable}>
           <thead>
             <tr>
               <th>Size</th>

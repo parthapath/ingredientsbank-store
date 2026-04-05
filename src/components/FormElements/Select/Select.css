@@ -1,5 +1,6 @@
 .ReactSelect__control {
     width: 200px;
+    max-width: 100%;
     height: 42px;
     border-radius: 4px !important;
     box-shadow: none !important;

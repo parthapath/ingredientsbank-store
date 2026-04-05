@@ -4,21 +4,19 @@
 }
 
 .RegionSelector .Selector {
-  width: 280px;
+  width: 22px;
   height: 40px;
-  padding: 0 16px;
+  padding: 0;
   display: flex;
   align-items: center;
-  background-color: #fff;
+  justify-content: center;
+  gap: 0;
+  background-color: transparent;
   font-weight: 600;
   cursor: pointer;
   border-radius: 4px;
-  color: #0A0A5F;
+  color: #0a0a5f;
   transition: all ease 0.3s;
-}
-
-.RegionSelector .Selector > div + div {
-  margin-left: 10px;
 }
 
 .RegionSelector .Selector .RegionName {
@@ -42,6 +40,12 @@
 
 .RegionSelector .Flag img {
   width: 22px;
+}
+
+.RegionSelector .Selector .RegionName,
+.RegionSelector .Selector .Currency,
+.RegionSelector .Selector .Indicator {
+  display: none;
 }
 
 .RegionSelector .RegionName {
@@ -99,4 +103,60 @@
   left: 0;
   top: 85px;
   z-index: 8;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .RegionSelector .Flag img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .RegionSelector .Regions {
+    width: 220px;
+    margin-top: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Overlay {
+    top: 102px;
+  }
+}
+
+@media (max-width: 480px) {
+  .RegionSelector .Selector {
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .RegionSelector .Selector > div + div {
+    margin-left: 0;
+  }
+
+  .RegionSelector .Flag img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .RegionSelector .Regions {
+    width: 200px;
+    margin-top: 42px;
+  }
+
+  .RegionSelector .Regions .Region {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .Overlay {
+    top: 86px;
+  }
 }

@@ -151,3 +151,117 @@
 .SavedAddresses .AddressWrapper .Address {
   line-height: 20px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 992px) {
+  .ContentLeft {
+    width: 70%;
+  }
+
+  .ContentRight {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Details {
+    padding-top: 15px;
+    flex-direction: column;
+  }
+
+  .ContentLeft {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .ContentRight {
+    width: 100%;
+  }
+
+  .Product h1 {
+    font-size: 18px;
+  }
+
+  .Product h2 {
+    font-size: 14px;
+  }
+
+  .ShippingAddress h2 {
+    font-size: 14px;
+  }
+
+  .SavedAddresses {
+    height: 350px;
+  }
+
+  .SavedAddresses .AddressWrapper {
+    padding: 15px;
+  }
+
+  .SavedAddresses .AddressWrapper .Name div:first-child {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Checkout {
+    min-height: 500px;
+  }
+
+  .Product {
+    padding: 12px;
+  }
+
+  .Product h1 {
+    font-size: 16px;
+  }
+
+  .Product h2 {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .Product > div span {
+    width: 60px;
+    font-size: 13px;
+  }
+
+  .ShippingAddress {
+    padding: 12px;
+  }
+
+  .ContentRight {
+    padding: 15px;
+  }
+
+  .ContentRight h3 {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .TotalAmount {
+    font-size: 16px;
+  }
+
+  .SavedAddresses {
+    height: 300px;
+  }
+
+  .SavedAddresses .AddressWrapper {
+    padding: 12px;
+  }
+
+  .SavedAddresses .AddressWrapper .Name div:first-child {
+    font-size: 14px;
+  }
+
+  .SavedAddresses .AddressWrapper .Name div:nth-child(2) {
+    font-size: 12px;
+  }
+}

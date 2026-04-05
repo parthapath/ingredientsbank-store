@@ -1,24 +1,107 @@
-.ShippingAndReturns {
-    min-height: 600px;
-}
-
 .ShippingAndReturns h2 {
-    font-size: 26px;
+  font-size: 26px;
+  margin-bottom: 30px;
 }
 
 .ShippingAndReturns h3 {
-    margin-top: 30px;
-    font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #0A0A5F;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8e8f0;
+}
+
+.ShippingAndReturns p {
+  margin-bottom: 16px;
+  line-height: 28px;
+  color: #444;
 }
 
 .ShippingAndReturns ul {
-    padding-left: 15px;
+  margin-bottom: 16px;
+  padding-left: 0;
+  counter-reset: shipping-counter;
 }
 
 .ShippingAndReturns ul li {
-    list-style-type: decimal;
+  line-height: 26px;
+  padding-left: 28px;
+  position: relative;
+  color: #444;
+  counter-increment: shipping-counter;
+}
+
+.ShippingAndReturns ul li::before {
+  content: counter(shipping-counter) ".";
+  position: absolute;
+  left: 0;
+  color: #0A0A5F;
+  font-weight: 600;
+  min-width: 22px;
 }
 
 .ShippingAndReturns ul li + li {
-    margin-top: 25px;
+  margin-top: 20px;
+}
+
+.ShippingAndReturns a {
+  color: #0A0A5F;
+  text-decoration: underline;
+}
+
+.ShippingAndReturns a:hover {
+  color: #1919ff;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .ShippingAndReturns h2 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .ShippingAndReturns h3 {
+    margin-top: 32px;
+    font-size: 16px;
+  }
+
+  .ShippingAndReturns p {
+    line-height: 26px;
+  }
+
+  .ShippingAndReturns ul li + li {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ShippingAndReturns h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ShippingAndReturns h3 {
+    margin-top: 28px;
+    font-size: 15px;
+  }
+
+  .ShippingAndReturns p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ShippingAndReturns ul li {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ShippingAndReturns ul li + li {
+    margin-top: 20px;
+  }
 }

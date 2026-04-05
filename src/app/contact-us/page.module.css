@@ -54,3 +54,56 @@
 .FormActions button {
   margin-top: 20px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Content {
+    flex-direction: column;
+  }
+
+  .ContentLeft {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .ContentRight {
+    width: 100%;
+  }
+
+  .ContactUs h1 {
+    margin-bottom: 30px;
+  }
+
+  .Contact + .Contact {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ContactUs h1 {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .Contact + .Contact {
+    margin-top: 30px;
+  }
+
+  .Contact h3 {
+    font-size: 14px;
+  }
+
+  .Contact h4 {
+    font-size: 14px;
+  }
+
+  .Notes {
+    padding: 15px;
+    font-size: 13px;
+  }
+}

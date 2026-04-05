@@ -52,6 +52,17 @@
   bottom: 20px !important;
 }
 
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media screen and (max-width: 1280px) and (min-width: 993px) {
+  .SwiperSlider img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 @media screen and (min-width: 1540px) {
   .SwiperSlider img {
     height: 590px;
@@ -61,5 +72,84 @@
 @media screen and (max-width: 1540px) and (min-width: 1281px) {
   .SwiperSlider img {
     height: 480px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .SwiperSlider img {
+    width: 100%;
+    height: auto;
+  }
+
+  .SwiperSlider .swiper-button-prev,
+  .SwiperSlider .swiper-button-next {
+    width: 36px;
+    height: 36px;
+  }
+
+  .SwiperSlider .swiper-button-prev::after,
+  .SwiperSlider .swiper-button-next::after {
+    font-size: 16px;
+  }
+
+  .SwiperSlider .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SwiperSlider img {
+    width: 100%;
+    height: auto;
+  }
+
+  .SwiperSlider .swiper-button-prev,
+  .SwiperSlider .swiper-button-next {
+    width: 30px;
+    height: 30px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .SwiperSlider .swiper-button-prev::after,
+  .SwiperSlider .swiper-button-next::after {
+    font-size: 14px;
+  }
+
+  .SwiperSlider .swiper-pagination-horizontal {
+    bottom: 10px !important;
+  }
+
+  .SwiperSlider .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .SwiperSlider img {
+    width: 100%;
+    height: auto;
+  }
+
+  .SwiperSlider .swiper-button-prev,
+  .SwiperSlider .swiper-button-next {
+    width: 26px;
+    height: 26px;
+  }
+
+  .SwiperSlider .swiper-button-prev::after,
+  .SwiperSlider .swiper-button-next::after {
+    font-size: 12px;
+  }
+
+  .SwiperSlider .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+
+  .SwiperSlider .swiper-pagination-horizontal {
+    bottom: 6px !important;
   }
 }

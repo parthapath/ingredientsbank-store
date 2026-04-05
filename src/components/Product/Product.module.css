@@ -6,6 +6,7 @@
   border-radius: 4px;
   transition: all ease 0.3s;
   background-color: #fff;
+  overflow: hidden;
 }
 
 .Product:hover {
@@ -54,4 +55,59 @@
   text-decoration: underline;
   cursor: pointer;
   color: #0A0A5F;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .Product {
+    width: calc(25% - 18px);
+  }
+}
+
+@media (max-width: 992px) {
+  .Product {
+    width: calc(33.33% - 18px);
+  }
+}
+
+@media (max-width: 768px) {
+  .Product {
+    width: calc(50% - 10px);
+    max-width: none;
+    height: auto;
+    margin: 0 5px 10px;
+  }
+
+  .Product .Image {
+    height: 200px;
+  }
+
+  .Product .Desc .Name {
+    height: auto;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Product {
+    width: 100%;
+    margin: 0 0 12px;
+  }
+
+  .Product .Image {
+    height: 220px;
+  }
+
+  .Product h3 {
+    font-size: 13px;
+  }
+
+  .Product h4 {
+    font-size: 11px;
+  }
 }

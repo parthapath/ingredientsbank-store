@@ -100,15 +100,12 @@ const Header = () => {
                 />
               </Link>
             </div>
-            <SearchBox />
           </div>
           <div className={styles.HeaderRight}>
+            <Suspense>
+              <RegionSelector />
+            </Suspense>
             <div className={styles.HeaderActions}>
-              <div className={styles.HeaderAction}>
-                <Suspense>
-                  <RegionSelector />
-                </Suspense>
-              </div>
               {!isAuthenticated ? (
                 <div
                   className={[styles.HeaderAction, styles.SignInUp].join(" ")}
@@ -157,6 +154,9 @@ const Header = () => {
                 </div>
               )}
             </div>
+          </div>
+          <div className={styles.HeaderBottom}>
+            <SearchBox />
           </div>
         </div>
       </div>

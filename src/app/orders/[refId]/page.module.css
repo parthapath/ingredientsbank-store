@@ -119,3 +119,86 @@
   border-top: 5px solid #3E9538;
   font-size: 16px;
 }
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column;
+  }
+
+  .Content {
+    margin-left: 0;
+  }
+
+  .Product {
+    flex-direction: column;
+  }
+
+  .Product img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .Product > div:last-child {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .Product h2 {
+    font-size: 18px;
+  }
+
+  .Product h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .Product > div span,
+  .Overview span,
+  .ShipmentDetails span {
+    width: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Content {
+    padding: 15px;
+  }
+
+  .OrderDetails {
+    padding: 12px;
+  }
+
+  .OrderDetails h1 {
+    font-size: 20px;
+  }
+
+  .OrderDetails h2 {
+    font-size: 14px;
+  }
+
+  .Product h2 {
+    font-size: 16px;
+  }
+
+  .Product > div span,
+  .Overview span,
+  .ShipmentDetails span {
+    width: 110px;
+    font-size: 13px;
+  }
+
+  .Notes {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .CancelBtn {
+    margin-top: 15px;
+  }
+}

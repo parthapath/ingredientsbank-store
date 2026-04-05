@@ -1,3 +1,6 @@
+.NewsLetterForm {
+  width: 360px;
+}
 
 .NewsLetterForm .FormBody > div {
   width: 100%;
@@ -8,4 +11,22 @@
 .NewsLetterForm .FormBody input {
   background-color: #fff;
   border: 0;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .NewsLetterForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .NewsLetterForm .FormBody > div {
+    min-height: 60px;
+  }
 }

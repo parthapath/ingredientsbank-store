@@ -7,6 +7,11 @@ import ProductEnquiryForm from "@/components/ProductEnquiryForm/ProductEnquiryFo
 
 import "../../public/assets/css/main.css";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

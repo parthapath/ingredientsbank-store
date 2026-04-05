@@ -6,6 +6,7 @@
 .Breadcrumb ul {
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .Breadcrumb li + li::before {
@@ -18,4 +19,21 @@
 
 .Breadcrumb li a {
   color: #777;
+}
+
+/* Responsive Styles */
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .Breadcrumb {
+    font-size: 11px;
+  }
+
+  .Breadcrumb li + li::before {
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+  }
 }

@@ -100,7 +100,7 @@ const AddressessPage = () => {
                   className={styles.AddNew}
                   onClick={() => handleAddressForm()}
                 >
-                  <IoMdAddCircleOutline /> Add a New Address
+                  <IoMdAddCircleOutline /> Add New
                 </div>
               </div>
             </div>
