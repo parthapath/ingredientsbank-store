@@ -64,6 +64,7 @@
   .Category {
     width: calc(25% - 8px);
     height: auto;
+    margin-bottom: 24px;
   }
 }
 
@@ -96,7 +97,6 @@
 @media (max-width: 480px) {
   .Category {
     width: calc(50% - 8px);
-    margin: 0 4px 12px;
   }
 
   .Category .Desc a {

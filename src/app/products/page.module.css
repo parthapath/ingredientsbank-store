@@ -23,6 +23,7 @@
 
 .Filters li {
   cursor: pointer;
+  line-height: 20px;
 }
 
 .Filters li + li {

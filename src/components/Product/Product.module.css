@@ -1,7 +1,6 @@
 .Product {
   width: 221px;
   height: 380px;
-  margin: 0 9px 18px;
   border: 1px solid #eee;
   border-radius: 4px;
   transition: all ease 0.3s;
@@ -22,11 +21,9 @@
 
 .Product .Image a {
   width: 100%;
-  display: block;
-}
-
-.Product .Image img {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Product .Desc {
@@ -80,11 +77,6 @@
     width: calc(50% - 10px);
     max-width: none;
     height: auto;
-    margin: 0 5px 10px;
-  }
-
-  .Product .Image {
-    height: 200px;
   }
 
   .Product .Desc .Name {
@@ -96,11 +88,6 @@
 @media (max-width: 480px) {
   .Product {
     width: 100%;
-    margin: 0 0 12px;
-  }
-
-  .Product .Image {
-    height: 220px;
   }
 
   .Product h3 {
